@@ -1,0 +1,8 @@
+alias xi="sudo xbps-install -Sy"
+alias xu="sudo xbps-install -Su"
+
+alias xr="sudo xbps-remove"
+
+alias xq="sudo xbps-query"
+
+alias lssv="ll /var/service/"
