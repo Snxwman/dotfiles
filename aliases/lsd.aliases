@@ -1,0 +1,22 @@
+# Program: LSD (LSDeluxe) [https://github.com/Peltoche/lsd]
+
+alias ls="lsd"
+
+alias ll="ls --long --group-dirs first"        # Respecify `--group-dirs last` at prompt to override `first`.
+alias la="ll --almost-all"
+alias lah="ll --directory-only .*"             # List all hidden items
+
+alias lad="ll --directory-only (.*|*)(/)"      # Only list (all) directories
+alias lvd="ll --directory-only *(/)"           # Only list visible directories
+alias lhd="ll --directory-only .*(/)"          # Only list hidden directories
+
+alias laf="ll --directory-only (.*|*)(^/)"     # Only list (all) files
+alias lvf="ll --directory-only *(^/)"          # Only list visible files
+alias lhf="ll --directory-only .*(^/)"         # Only list hidden files
+
+alias llt="ll --tree --blocks size,name"
+alias lat="llt --almost-all"
+alias lht="lat .*"                             # List all hidden files in tree format
+
+alias lsl="ls --oneline"                       # One item per line
+alias lstrash="ll $XDG_DATA_HOME/Trash/files"  # Show files in the user trashcan

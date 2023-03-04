@@ -1,0 +1,4 @@
+# Program: Bat: A cat(1) clone with syntax highlighting and Git integration. [https://github.com/sharkdp/bat]
+
+alias cat="bat"
+
