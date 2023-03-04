@@ -1,0 +1,6 @@
+shift + ctrl + alt + super + F18
+    flameshot gui
+
+shift + ctrl + alt + super + F19
+    /home/sam/.scripts/bt_toggle
+
