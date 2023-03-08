@@ -1,6 +1,11 @@
 shift + ctrl + alt + super + F18
     flameshot gui
 
-shift + ctrl + alt + super + F19
-    /home/sam/.scripts/bt_toggle
+shift + ctrl + alt + super + F22
+    galculator
 
+shift + ctrl + alt + super + F19
+    ~/.scripts/bt_toggle
+
+shift + ctrl + alt + v
+    alacritty --title vm_launcher --command ~/.scripts/vm_launch
