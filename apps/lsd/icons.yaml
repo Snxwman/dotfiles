@@ -1,0 +1,37 @@
+name:
+  .archive: 
+  .backup: 󰁯
+  .nix: 
+  .scripts: 󱆃
+  .ssh: 󰣀
+  .steam: 󰓓
+  albums: 󰋪
+  ambient: 󰋋
+  audio: 
+  audiobooks: 󰁧
+  cloud: 
+  github: 
+  home: 
+  iso: 󰗮
+  mnt: 󰋊
+  movies: 󰿏
+  music: 
+  phone: 󰄜
+  photos: 󰉏
+  podcasts: 󰦔
+  screenshots: 
+  soundboard: 󰗅
+  src: 
+  usb1: 
+  usb2: 
+  videos: 
+  vm: 
+  wallpaper: 󰸉
+  youtube: 
+extension:
+  epub: 
+  md: 󰽛
+  pdf: 
+  qcow2: 
+filetype:
+  
