@@ -1,4 +1,6 @@
-# Program: LSD (LSDeluxe) [https://github.com/Peltoche/lsd]
+#!/usr/bin/zsh
+
+# LSD (LSDeluxe) [https://github.com/Peltoche/lsd]
 
 alias ls="lsd"
 

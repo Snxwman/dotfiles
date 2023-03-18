@@ -1,2 +1,4 @@
+#!/usr/bin/zsh
+
 alias senv="source $ZDOTDIR/.zshenv"
 alias szrc="source $ZDOTDIR/.zshrc"

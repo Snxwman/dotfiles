@@ -1,3 +1,5 @@
+#!/usr/bin/zsh
+
 # XBPS
 alias xi="sudo xbps-install -Sy"
 alias xu="sudo xbps-install -Su"

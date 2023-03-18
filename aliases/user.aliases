@@ -1,3 +1,5 @@
+#!/usr/bin/zsh
+
 # Installed programs shorthands
 alias find="fd"
 alias neofetch="neofetch --config $NEOFETCH_CONFIG"
