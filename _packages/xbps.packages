@@ -2,6 +2,7 @@ void-repo-multilib
 void-repo-multilib-nonfree
 void-repo-nonfree
 
+7zip
 alacritty
 base-devel
 base-system
@@ -15,6 +16,7 @@ cups
 cups-filters
 curl
 dbus
+delta
 discord
 docker
 dunst
@@ -22,7 +24,7 @@ elogind
 fd
 feh
 ffmpeg
-ffmpeg-thumbs
+ffmpegthumbs
 flameshot
 font-adobe-100dpi
 font-adobe-75dpi
@@ -32,9 +34,8 @@ font-adobe-utopia-75dpi
 font-adobe-utopia-type1
 font-awesome5
 font-awesome6
-font-manager
 font-symbola
-fzf
+fontmanager
 fzf
 galculator
 git
@@ -50,6 +51,7 @@ jack
 jq
 lf
 libjack-pipewire
+libkeyutils
 libpipewire
 libreoffice
 libspa-bluetooth
@@ -70,15 +72,16 @@ mesa-vdpau
 mesa-vulkan-radeon
 mpd
 mpv
-mpv
 mupdf
 nano
 nemo
 neofetch
 neovim
+nerd-fonts
 nfs-util
 ngetty
 nix
+nmap
 noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-ttf
@@ -86,6 +89,7 @@ noto-fonts-ttf-extra
 ntfs-3g
 nyxt
 openssh
+openssl
 pam-devel
 paper-gtk-theme
 paper-icon-theme
@@ -95,6 +99,7 @@ podman
 qemu
 pqwgraph
 qtile
+ripgrep
 rofi
 samba
 Signal-Desktop
@@ -113,13 +118,15 @@ virt-manager
 virt-manager-tools
 virt-viewer
 vscode
+vsv
 vulkan-loader
 wally-cli
+wezterm
 wget
 wireplumber
-xdg-dektop-portal
+xdg-desktop-portal
 xdg-open
-xdg-usr-dirs
+xdg-user-dirs
 xdg-utils
 xorg
 xz
