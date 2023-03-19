@@ -1,0 +1,35 @@
+#!/usr/bin/zsh
+
+# TODO: Refactor into proper functions.
+# This is REALLY ugly 
+
+# Color Codes
+CYAN='6'
+GOLD='178'
+GRAY='241'
+GREEN='34'
+RED='196'
+ORANGE='208'
+
+# Prompt Elements
+LB="%F{$GRAY}[%f"      # Left bracket  [
+RB="%F{$GRAY}]%f"      # Right bracket ]
+
+user="%F{$GOLD}%n%f"
+at="%F{$GRAY}@%f"
+host="%F{$GREEN}%m%f"
+UAH=$LB$user$at$host
+
+IN="%F{$GRAY}:%f"      # Colon
+DIR="%F{$CYAN}%c%f"    # Current working directory
+D="$DIR$RB"
+
+function git_info() {
+    local ICON="\ue725"
+    local BRANCH="$(git branch --show-current 2> /dev/null)"
+    [[ -n $BRANCH ]] && echo "%F{$ORANGE}$ICON ($BRANCH)%f "
+}
+
+setopt prompt_subst  # Needed for $() to evaluate in single quotes.
+
+export PROMPT='$UAH $IN $(git_info)$D '
