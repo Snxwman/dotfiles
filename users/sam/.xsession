@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # System config
-/usr/bin/xmodmap ~/.config/.xmodmap &
+/usr/bin/xmodmap ~/.config/.xmodmap  # Cannot be forked or sxhkd will not load the correct binds.
 
 # Audio
 /usr/bin/pipewire &
