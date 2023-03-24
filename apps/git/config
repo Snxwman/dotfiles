@@ -1,0 +1,28 @@
+# vim:filetype=gitconfig
+
+[include]
+    path = ~/.config/.aliases/git.aliases
+
+[user]
+    name = Sam Kopp
+    email = github@snxwman.dev
+
+[core]
+    editor = nvim
+    pager = delta
+
+[diff]
+    colorMoved = default
+
+[merge]
+    conflictstyle = diff3
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    side-by-side = true
+
+[url "https://github.com/"]
+    insteadOf = gh:
