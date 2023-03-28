@@ -1,0 +1,28 @@
+# vim:filetype=gitconfig
+
+[alias]
+    a = add
+    b = branch
+    d = diff
+    f = fetch
+    p = push
+
+    c = commit
+    cm = commit --message
+
+    s = status
+    ss = status --short
+
+    co = checkout
+    pl = pull
+
+    cfg = config --list
+
+    l = log
+    ll = log --oneline
+    last = log -1 HEAD
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    plog = log -n 15 --format='%Cgreen%cs%Creset | %Cgreen%h%Creset | %Cblue%<(17,trunc)%an%Creset | %s'
+
+    uncommit = "reset --hard HEAD^"
+    unstage = "reset HEAD --"
