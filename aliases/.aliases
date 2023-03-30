@@ -1,0 +1,14 @@
+#!/usr/bin/zsh
+
+# Source alias definitions from various other files
+source "$XDG_CONFIG_HOME/.aliases/linux.aliases"
+source "$XDG_CONFIG_HOME/.aliases/zsh.aliases"
+source "$XDG_CONFIG_HOME/.aliases/void.aliases"
+
+source "$XDG_CONFIG_HOME/.aliases/user.aliases"
+
+source "$XDG_CONFIG_HOME/.aliases/bat.aliases"
+source "$XDG_CONFIG_HOME/.aliases/lsd.aliases"
+
+alias sa="source $XDG_CONFIG_HOME/.aliases"
+
