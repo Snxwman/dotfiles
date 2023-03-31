@@ -1,0 +1,13 @@
+# Compiled sources
+.class
+.o
+.so
+
+# Log files
+*.log
+
+# Genreated files
+.DS_Store
+
+# Editor files
+.vscode
