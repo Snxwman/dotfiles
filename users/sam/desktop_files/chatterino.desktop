@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Chatterino
+Exec=/home/sam/.local/software/appimages/chatterino7.appimage
+Type=Application
+Comment=Chat client for Twitch
+Icon=~/.local/share/icons/chatterino.png
+Terminal=false
+Categories=Network;InstantMessaging;
+StartupWMClass=chatterino
