@@ -1,14 +1,26 @@
 #!/usr/bin/zsh
 
-# Source alias definitions from various other files
-source "$XDG_CONFIG_HOME/.aliases/linux.aliases"
-source "$XDG_CONFIG_HOME/.aliases/zsh.aliases"
-source "$XDG_CONFIG_HOME/.aliases/void.aliases"
+ALIASES="$XDG_CONFIG_HOME/.aliases"
 
-source "$XDG_CONFIG_HOME/.aliases/user.aliases"
+# Will switch on the name of the shell that called this file (e.g. .zshrc), not the shebang line.
+# https://stackoverflow.com/a/34940539/14727607
+case $(basename $(readlink /proc/$$/exe)) in
+    zsh ) source "$ALIASES/zsh.aliases" ;;
+esac
 
-source "$XDG_CONFIG_HOME/.aliases/bat.aliases"
-source "$XDG_CONFIG_HOME/.aliases/lsd.aliases"
+case $(uname) in
+    Linux ) 
+        source "$ALIASES/linux.aliases"
+        case $(lsb_release --codename | cut -f2) in
+            void ) source "$ALIASES/void.aliases" ;;
+        esac
+        ;;
+esac
 
-alias sa="source $XDG_CONFIG_HOME/.aliases"
+source "$ALIASES/user.aliases"
+
+[[ -n $(bat --version) ]] && source "$ALIASES/bat.aliases"
+[[ -n $(lsd --version) ]] && source "$ALIASES/lsd.aliases"
+
+alias sa="source $ALIASES/.aliases"
 
