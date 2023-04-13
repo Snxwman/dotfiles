@@ -1,5 +1,9 @@
 .stfolder
 .zcompdump
 
+__pycache__
+
+secrets
+
 *.backup
 *.old
