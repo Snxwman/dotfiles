@@ -1,0 +1,31 @@
+# vim:filetype=sshconfig
+
+# Personal Devices
+Host void desktop kierkegaard
+    HostName 192.168.250.57
+
+Host mac laptop nietzsche
+    HostName 192.168.250.3
+
+# Remote Servers
+Host sag sagittarius.kopp.network
+    HostName sagittarius.kopp.network
+    IdentityFile ~/.ssh/keys/private/network.kopp.sagittarius_sam
+
+Host elixir
+    HostName ec2-184-72-191-191.compute-1.amazonaws.com
+    User ubuntu
+    IdentityFile ~/.ssh/keys/private/aws_elixir_bot.pem
+
+Host bctf
+    HostName bctf.tailfa832.ts.net
+
+# Local Virtual Machines
+Host lfs
+    HostName 10.0.0.253
+    User vm
+
+# Global
+Host *
+    User sam
+
