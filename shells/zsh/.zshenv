@@ -36,7 +36,9 @@ export EDITOR="nvim"
 #export PAGER=""
 export READER="zathura"
 export SHELL="zsh"
-export TERMINAL="alacritty"
+# This gets set by the alacritty app itself which is better since we might use a different terminal sometimes.
+# The line is left here only for documentation on where it is actually set.
+#export TERMINAL="alacritty"
 #export VISUAL="code-oss"
 
 # History files and options
