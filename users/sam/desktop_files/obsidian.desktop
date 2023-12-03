@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Obsidian
-Exec=/home/sam/.local/software/appimages/Obsidian-1.1.16.AppImage
+Exec=/opt/obsidian.appimage
 Type=Application
 Icon=~/.local/share/icons/obsidian.png
 Terminal=false

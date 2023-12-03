@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Name=Brave
-Exec=/nix/store/x06x2i3f1g7axgik6gy2xxv5ykwalll1-brave-1.49.120/bin/brave %U
+Exec=/nix/store/7dmf9s9m977aw4001pib1q9zvaxfxj10-brave-1.59.120/bin/brave %U
 StartupNotify=true
 Terminal=false
 Icon=~/.local/share/icons/brave.png
@@ -12,8 +12,8 @@ Actions=new-window;new-private-window;
 
 [Desktop Action new-window]
 Name=New Window
-Exec=/nix/store/x06x2i3f1g7axgik6gy2xxv5ykwalll1-brave-1.49.120/bin/brave
+Exec=/nix/store/7dmf9s9m977aw4001pib1q9zvaxfxj10-brave-1.59.120/bin/brave
 
 [Desktop Action new-private-window]
 Name=New Incognito Window
-Exec=/nix/store/x06x2i3f1g7axgik6gy2xxv5ykwalll1-brave-1.49.120/bin/brave --incognito
+Exec=/nix/store/7dmf9s9m977aw4001pib1q9zvaxfxj10-brave-1.59.120/bin/brave --incognito
