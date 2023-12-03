@@ -69,6 +69,19 @@ colors = {
     'black': '#000000',
 }
 
+colors_other = [["#1f2428", "#1d2428"],
+          ["#1c1f24", "#1c1f24"],
+          ["#dfdfdf", "#dfdfdf"],
+          ["#ff6c6b", "#ff6c6b"],
+          ["#5f875f", "#5f875f"],
+          ["#000000", "#000000"],
+          ["#51afef", "#51afef"],
+          ["#259ec1", "#259ec1"],
+          ["#46d9ff", "#46d9ff"],
+          ["#1f5b70", "#1f5b70"],
+          ["#d84949", "#d84949"],
+          ["#008080", "#008080"]]
+
 widget_defaults = dict(
     font = widget_font,
     fontsize = widget_font_size,

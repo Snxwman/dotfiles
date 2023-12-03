@@ -112,6 +112,12 @@ def init_keybinds():
         Key([super, ctrl], 'h', lazy.layout.grow_left()),
         Key([super, ctrl], 'l', lazy.layout.grow_right()),
 
+        Key(hyper, '1', lazy.window.togroup(' 1 ')),
+        Key(hyper, '2', lazy.window.togroup(' 2 ')),      
+        #Key([hyper], '3', lazy.window.togroup(' 3 ')),
+        #Key([hyper], '4', lazy.window.togroup(' 4 ')),
+
+
         # Multimedia
         Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume 0 -5%")),
         Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume 0 +5%")),
