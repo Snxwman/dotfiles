@@ -1,3 +1,6 @@
+env:
+  TERM: alacritty
+
 window:
   dimensions:
     columns: 100
@@ -20,12 +23,16 @@ scrolling:
 
 font:
   normal:
-    family: Hack Nerd Font
+    family: IntoneMono Nerd Font
     style: Regular
   size: 12
   offset:
-    #x: -1
-    y: -1
+    x: 0
+    y: -4
+  glyph_offset:
+    x: 0
+    y: -2
+  builtin_box_drawing: true
   
 draw_bold_text_with_bright_colors: false
 
