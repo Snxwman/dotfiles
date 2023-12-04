@@ -6,5 +6,3 @@ alias xu="sudo xbps-install -Su"
 alias xr="sudo xbps-remove"
 alias xq="sudo xbps-query"
 
-# Runit
-alias lssv="ll /var/service/"
