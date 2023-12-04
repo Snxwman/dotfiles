@@ -6,6 +6,15 @@
 [user]
     name = Sam Kopp
     email = github@snxwman.dev
+    signingkey = ~/.ssh/keys/private/dev.snxwman.github
+
+[commit]
+    gpgsign = true
+
+[gpg]
+    format = ssh
+    [ssh]
+        allowedSignersFile = "~/.config/git/allowed_signers"
 
 [core]
     editor = nvim
