@@ -10,3 +10,4 @@ secrets
 
 # Repo specific locations
 apps/mpv/scripts/
+users/sam/ssh/known_hosts
