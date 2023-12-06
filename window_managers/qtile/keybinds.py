@@ -25,7 +25,7 @@ meh = [ctrl, alt, shift]
 hyper = [ctrl, alt, shift, super]
 
 # Applications
-terminal = 'alacritty'
+terminal = 'kitty'
 launcher = '.config/rofi/scripts/launcher_t1'
 browser = 'brave'
 file_manager = 'nemo'

@@ -69,7 +69,7 @@ def init_groups():
         Group(group_name[4], layout=default_layout),
 
         ScratchPad('terminal', [
-            DropDown('terminal', 'alacritty --title scratchpad', **large_centered_kwargs),
+            DropDown('terminal', 'kitty --title scratchpad', **large_centered_kwargs),
         ]),
         ScratchPad('chat', [
             DropDown('signal', 'signal-desktop', **large_centered_kwargs),
