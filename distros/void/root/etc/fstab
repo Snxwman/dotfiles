@@ -1,0 +1,14 @@
+# device					mountpoint	fs	options				dump	fsck #
+######################################################################################################################
+
+# System drives
+UUID=0458-9268              				/boot/efi		vfat	defaults		0	2
+UUID=cbf23a9b-2db0-43bd-9ff1-251a6cc53f0a	/			    ext4	defaults		0	1
+UUID=bd2b1f63-f86e-4fe6-a9e8-809aa30047fd	/home			ext4	defaults		0	2
+tmpfs                                       /tmp			tmpfs	defaults,nosuid,nodev	0	0
+
+# Internal drives
+UUID=44a7c0ac-12e8-40aa-8147-f0c1c79f0d09	/home/sam/vm		ext4	defaults		0	0
+#UUID=						/home/sam/.backup	ext4	defaults		0	0
+
+# Network drives
