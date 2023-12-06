@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/.zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 #!/bin/zsh
 
 # Uncomment for profiling
@@ -55,7 +62,7 @@ preexec_functions=()   # Executes after a cmd is read, but before it is executed
 # of "$XDG_CACHE_HOME/.zsh/.zsh_history", as specified in ~/.config/zsh/.zshenv
 source "$XDG_CONFIG_HOME/.zsh/.zshenv"
 source "$XDG_CONFIG_HOME/.aliases/.aliases"
-source "$XDG_CONFIG_HOME/.prompt"
+#source "$XDG_CONFIG_HOME/.prompt"
 
 # History options
 setopt APPEND_HISTORY
@@ -101,4 +108,8 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+source ~/.local/software/git/powerlevel10k/powerlevel10k.zsh-theme
+# To customize prompt, run `p10k configure` or edit ~/.config/.zsh/.p10k.zsh.
+[[ ! -f ~/.config/.zsh/.p10k.zsh ]] || source ~/.config/.zsh/.p10k.zsh
 
