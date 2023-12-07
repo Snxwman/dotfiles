@@ -1,0 +1,7 @@
+#!/usr/bin/sh
+
+unset SSH_AGENT_PID
+unset SSH_AGENT_SOCK
+rm ~/.ssh/ssh-agent-env 2> /dev/null
+
+exit 0

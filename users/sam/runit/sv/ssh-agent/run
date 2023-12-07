@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+exec ssh-agent -Da "~/.ssh/ssh-agent.sock" > /dev/null
