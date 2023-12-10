@@ -12,7 +12,7 @@
 /usr/bin/flameshot &
 
 # Graphical environment
-/sbin/xrandr --output 'HDMI-A-0' --mode '5120x1440'  # Needs to complete before feh.
+/sbin/xrandr --output 'HDMI-0' --mode '5120x1440'  # Needs to complete before feh.
 /usr/bin/picom &
 /usr/bin/feh --no-fehbg --bg-fill '/home/sam/media/photos/wallpaper/32:9/forest.jpg' &
 exec /usr/bin/dbus-run-session /usr/bin/qtile start
