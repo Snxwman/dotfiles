@@ -1,5 +1,5 @@
 adobe-source-code-pro-fonts
-alacritty
+amd-ucode
 base
 base-devel
 bat
@@ -7,6 +7,7 @@ blueman
 bluez
 bluez-runit
 btop
+btrfs-progs
 bzip2
 chrony
 cool-retro-term
@@ -20,7 +21,6 @@ discord
 docker
 dunst
 efibootmgr
-elogind
 elogind
 elogind-runit
 fd
@@ -37,6 +37,7 @@ git-delta
 glances
 gnupg
 grub
+grub-btrfs
 gtk3
 gum
 hplip
@@ -51,13 +52,13 @@ lazygit
 lf
 libpipewire
 libreoffice-fresh
-libva-mesa-driver
 libvirt
 libvirt-runit
 linux
 linux-api-headers
 linux-docs
 linux-firmware
+linux-headers
 lsd
 lshw
 lxc
@@ -66,9 +67,6 @@ lxd
 ly
 mdadm
 mdadm-runit
-mesa
-mesa-utils
-mesa-vdpau
 mpd
 mpv
 mupdf
@@ -85,6 +83,9 @@ nfs-utils
 nmap
 noto-fonts
 ntfs-3g
+nvidia 
+nvidia-settings
+nvidia-utils
 nyxt
 onefetch
 openssh
@@ -113,7 +114,6 @@ runit
 samba
 samba-runit
 signal-desktop
-steam
 sxhkd
 tar
 texlive-bin
@@ -129,8 +129,6 @@ unzip
 virt-manager
 virt-viewer
 vscodium
-vulkan-radeon
-vulkan-virtio
 weechat
 wezterm
 wget
