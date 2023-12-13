@@ -26,6 +26,8 @@ esac
 
 source "$ALIASES/user.aliases"
 
+[[ -n $(virsh --version) ]] && source "$ALIASES/virsh.aliases"
+
 [[ -n $(bat --version) ]] && source "$ALIASES/bat.aliases"
 [[ -n $(lsd --version) ]] && source "$ALIASES/lsd.aliases"
 

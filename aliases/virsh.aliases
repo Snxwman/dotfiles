@@ -1,0 +1,3 @@
+alias vm="virsh"
+
+alias lsvm="virsh list --all --title"
