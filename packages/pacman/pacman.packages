@@ -59,6 +59,7 @@ linux-api-headers
 linux-docs
 linux-firmware
 linux-headers
+lsb-release
 lsd
 lshw
 lxc
