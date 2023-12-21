@@ -10,7 +10,5 @@ secrets
 
 # Repo specific locations
 apps/mpv/scripts/
-distros/void/root/etc/ly/
-!distros/void/root/etc/ly/config.ini
-!distros/void/root/etc/ly/xsetup.sh
+users/sam/ssh/keys
 users/sam/ssh/known_hosts
