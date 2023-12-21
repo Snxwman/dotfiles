@@ -84,6 +84,9 @@ networkmanager-runit
 nfs-utils
 nmap
 noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+noto-fonts-extra
 ntfs-3g
 nvidia 
 nvidia-settings
