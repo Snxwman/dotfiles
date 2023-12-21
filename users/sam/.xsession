@@ -4,7 +4,7 @@
 /usr/bin/xmodmap ~/.config/.xmodmap  # Cannot be forked or sxhkd will not load the correct binds.
 
 # Audio
-/usr/bin/pipewire &
+/usr/bin/pipewire -c ~/.config/pipewire.conf &
 
 # Backgroud programs
 /usr/bin/syncthing &
