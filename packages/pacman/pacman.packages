@@ -6,6 +6,7 @@ bat
 blueman
 bluez
 bluez-runit
+bluez-utils
 btop
 btrfs-progs
 bzip2
