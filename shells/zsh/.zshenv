@@ -56,7 +56,6 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npmrc"
 
 # Non-default config locations
 export BAT_CONFIG_PATH="$APP_CONFIG/bat.config"
-export NEOFETCH_CONFIG="$APP_CONFIG/neofetch.conf"
 
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg/"
 

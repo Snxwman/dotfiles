@@ -2,7 +2,6 @@
 
 # Installed programs shorthands
 alias find="fd"
-alias neofetch="neofetch --config $NEOFETCH_CONFIG"
 alias nf="neofetch"
 alias v="nvim"
 alias ydl="yt-dlp"
