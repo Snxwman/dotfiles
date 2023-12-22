@@ -41,6 +41,7 @@ grub
 grub-btrfs
 gtk3
 gum
+helvum
 hplip
 htop
 httpie
@@ -107,6 +108,7 @@ pipewire-alsa
 pipewire-jack
 pipewire-pulse
 podman
+pulsemixer
 qemu-full
 qemu-guest-agent
 qemu-guest-agent-runit
