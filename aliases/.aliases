@@ -12,14 +12,17 @@ case $(uname) in
     Linux ) 
         source "$ALIASES/linux.aliases"
         
-        case $(lsb_release --codename | cut -f2) in
-            void  ) source "$ALIASES/void.aliases"
-                    source "$ALIASES/runit.aliases"
-                    ;;
-            artix ) source "$ALIASES/artix.aliases"
-                    source "$ALIASES/pacman.aliases"
-                    source "$ALIASES/runit.aliases"
-                    ;;
+        case $(lsb_release --id --short) in
+            Artix ) 
+                source "$ALIASES/artix.aliases"
+                source "$ALIASES/pacman.aliases"
+                source "$ALIASES/runit.aliases"
+                ;;
+
+            VoidLinux ) 
+                source "$ALIASES/void.aliases"
+                source "$ALIASES/runit.aliases"
+                ;;
         esac
         ;;
 esac

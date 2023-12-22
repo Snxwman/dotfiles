@@ -1,3 +1,6 @@
 #!/usr/bin/env zsh
 
-alias lssv="ll /var/service/"
+case $(lsb_release --id --short) in
+	Artix ) alias lssv="ll /run/runit/service/" ;;
+	*     ) alias lssv="ll /var/service/" ;;
+esac
