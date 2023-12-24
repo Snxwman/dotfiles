@@ -1,10 +1,11 @@
 [Desktop Entry]
 Name=Obsidian
-Exec=/opt/obsidian.appimage
-Type=Application
-Icon=~/.local/share/icons/obsidian.png
+Exec=/opt/obsidian.appimage AppRun --no-sandbox %U
 Terminal=false
+Type=Application
+Icon=obsidian
 StartupWMClass=obsidian
+X-AppImage-Version=1.4.16
+Comment=Obsidian
 MimeType=x-scheme-handler/obsidian;
 Categories=Office;
-X-AppImage-Version=1.1.16
