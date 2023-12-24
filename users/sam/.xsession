@@ -12,6 +12,11 @@
 /usr/bin/sxhkd -c ~/.config/.sxhkdrc &
 /usr/bin/syncthing &
 
+# Dont sleep
+/sbin/xset s 0 0
+/sbin/xset s off
+/sbin/xset -dpms
+
 # Graphical environment
 #/sbin/xrandr --output 'HDMI-0' --mode '5120x1440'  # Needs to complete before feh.
 /sbin/nvidia-settings --load-config-only --config ~/.config/.nvidia-settings-rc
