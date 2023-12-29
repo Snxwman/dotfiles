@@ -75,15 +75,6 @@ setopt HIST_IGNORE_SPACE       # Ignore commands starting with a space
 setopt HIST_REDUCE_BLANKS      # Remove blank lines from history
 setopt INC_APPEND_HISTORY      # Add commands in real time
 
-# Colored man pages
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;31m'
-
 # Pretty terminal login info
 neofetch
 cal -3
@@ -110,6 +101,18 @@ unset __conda_setup
 source ~/.local/software/git/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.config/.zsh/.p10k.zsh.
 [[ ! -f ~/.config/.zsh/.p10k.zsh ]] || source ~/.config/.zsh/.p10k.zsh
+
+# Colored man pages
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
+
+eval $(ssh-agent)
+ssh-add ~/.ssh/keys/private/dev.snxwman.github
 
 # Uncomment for profiling
 # zprof
