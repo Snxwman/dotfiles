@@ -23,4 +23,10 @@
 /usr/bin/picom &
 /usr/bin/feh --no-fehbg --bg-fill '/home/sam/media/photos/wallpaper/32:9/forest.jpg' &
 
+# Theming
+/sbin/xrdb << EOF
+Xcursor.theme: Simp1e-Tokyo-Night-Storm
+Xcursor.size: 16
+EOF  # Imitates ~/.Xresources
+
 exec /usr/bin/dbus-run-session /usr/bin/qtile start
