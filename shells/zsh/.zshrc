@@ -111,8 +111,8 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
-eval $(ssh-agent)
-ssh-add ~/.ssh/keys/private/dev.snxwman.github
+eval $(ssh-agent) &> /dev/null
+ssh-add ~/.ssh/keys/private/dev.snxwman.github &> /dev/null
 
 # Uncomment for profiling
 # zprof
