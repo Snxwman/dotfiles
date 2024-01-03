@@ -1,15 +1,26 @@
-return { 
+return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
         local configs = require("nvim-treesitter.configs")
-        
+
+        vim.filetype.add {
+            extension = {
+                zsh = "sh",
+                sh = "sh"
+            },
+            filename = {
+                [".zshrc"] = "sh",
+                [".zshenv"] = "sh"
+            }
+        }
+
         configs.setup({
             ensure_installed = {
-                "bash", 
-                "c", 
+                "bash",
+                "c",
                 "cmake",
-                "commonlisp", 
+                "commonlisp",
                 "cpp",
                 "css",
                 "csv",
@@ -25,12 +36,12 @@ return {
                 "html",
                 "ini",
                 "java",
-                "javascript", 
+                "javascript",
                 "jq",
                 "json",
                 "json5",
                 "latex",
-                "lua", 
+                "lua",
                 "make",
                 "markdown",
                 "markdown_inline",
