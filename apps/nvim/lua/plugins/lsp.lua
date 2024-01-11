@@ -7,50 +7,57 @@ return {
     },
     {
        "williamboman/mason-lspconfig.nvim",
-        config = function()
-            require("mason-lspconfig").setup({
-                ensure_installed = {
-                    "ansiblels",
-                    "bashls",
-                    "clangd",
-                    "cssls",
-                    "dockerls",
-                    "docker_compose_language_service",
-                    "fennel_language_server",
-                    "gopls",
-                    "html",
-                    "jsonls",
-                    "tsserver",
-                    "ltex",
-                    "lua_ls",
-                    "marksman",
-                    "pyright",
-                    "rust_analyzer",
-                }
-            })
-        end
+        dependencies = {
+            "williamboman/mason.nvim"
+        },
+        opts = {
+            ensure_installed = {
+                "ansiblels",
+                "bashls",
+                "clangd",
+                "cssls",
+                "dockerls",
+                "docker_compose_language_service",
+                "fennel_language_server",
+                "gopls",
+                "html",
+                "jsonls",
+                "tsserver",
+                "ltex",
+                "lua_ls",
+                "marksman",
+                "pyright",
+                "rust_analyzer",
+            }
+        },
     },
     {
         "neovim/nvim-lspconfig",
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp"
+        },
+        keys = {
+        },
         config = function()
             local lspconfig = require("lspconfig")
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-            lspconfig.ansiblels.setup({})
-            lspconfig.bashls.setup({})
-            lspconfig.clangd.setup({})
-            lspconfig.cssls.setup({})
-            lspconfig.dockerls.setup({})
-            lspconfig.docker_compose_language_service.setup({})
-            lspconfig.fennel_language_server.setup({})
-            lspconfig.gopls.setup({})
-            lspconfig.html.setup({})
-            lspconfig.jsonls.setup({})
-            lspconfig.tsserver.setup({})
-            lspconfig.ltex.setup({})
-            lspconfig.lua_ls.setup({})
-            lspconfig.marksman.setup({})
-            lspconfig.pyright.setup({})
-            lspconfig.rust_analyzer.setup({})
+            lspconfig.ansiblels.setup({ capabilities = capabilities })
+            lspconfig.bashls.setup({ capabilities = capabilities })
+            lspconfig.clangd.setup({ capabilities = capabilities })
+            lspconfig.cssls.setup({ capabilities = capabilities })
+            lspconfig.dockerls.setup({ capabilities = capabilities })
+            lspconfig.docker_compose_language_service.setup({ capabilities = capabilities })
+            lspconfig.fennel_language_server.setup({ capabilities = capabilities })
+            lspconfig.gopls.setup({ capabilities = capabilities })
+            lspconfig.html.setup({ capabilities = capabilities })
+            lspconfig.jsonls.setup({ capabilities = capabilities })
+            lspconfig.tsserver.setup({ capabilities = capabilities })
+            lspconfig.ltex.setup({ capabilities = capabilities })
+            lspconfig.lua_ls.setup({ capabilities = capabilities })
+            lspconfig.marksman.setup({ capabilities = capabilities })
+            lspconfig.pyright.setup({ capabilities = capabilities })
+            lspconfig.rust_analyzer.setup({ capabilities = capabilities })
 
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
@@ -75,6 +82,7 @@ return {
 
             require("luasnip.loaders.from_vscode").lazy_load()
 
+
             cmp.setup({
                 completion = {
                     completeopt = "menu, menuone, preview, noselect"
@@ -96,6 +104,10 @@ return {
                     { name = "buffer" },
                     { name = "path" },
                 }),
+                window = {
+                    completion = cmp.config.window.bordered(),
+                    documentation = cmp.config.window.bordered(),
+                },
                 mapping = cmp.mapping.preset.insert({
                     -- `Enter` key to confirm completion
                     ["<CR>"] = cmp.mapping.confirm({select = false}),
@@ -109,6 +121,29 @@ return {
                 })
             })
         end
-    }
+    },
+    {
+        "ray-x/lsp_signature.nvim",
+        event = VeryLazy,
+    },
+    {
+        "folke/trouble.nvim",
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
+        opts = {
+            signs = {
+                -- icons / text used for a diagnostic
+                error = "",
+                warning = "",
+                hint = "",
+                information = "",
+                other = "",
+            },
+        },
+    },
+    {
+        "RRethy/vim-illuminate",
+    },
 }
 
