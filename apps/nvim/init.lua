@@ -10,6 +10,7 @@ opt.tabstop = 4
 
 -- visual
 opt.colorcolumn = { 80, 100, 130 }
+opt.signcolumn = "yes"
 
 opt.scrolloff = 5
 opt.sidescrolloff = 5
@@ -21,7 +22,6 @@ opt.cursorline = true
 
 -- Keys
 vim.g.mapleader = " "
-
 
 -- lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -40,3 +40,12 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
 vim.cmd("colorscheme tokyonight")
+
+vim.fn.sign_define("DiagnosticSignError",
+{text = " ", texthl = "DiagnosticSignError"})
+vim.fn.sign_define("DiagnosticSignWarn",
+{text = " ", texthl = "DiagnosticSignWarn"})
+vim.fn.sign_define("DiagnosticSignInfo",
+{text = " ", texthl = "DiagnosticSignInfo"})
+vim.fn.sign_define("DiagnosticSignHint",
+{text = "󰌵", texthl = "DiagnosticSignHint"})
