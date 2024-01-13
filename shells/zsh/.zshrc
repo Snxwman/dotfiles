@@ -22,6 +22,7 @@ autoload -U colors && colors
 local LOCAL_SOFTWARE="$HOME/.local/software"
 path=(
     "$LOCAL_SOFTWARE/bin"
+    "/home/sam/.local/bin/"
     $path
 )
 
@@ -113,6 +114,8 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 eval $(ssh-agent) &> /dev/null
 ssh-add ~/.ssh/keys/private/dev.snxwman.github &> /dev/null
+
+source "$ZDOTDIR/zsh-ssh.zsh"
 
 # Uncomment for profiling
 # zprof
