@@ -25,7 +25,7 @@
 
 # Theming
 /sbin/xrdb << EOF
-Xcursor.theme: Simp1e-Tokyo-Night-Storm
+Xcursor.theme: Simp1e-Mix-Dark
 Xcursor.size: 16
 EOF  # Imitates ~/.Xresources
 
