@@ -12,7 +12,7 @@ opt.tabstop = 4
 opt.colorcolumn = { 80, 100, 130 }
 opt.signcolumn = "yes"
 
-opt.scrolloff = 5
+opt.scrolloff = 15
 opt.sidescrolloff = 5
 
 opt.number = true
@@ -49,3 +49,13 @@ vim.fn.sign_define("DiagnosticSignInfo",
 {text = " ", texthl = "DiagnosticSignInfo"})
 vim.fn.sign_define("DiagnosticSignHint",
 {text = "󰌵", texthl = "DiagnosticSignHint"})
+
+--[[
+vim.api.nvim_create_autocmd("VimEnter", {
+    command = "Outline"
+})
+--]]
+vim.api.nvim_create_autocmd("VimEnter", {
+    command = "Neotree filesystem reveal_force_cwd left",
+})
+
