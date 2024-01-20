@@ -86,6 +86,7 @@ def init_keybinds():
         # Layout control
         Key(hyper, space, lazy.next_layout()),
         Key(hyper, 'm', lazy.layout.toggle_split()),
+        Key([super, shift], 'm', lazy.window.toggle_fullscreen()),
         
         Key(hyper, 'h', lazy.layout.shuffle_left()),  # Hackish way to add columns
         Key(hyper, 'l', lazy.layout.shuffle_right()),
@@ -117,11 +118,9 @@ def init_keybinds():
         #Key([hyper], '3', lazy.window.togroup(' 3 ')),
         #Key([hyper], '4', lazy.window.togroup(' 4 ')),
 
-
         # Multimedia
         Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume 0 -5%")),
         Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume 0 +5%")),
-        Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")),
 
         # Scratchpads
         Key([super, alt], enter, lazy.group['terminal'].dropdown_toggle('terminal')),
