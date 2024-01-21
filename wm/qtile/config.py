@@ -196,7 +196,43 @@ if __name__ in ["config", "__main__"]:
     widgets_list = init_widgets_list()
     widgets_screen1 = init_widgets_screen1()
 
-
 @hook.subscribe.startup_once
-def start_once():
-    pass
+@hook.subscribe.layout_change
+@hook.subscribe.client_new
+@hook.subscribe.changegroup
+@hook.subscribe.focus_change
+async def _(*args):
+    import json
+    from pathlib import Path
+    from datetime import datetime
+
+    def get_icons(group):
+        icons = {
+            'dashboard': '󰕮',
+            'main': '',
+            'alt': '',
+            'vms': '',
+            'gaming': '',
+        }
+
+        return icons[group]
+
+    qtile_groups = qtile.get_groups()
+    scratchpads = ['terminal', 'chat', 'utils']
+    
+    state = []
+    for qtile_group_name, qtile_group_info in qtile_groups.items():
+        if qtile_group_name not in ['terminal', 'chat', 'utils']:
+            group = {
+                'name': qtile_group_name,
+                'icon': get_icons(qtile_group_name),
+                'active': True if qtile_group_info['screen'] is not None else False,
+                'open_window': True if len(qtile_group_info['windows']) >= 1 else False,
+            }
+
+            state.append(dict(group))
+
+    state_file = Path("/tmp/qtile.state")
+    with state_file.open('w') as f:
+        f.write(json.dumps(state))
+

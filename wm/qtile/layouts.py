@@ -58,7 +58,7 @@ tiny_centered_kwargs = { **center_window(0, 0), **default_scratchpad_kwargs }
 
 def init_groups(): 
     default_layout = 'columns'
-    group_name = [' 1 ', ' 2 ', ' 3 ', ' 4 ', ' 5 ']
+    group_name = ['dashboard', 'main', 'alt', 'vms', 'gaming']
     #group_name = ['dash', 'main', 'alt', 'vm', 'windows']
     
     return [ 
