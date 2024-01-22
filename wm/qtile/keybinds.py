@@ -79,9 +79,11 @@ def init_keybinds():
         Key([super], 's', lazy.spawn(file_manager)), 
    
         # Screen navigation
-        Key([super, shift], '1', lazy.group[' 1 '].toscreen()),
-        Key([super, shift], '2', lazy.group[' 2 '].toscreen()),
-        Key([super, shift], '3', lazy.group[' 3 '].toscreen()),
+        Key([super, shift], '1', lazy.group['dashboard'].toscreen()),
+        Key([super, shift], '2', lazy.group['main'].toscreen()),
+        Key([super, shift], '3', lazy.group['alt'].toscreen()),
+        Key([super, shift], '4', lazy.group['vms'].toscreen()),
+        Key([super, shift], '5', lazy.group['gaming'].toscreen()),
 
         # Layout control
         Key(hyper, space, lazy.next_layout()),
