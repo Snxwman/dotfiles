@@ -14,7 +14,7 @@ columns_layout_theme = {
     'border_normal_stack': '#1d2428',
     'grow_amount': 1.5,
     'insert_position': 1,  # "0 means right above the current window, 1 means right after"
-    'num_columns': 4,
+    'num_columns': 3,
 }
 columns_layout_theme = dict(**common_layout_theme, **columns_layout_theme)
 
@@ -70,11 +70,6 @@ def init_groups():
 
         ScratchPad('terminal', [
             DropDown('terminal', 'kitty --title scratchpad', **large_centered_kwargs),
-        ]),
-        ScratchPad('chat', [
-            DropDown('signal', 'signal-desktop', **large_centered_kwargs),
-        ]),
-        ScratchPad('utils', [
-        ]),
+        ])
     ]
 
