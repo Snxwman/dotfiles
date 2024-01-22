@@ -1,7 +1,5 @@
 import os
-import re
-import socket
-import subprocess
+import json
 from typing import List  # noqa: F401
 
 from libqtile import qtile, layout, bar, widget, hook
@@ -201,38 +199,48 @@ if __name__ in ["config", "__main__"]:
 @hook.subscribe.client_new
 @hook.subscribe.changegroup
 @hook.subscribe.focus_change
-async def _(*args):
-    import json
-    from pathlib import Path
-    from datetime import datetime
+async def _(*args):    
+    state = []
 
-    def get_icons(group):
-        icons = {
-            'dashboard': '󰕮',
-            'main': '',
-            'alt': '',
-            'vms': '',
-            'gaming': '',
-        }
-
-        return icons[group]
+    scratchpads = ['terminal', 'chat', 'utils']
+    icons = {
+        'dashboard': '󰕮',
+        'main': '',
+        'alt': '',
+        'vms': '',
+        'gaming': '',
+        'columns': '',
+        'floating': '',
+        '0': '󰎣',
+        '1': '󰎦',
+        '2': '󰎩',
+        '3': '󰎬',
+        '4': '󰎮',
+        '5': '󰎰'
+    }
 
     qtile_groups = qtile.get_groups()
-    scratchpads = ['terminal', 'chat', 'utils']
-    
-    state = []
+
     for qtile_group_name, qtile_group_info in qtile_groups.items():
-        if qtile_group_name not in ['terminal', 'chat', 'utils']:
+        if qtile_group_name not in scratchpads:
+
+            screen_icon = None
+            if (screen := qtile_group_info['screen']) is not None:
+                screen_icon = icons[str(screen)]
+
             group = {
                 'name': qtile_group_name,
-                'icon': get_icons(qtile_group_name),
+                'icon': icons[qtile_group_name],
                 'active': True if qtile_group_info['screen'] is not None else False,
                 'open_window': True if len(qtile_group_info['windows']) >= 1 else False,
+                'screen': screen,
+                'screen_icon': screen_icon,
+                'layout': qtile_group_info['layout'],
+                'layouts': [{'name': l, 'icon': icons[l]} for l in qtile_group_info['layouts']],
             }
 
             state.append(dict(group))
 
-    state_file = Path("/tmp/qtile.state")
-    with state_file.open('w') as f:
+    with open('/tmp/qtile.state', 'w') as f:
         f.write(json.dumps(state))
 
