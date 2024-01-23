@@ -22,7 +22,8 @@ autoload -U colors && colors
 local LOCAL_SOFTWARE="$HOME/.local/software"
 path=(
     "$LOCAL_SOFTWARE/bin"
-    "/home/sam/.local/bin/"
+    "$HOME/.local/bin"
+    "/opt"
     $path
 )
 
@@ -115,7 +116,8 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 eval $(ssh-agent) &> /dev/null
 ssh-add ~/.ssh/keys/private/dev.snxwman.github &> /dev/null
 
-source "$ZDOTDIR/zsh-ssh.zsh"
+source "$ZDOTDIR/plugins/zsh-ssh.zsh"
+source "$ZDOTDIR/plugins/wakatime-zsh-plugin/wakatime.plugin.zsh"
 
 # Uncomment for profiling
 # zprof
