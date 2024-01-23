@@ -209,8 +209,8 @@ async def _(*args):
         'alt': '',
         'vms': '',
         'gaming': '',
-        'columns': '',
-        'floating': '',
+        'columns': '',
+        'floating': '',
         '0': '󰎣',
         '1': '󰎦',
         '2': '󰎩',
@@ -236,6 +236,7 @@ async def _(*args):
                 'screen': screen,
                 'screen_icon': screen_icon,
                 'layout': qtile_group_info['layout'],
+                'layout_icon': icons[qtile_group_info['layout']],
                 'layouts': [{'name': l, 'icon': icons[l]} for l in qtile_group_info['layouts']],
             }
 
