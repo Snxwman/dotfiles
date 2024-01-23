@@ -115,10 +115,11 @@ def init_keybinds():
         Key([super, ctrl], 'h', lazy.layout.grow_left()),
         Key([super, ctrl], 'l', lazy.layout.grow_right()),
 
-        Key(hyper, '1', lazy.window.togroup(' 1 ')),
-        Key(hyper, '2', lazy.window.togroup(' 2 ')),      
-        #Key([hyper], '3', lazy.window.togroup(' 3 ')),
-        #Key([hyper], '4', lazy.window.togroup(' 4 ')),
+        Key(hyper, '1', lazy.window.togroup('dashboard')),
+        Key(hyper, '2', lazy.window.togroup('main')),      
+        Key(hyper, '3', lazy.window.togroup('alt')),
+        Key(hyper, '4', lazy.window.togroup('vms')),
+        Key(hyper, '5', lazy.window.togroup('gaming')),
 
         # Multimedia
         Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume 0 -5%")),
