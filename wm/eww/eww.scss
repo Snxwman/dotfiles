@@ -1,0 +1,100 @@
+* {
+    all: unset;
+    font-family: "FiraCode Nerd Font Propo";
+    font-size: 24px;
+}
+
+$color-dark-bg: #1a1b26;
+$color-light-bg: #c0caf5;
+
+$color-black: #15161e;
+$color-grey: #414868;
+$color-white: #a9b1d6;
+$color-red: #f7768e;
+$color-green: #9ece6a;
+$color-yellow: #e0af68;
+$color-blue: #7aa2f7;
+$color-magenta: #bb9af7;
+$color-cyan: #7dcfff;
+
+window {
+    background-color: $color-grey;
+}
+
+.left-bar, .middle-bar, .right-bar {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.wm-logo > label {
+    color: $color-light-bg;
+    font-size: 26px;
+}
+
+.workspace-widget {}
+
+.workspace-button {
+    margin: 3px;
+    color: $color-white;
+    background-color: $color-dark-bg;
+    border-radius: 8px;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 8px;
+    border-color: $color-dark-bg;
+}
+
+.workspace-button > label {
+    font-size: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.workspace-button-window {
+    color: $color-magenta;
+}
+
+.workspace-button-active {
+    color: $color-cyan;
+    border-color: $color-cyan;
+}
+
+.layout-widget {
+    font-size: 26px;
+}
+
+.active-layout {
+    color: $color-blue;
+    margin-right: 6px;
+}
+
+.active-layout-icon {
+    //margin-right: 6px;
+    font-size: 24px;
+}
+
+.available-layout-box {
+    background-color: $color-dark-bg;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $color-dark-bg;
+    color: $color-white;
+    margin-top: 5px;
+    margin-bottom: 5px
+}
+
+.available-layout-button {
+   margin-left: 6px; 
+   margin-right: 6px; 
+} 
+
+// middle
+
+.datetime > label {
+    font-family: "Poiret One";
+}
+
