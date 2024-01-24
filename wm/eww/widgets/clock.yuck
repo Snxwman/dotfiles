@@ -1,5 +1,5 @@
 (defpoll time :interval "1s" "date '+%H:%M'")
-(defpoll date :interval "1s" "date '+%A, %B %d'")
+(defpoll date :interval "1s" "date '+%a, %b %d'")
 (defpoll d :interval "1m" "date '+%d'")
 (defpoll m :interval "1m" "date '+%m'")
 (defpoll y :interval "1m" "date '+%Y'")

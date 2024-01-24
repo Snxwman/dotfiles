@@ -1,22 +1,37 @@
 (include "./widgets/workspaces.yuck")
 (include "./widgets/clock.yuck")
 
-(defwidget sys-tray []
-    (button))
+; TODO:
+;    - Volume
+;    - Networking (wifi, eth, vpn, proxy, ifaces)
+;    - Bluetooth
+;    - Lock, sleep, poweroff, restart
+;    - Calendar
+;    - Notification center
+;    - Music
+;    - Systray
+;    - Hardware Monitor
+;    - Todo List
+;    - Packages/repos 
+;    - Weather
+;    - Stock/Crypto/News/Rss Ticker
+;    - Clipboard manager
+;    - Cmd line
+;    - Caps/Num Lock Indicator
+;    - Timer/Countdown/Alarms
+;    - Layout Normalizer
+;    - Current Screen
+;    - Email
+;    - Idle game
 
-;(defwidget hw-monitor [])
 
-;(defwidget package-updates [])
-
-;(defwidget dunst-notifs [])
-
-;(defwidget music [])
-
-;(defwidget todo [])
+(defwidget logo [name ?cmd]
+    (button
+        :class "logo"
+        :onclick "${cmd}"
+        "${name}"))
 
 ;; Window
-
-(defvar bar-height "25px")
 
 (defwindow left-bar
     :class "bar left-bar"
@@ -24,12 +39,12 @@
     :wm-ignore false
     :windowtype "dock"
     :hexpand false :vexpand false
-    :geometry (geometry :x 0 :y 4 :height "25px" :anchor "top left")
-    :reserve (struts :distance "20px" :side "top")
+    :geometry (geometry :x 5 :y 5 :height "40px" :anchor "top left")
+    :reserve (struts :distance "40px" :side "top")
     (box
         :space-evenly false
         :spacing 10
-        (wm-logo :name "qtile" :cmd "")
+        (logo :name "" :cmd "")
         (workspace-widget)
         (layouts-widget :screen 0)))
 
@@ -39,21 +54,23 @@
     :wm-ignore false
     :windowtype "dock"
     :hexpand false :vexpand false
-    :geometry (geometry :x 0 :y 3 :height "45px" :width "10%" :anchor "top center")
-    :reserve (struts :distance "20px" :side "top")
+    :geometry (geometry :x 0 :y 5 :height "40px" :width "10%" :anchor "top center")
+    :reserve (struts :distance "0px" :side "top")
     (box
         :space-evenly false
-        :spacing 20
+        :spacing 10
         :halign "center"
         (date)
         (time)))
 
 (defwindow right-bar
+    :class "bar right-bar"
     :monitor 0
     :wm-ignore false
     :windowtype "dock"
     :hexpand false :vexpand false
-    :geometry (geometry :x 0 :y 0 :height "25px" :width "10%" :anchor "top right")
-    :reserve (struts :distance "20px" :side "top")
-    (clock))
+    :geometry (geometry :x 0 :y 5 :height "25px" :width "10%" :anchor "top right")
+    :reserve (struts :distance "0px" :side "top")
+    (box
+        (logo :name "" :cmd "")))
 

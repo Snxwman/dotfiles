@@ -2,12 +2,6 @@
 (defpoll layouts :interval "1s" "cat /tmp/qtile.state")
 (defvar reveal_layout false)
 
-(defwidget wm-logo [name ?cmd]
-    (button
-        :class "wm-logo"
-        :onclick "${cmd}"
-        ""))
-
 (defwidget workspace-widget [?screen]
     (box 
         :class "workspace-widget"

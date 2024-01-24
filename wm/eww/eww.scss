@@ -26,7 +26,7 @@ window {
     margin-right: 20px;
 }
 
-.wm-logo > label {
+.logo > label {
     color: $color-light-bg;
     font-size: 26px;
 }
@@ -45,11 +45,11 @@ window {
 }
 
 .workspace-button > label {
-    font-size: 16px;
+    font-size: 18px;
     margin-left: 10px;
     margin-right: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 
 .workspace-button-window {
@@ -95,6 +95,10 @@ window {
 // middle
 
 .datetime > label {
-    font-family: "Poiret One";
+    font-family: "Comfortaa";
 }
 
+calendar {
+    font-family: "Comfortaa";
+    margin: 5px;
+}
