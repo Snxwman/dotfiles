@@ -33,6 +33,7 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
+        lazy = false,
         dependencies = {
             "hrsh7th/cmp-nvim-lsp"
         },
@@ -66,6 +67,7 @@ return {
     },
     {
         "hrsh7th/nvim-cmp",
+        lazy = false,
         event = "InsertEnter",
         dependencies = {
             "hrsh7th/cmp-buffer",

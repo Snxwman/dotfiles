@@ -7,7 +7,7 @@ return {
                 "tokyonight",
                 "flexoki-dark",
                 "oxocarbon",
-                "moonfly"
+                "moonfly",
             },
             themeConfigFile = "~/.config/nvim/lua/plugins/theme.lua",
             livePreview = "true"
@@ -26,8 +26,8 @@ return {
     {
         "nyoom-engineering/oxocarbon.nvim",
     },
-    { 
-        "bluz71/vim-moonfly-colors", 
-        name = "moonfly", 
+    {
+        "bluz71/vim-moonfly-colors",
+        name = "moonfly",
     },
 }

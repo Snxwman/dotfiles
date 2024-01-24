@@ -54,8 +54,8 @@ vim.fn.sign_define("DiagnosticSignHint",
 vim.api.nvim_create_autocmd("VimEnter", {
     command = "Outline"
 })
---]]
 vim.api.nvim_create_autocmd("VimEnter", {
     command = "Neotree filesystem reveal_force_cwd left",
 })
+--]]
 
