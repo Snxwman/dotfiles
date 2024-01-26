@@ -23,7 +23,8 @@
 ;    - Current Screen
 ;    - Email
 ;    - Idle game
-
+;    - Call indicator (discord)
+;    - Messages (text, discord, irc, etc)
 
 (defwidget logo [name ?cmd]
     (button

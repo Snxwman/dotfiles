@@ -12,6 +12,7 @@ $color-grey: #414868;
 $color-white: #a9b1d6;
 $color-red: #f7768e;
 $color-green: #9ece6a;
+$color-mint: #4fd6be;
 $color-yellow: #e0af68;
 $color-blue: #7aa2f7;
 $color-magenta: #bb9af7;
@@ -52,13 +53,18 @@ window {
     margin-bottom: 2px;
 }
 
-.workspace-button-window {
+.workspace-button-window-open {
     color: $color-magenta;
 }
 
 .workspace-button-active {
     color: $color-cyan;
     border-color: $color-cyan;
+}
+
+.workspace-button-active-secondary {
+    color: $color-mint;
+    border-color: $color-mint;
 }
 
 .layout-widget {

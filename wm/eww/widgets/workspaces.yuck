@@ -11,9 +11,13 @@
         (button 
             :class 
                 'workspace-button 
-                ${workspace.name} 
+                workspace-button-${workspace.name}
                 ${workspace.active == "true" ? "workspace-button-active" : ""} 
-                ${workspace.open_window == "true" ? "workspace-button-window" : ""}'
+                ${workspace.screen != "null" ? "workspace-button-active-${workspace.screen}" : ""} 
+                ${workspace.screen == "0" ? "workspace-button-active-primary" : ""} 
+                ${workspace.screen == "1" ? "workspace-button-active-secondary" : ""} 
+                ${workspace.screen == "2" ? "workspace-button-active-tertiary" : ""} 
+                ${workspace.open_window == "true" ? "workspace-button-window-open" : ""}'
             :tooltip "${workspace.name}"
             :onclick "$HOME/.config/eww/scripts/wm qtile togroup ${workspace.name}"
             "${workspace.icon}"))))
