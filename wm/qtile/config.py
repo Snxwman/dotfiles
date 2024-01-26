@@ -1,5 +1,7 @@
+from logging import log
 import os
 import json
+import subprocess
 from typing import List  # noqa: F401
 
 from libqtile import qtile, layout, bar, widget, hook
@@ -9,6 +11,7 @@ from libqtile.lazy import lazy
 from libqtile.backend.x11 import window
 from libqtile.confreader import ConfigError
 from libqtile.widget import base
+from libqtile.log_utils import logger
 XEMBED_PROTOCOL_VERSION = 0
 
 ########################################################################################################################
@@ -200,6 +203,7 @@ if __name__ in ["config", "__main__"]:
 @hook.subscribe.changegroup
 @hook.subscribe.focus_change
 async def _(*args):    
+    eww_bin = '/opt/eww'
     state = []
 
     scratchpads = ['terminal', 'chat', 'utils']
@@ -242,6 +246,5 @@ async def _(*args):
 
             state.append(dict(group))
 
-    with open('/tmp/qtile.state', 'w') as f:
-        f.write(json.dumps(state))
+    subprocess.run(f"{eww_bin} update wm-state='{json.dumps(state)}'", shell=True)
 
