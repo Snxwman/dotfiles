@@ -1,5 +1,4 @@
-(defpoll desktops :interval "0.1s" "cat /tmp/qtile.state")
-(defpoll layouts :interval "1s" "cat /tmp/qtile.state")
+(defvar wm-state "")
 (defvar reveal_layout false)
 
 (defwidget workspace-widget [?screen]
@@ -8,16 +7,16 @@
         :orientation "h"
         :space-evenly false
         :halign "start"
-        (for desktop in "${desktops}"
+        (for workspace in "${wm-state}"
         (button 
             :class 
                 'workspace-button 
-                ${desktop.name} 
-                ${desktop.active == "true" ? "workspace-button-active" : ""} 
-                ${desktop.open_window == "true" ? "workspace-button-window" : ""}'
-            :tooltip "${desktop.name}"
-            :onclick "$HOME/.config/eww/scripts/wm qtile togroup ${desktop.name}"
-            "${desktop.icon}"))))
+                ${workspace.name} 
+                ${workspace.active == "true" ? "workspace-button-active" : ""} 
+                ${workspace.open_window == "true" ? "workspace-button-window" : ""}'
+            :tooltip "${workspace.name}"
+            :onclick "$HOME/.config/eww/scripts/wm qtile togroup ${workspace.name}"
+            "${workspace.icon}"))))
 
 (defwidget layouts-widget [screen]
     (eventbox 
@@ -26,11 +25,11 @@
         :onhoverlost "eww update reveal_layout=false" 
         (box :class "active-layout" :space-evenly false 
             (label :class "active-layout active-layout-icon"
-                   :text {replace(jq(layouts, ".[] | select(.active == true) | select(.screen == ${screen}) | .layout_icon"), '\"', '')}
-                   :tooltip {replace(jq(layouts, ".[] | select(.active == true) | select(.screen == ${screen}) | .layout"), '\"', '')})
+                   :text {replace(jq(wm-state, ".[] | select(.active == true) | select(.screen == ${screen}) | .layout_icon"), '\"', '')}
+                   :tooltip {replace(jq(wm-state, ".[] | select(.active == true) | select(.screen == ${screen}) | .layout"), '\"', '')})
             (revealer :transition "slideright" :duration "600ms" :reveal reveal_layout 
                 (box :class "available-layout-box"
-                    (for layout in {jq(layouts, ".[] | select(.active == true) | select(.screen == ${screen}) | .layouts")} 
+                    (for layout in {jq(wm-state, ".[] | select(.active == true) | select(.screen == ${screen}) | .layouts")} 
                     (button 
                         :class "available-layout-button"
                         :tooltip "${layout.name}"
