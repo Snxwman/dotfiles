@@ -1,52 +1,40 @@
-$color-bg: #1a1b26;
-$color-fg: #c0caf5;
-$color-black: #15161e;
-$color-red: #f7768e;
-$color-green: #9ece6a;
-$color-yellow: #e0af68;
-$color-blue: #7aa2f7;
-$color-magenta: #bb9af7;
-$color-cyan: #7dcfff;
-$color-white: #a9b1d6;
+$c-black-1: #15161e;
+$c-black-2: #1a1b26;
 
-# TokyoNight Alacritty Colors
-# Default colors
-[colors.primary]
-background = '#1a1b26'
-foreground = '#c0caf5'
+$c-dark-1: #1f2335;
+$c-dark-2: #24283b;
+$c-dark-3: #292e42;
+$c-dark-4: #3b4261;
+$c-dark-5: #414868;
 
-#[colors.cursor]
-#cursor = '#c0caf5'
-#text = '#1a1b26'
+$c-light-1: #545c7e;
+$c-light-2: #565f89;
+$c-light-3: #737aa2;
+$c-light-4: #a9b1d6;
+$c-light-5: #c0caf5;
 
-# Normal colors
-[colors.normal]
-black = '#15161e'
-red = '#f7768e'
-green = '#9ece6a'
-yellow = '#e0af68'
-blue = '#7aa2f7'
-magenta = '#bb9af7'
-cyan = '#7dcfff'
-white = '#a9b1d6'
+$c-red-1: #c53b53;
+$c-red-2: #db4b4b;
+$c-red-3: #ff757f;
+$c-red-4: #f7768e;
+$c-red-5: #ff007c;
 
-# Bright colors
-[colors.bright]
-black = '#414868'
-red = '#f7768e'
-green = '#9ece6a'
-yellow = '#e0af68'
-blue = '#7aa2f7'
-magenta = '#bb9af7'
-cyan = '#7dcfff'
-white = '#c0caf5'
+$c-yellow-1: #ff9e64;
+$c-yellow-2: #e0af68;
+$c-yellow-3: #ffc777;
 
-# Indexed Colors
-[[colors.indexed_colors]]
-index = 16
-color = '#ff9e64'
+$c-green-1: #9ece6a;
+$c-green-2: #c3e88d;
 
-[[colors.indexed_colors]]
-index = 17
-color = '#db4b4b'
+$c-teal-1: #41a6b5;
+$c-teal-2: #4fd6be;
+
+$c-blue-1: #394b70;
+$c-blue-2: #3d59a1;
+$c-blue-3: #7aa2f7;
+$c-blue-4: #7dcfff;
+$c-blue-5: #b4f9f8;
+
+$c-purple-1: #9d7cd8;
+$c-purple-2: #bb9af7;
 
