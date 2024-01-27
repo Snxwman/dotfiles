@@ -1,5 +1,6 @@
-(include "./widgets/workspaces.yuck")
 (include "./widgets/clock.yuck")
+(include "./widgets/volume.yuck")
+(include "./widgets/workspaces.yuck")
 
 ; TODO:
 ;    - Volume
@@ -25,6 +26,7 @@
 ;    - Idle game
 ;    - Call indicator (discord)
 ;    - Messages (text, discord, irc, etc)
+;    - ei
 
 (defwidget logo [name ?cmd]
     (button
@@ -40,7 +42,7 @@
     :wm-ignore false
     :windowtype "dock"
     :hexpand false :vexpand false
-    :geometry (geometry :x 5 :y 5 :height "40px" :anchor "top left")
+    :geometry (geometry :x 5 :y 5 :height "45px" :anchor "top left")
     :reserve (struts :distance "40px" :side "top")
     (box
         :space-evenly false
@@ -55,23 +57,28 @@
     :wm-ignore false
     :windowtype "dock"
     :hexpand false :vexpand false
-    :geometry (geometry :x 0 :y 5 :height "40px" :width "10%" :anchor "top center")
+    :geometry (geometry :x 0 :y 5 :height "45px" :width "10%" :anchor "top center")
     :reserve (struts :distance "0px" :side "top")
     (box
         :space-evenly false
         :spacing 10
         :halign "center"
         (date)
-        (time)))
+        (time)
+        (volume)))
 
 (defwindow right-bar
     :class "bar right-bar"
+    :halign "end"
     :monitor 0
     :wm-ignore false
     :windowtype "dock"
     :hexpand false :vexpand false
-    :geometry (geometry :x 0 :y 5 :height "25px" :width "10%" :anchor "top right")
+    :geometry (geometry :x -5 :y 5 :height "45px" :width "10%" :anchor "top right")
     :reserve (struts :distance "0px" :side "top")
     (box
+        :space-evenly false
+        :spacing 10
+        (volume)
         (logo :name "" :cmd "")))
 
