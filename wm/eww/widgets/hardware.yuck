@@ -1,0 +1,21 @@
+(defpoll cpu-usage :interval "100ms")
+(defpoll cpu-temp :interval "100ms")
+(defpoll ram-usage :interval "100ms")
+(defpoll disk-usage :interval "1s")
+(defpoll disk-write :interval "100ms")
+(defpoll disk-read :interval "100ms")
+(defpoll gpu-usage :interval "100ms")
+(defpoll gpu-temp :interval "100ms")
+(defpoll vram-usage :interval "100ms")
+
+(defwidget cpu [] 
+    (box))
+
+(defwidget ram [] 
+    (box))
+
+(defwidget disk [] 
+    (box))
+
+(defwidget gpu [] 
+    (box))
