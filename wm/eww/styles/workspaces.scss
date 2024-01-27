@@ -1,0 +1,68 @@
+@import '../themes/theme';
+
+//.workspace-widget {}
+
+.workspace-button {
+    margin: 3px;
+    color: $c-light-4;
+    background-color: $c-black-2;
+    border-color: $c-black-2;
+    border-radius: 8px;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 8px;
+}
+
+.workspace-button > label {
+    font-size: 18px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.workspace-button-window-open {
+    color: $c-purple-1;
+}
+
+.workspace-button-active {
+    color: $c-blue-4;
+    border-color: $c-blue-4;
+}
+
+.workspace-button-active-secondary {
+    color: $c-blue-5;
+    border-color: $c-blue-5;
+}
+
+.layout-widget {
+    font-size: 26px;
+}
+
+.active-layout {
+    color: $c-blue-3;
+    margin-right: 6px;
+}
+
+.active-layout-icon {
+    //margin-right: 6px;
+    font-size: 24px;
+}
+
+.available-layout-box {
+    background-color: $c-black-2;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $c-black-2;
+    color: $c-light-4;
+    margin-top: 5px;
+    margin-bottom: 5px
+}
+
+.available-layout-button {
+   margin-left: 6px; 
+   margin-right: 6px; 
+} 
+
