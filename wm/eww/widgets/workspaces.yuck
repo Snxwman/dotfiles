@@ -1,5 +1,8 @@
-(defvar wm-state "")
-(defvar reveal_layout false)
+(defvar wm-state "[]")
+(defvar reveal-layout false)
+
+(defwidget screen-widget []
+    (label))
 
 (defwidget workspace-widget [?screen]
     (box 
@@ -25,13 +28,13 @@
 (defwidget layouts-widget [screen]
     (eventbox 
         :class "layouts-widget" 
-        :onhover "eww update reveal_layout=true" 
-        :onhoverlost "eww update reveal_layout=false" 
+        :onhover "/opt/eww update reveal-layout=true" 
+        :onhoverlost "/opt/eww update reveal-layout=false" 
         (box :class "active-layout" :space-evenly false 
             (label :class "active-layout active-layout-icon"
                    :text {replace(jq(wm-state, ".[] | select(.active == true) | select(.screen == ${screen}) | .layout_icon"), '\"', '')}
                    :tooltip {replace(jq(wm-state, ".[] | select(.active == true) | select(.screen == ${screen}) | .layout"), '\"', '')})
-            (revealer :transition "slideright" :duration "600ms" :reveal reveal_layout 
+            (revealer :transition "slideright" :duration "600ms" :reveal reveal-layout 
                 (box :class "available-layout-box"
                     (for layout in {jq(wm-state, ".[] | select(.active == true) | select(.screen == ${screen}) | .layouts")} 
                     (button 
@@ -39,4 +42,7 @@
                         :tooltip "${layout.name}"
                         :onclick ""
                         "${layout.icon}")))))))
+
+(defwidget windows-widget [screen]
+    (box))
 
