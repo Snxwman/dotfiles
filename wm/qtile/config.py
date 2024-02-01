@@ -24,7 +24,7 @@ from mouse import init_mouse
 auto_fullscreen = False
 auto_minimize = False
 bring_front_click = 'floating_only'
-cursor_wrap = False                     # Default
+cursor_wrap = True                     # Default
 dgroups_app_rules = []                  # Default
 dgroups_key_binder = None               # Default
 focus_on_window_activation = 'never'
@@ -188,14 +188,18 @@ def init_widgets_screen1():
 
 # Set bar height and opacity, also set wallpaper
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=1.0, size=20))]
+    return [Screen(top=None)]
 
 
 # Initiate functions for screens and widgets
 if __name__ in ["config", "__main__"]:
     screens = init_screens()
-    widgets_list = init_widgets_list()
-    widgets_screen1 = init_widgets_screen1()
+    #widgets_list = init_widgets_list()
+    #widgets_screen1 = init_widgets_screen1()
+
+@hook.subscribe.startup_once
+def start_eww():
+    subprocess.run("~/.scripts/start_eww", shell=True)
 
 @hook.subscribe.startup_once
 @hook.subscribe.layout_change
@@ -247,4 +251,5 @@ async def _(*args):
             state.append(dict(group))
 
     subprocess.run(f"{eww_bin} update wm-state='{json.dumps(state)}'", shell=True)
+    subprocess.run(f"/opt/eww --config ~/src/github/rancid update wm-state='{json.dumps(state)}'", shell=True)
 
