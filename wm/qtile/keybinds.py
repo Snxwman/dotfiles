@@ -79,6 +79,7 @@ def init_keybinds():
         Key([super], 's', lazy.spawn(file_manager)), 
    
         # Screen navigation
+        Key([super], 'n', lazy.next_screen()),
         Key([super, shift], '1', lazy.group['dashboard'].toscreen()),
         Key([super, shift], '2', lazy.group['main'].toscreen()),
         Key([super, shift], '3', lazy.group['alt'].toscreen()),
