@@ -36,9 +36,9 @@ export EDITOR="nvim"
 #export PAGER=""
 export READER="zathura"
 export SHELL="zsh"
-# This gets set by the alacritty app itself which is better since we might use a different terminal sometimes.
+# This gets set by the terminal app itself so it will adapt to using different terminals.
 # The line is left here only for documentation on where it is actually set.
-#export TERMINAL="alacritty"
+#export TERMINAL=""
 #export VISUAL="code-oss"
 
 # History files and options
@@ -55,7 +55,6 @@ export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/js/npm/"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npmrc"
 
 # Non-default config locations
-export BAT_CONFIG_PATH="$APP_CONFIG/bat.config"
 
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg/"
 
