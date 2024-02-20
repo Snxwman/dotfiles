@@ -15,9 +15,11 @@ return {
                 "ansiblels",
                 "bashls",
                 "clangd",
+                "clojure_lsp",
                 "cssls",
                 "dockerls",
                 "docker_compose_language_service",
+                "elixirls",
                 "fennel_language_server",
                 "gopls",
                 "html",
@@ -46,9 +48,14 @@ return {
             lspconfig.ansiblels.setup({ capabilities = capabilities })
             lspconfig.bashls.setup({ capabilities = capabilities })
             lspconfig.clangd.setup({ capabilities = capabilities })
+            lspconfig.clojure_lsp.setup({ capabilities = capabilities })
             lspconfig.cssls.setup({ capabilities = capabilities })
             lspconfig.dockerls.setup({ capabilities = capabilities })
             lspconfig.docker_compose_language_service.setup({ capabilities = capabilities })
+            lspconfig.elixirls.setup({
+                capabilities = capabilities,
+                cmd = { "/home/sam/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" };
+            })
             lspconfig.fennel_language_server.setup({ capabilities = capabilities })
             lspconfig.gopls.setup({ capabilities = capabilities })
             lspconfig.html.setup({ capabilities = capabilities })
@@ -58,7 +65,7 @@ return {
             lspconfig.lua_ls.setup({ capabilities = capabilities })
             lspconfig.marksman.setup({ capabilities = capabilities })
             lspconfig.pyright.setup({ capabilities = capabilities })
-            lspconfig.rust_analyzer.setup({ capabilities = capabilities })
+            -- lspconfig.rust_analyzer.setup({ capabilities = capabilities })
 
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
