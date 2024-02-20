@@ -12,7 +12,7 @@ opt.tabstop = 4
 opt.colorcolumn = { 80, 100, 130 }
 opt.signcolumn = "yes"
 
-opt.scrolloff = 15
+opt.scrolloff = 5
 opt.sidescrolloff = 5
 
 opt.number = true
