@@ -1,11 +1,15 @@
 return {
     {
         "numToStr/comment.nvim",
-        opts = {}
+        opts = {},
     },
     {
         "kylechui/nvim-surround",
         event = VeryLazy,
-        opts = {}
+        opts = {},
+    },
+    {
+        "eraserhd/parinfer-rust",
+        enabled = false,
     },
 }
