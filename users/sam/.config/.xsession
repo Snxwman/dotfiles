@@ -18,9 +18,13 @@
 /sbin/xset -dpms
 
 # Graphical environment
-#/sbin/xrandr --output 'HDMI-0' --mode '5120x1440'  # Needs to complete before feh.
+#/sbin/xrandr --output 'HDMI-0' --mode '5120x1440' --primary # Needs to complete before feh.
+#/sbin/xrandr --output 'HDMI-1' --mode '1920x1080' --right-of 'HDMI-0'
+xrandr \
+    --output 'HDMI-1' --mode '5120x1440' --pos 0x1080 --primary \
+    --output 'HDMI-0' --mode '1920x1080' --pos 2400x0 --rotate inverted
 /sbin/nvidia-settings --load-config-only --config ~/.config/.nvidia-settings-rc
-/usr/bin/picom &
+/usr/bin/compfy --daemon &
 /usr/bin/feh --no-fehbg --bg-fill '/home/sam/media/photos/wallpaper/32:9/forest.jpg' &
 
 # Theming
@@ -29,4 +33,5 @@ Xcursor.theme: Simp1e-Mix-Dark
 Xcursor.size: 16
 EOF  # Imitates ~/.Xresources
 
+/opt/eww daemon &
 exec /usr/bin/dbus-run-session /usr/bin/qtile start
