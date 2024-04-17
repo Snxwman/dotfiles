@@ -1,0 +1,8 @@
+(defvar bt-icon "󰂯") 
+(defpoll idk :interval "1s" "")
+
+(defwidget bluetooth []
+    (button
+        :class "bluetooth-button"
+        :onclick "/sbin/blueman-manager &"
+        "${bt-icon}"))

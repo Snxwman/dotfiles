@@ -1,0 +1,23 @@
+@import '../themes/theme';
+
+.output-volume-icon, .output-volume-percentage {
+    color: $c-light-5;
+}
+
+.output-volume-percentage {
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+scale trough {
+    background-color: $c-black-1;
+    border-radius: 10px;
+    min-height: 10px;
+    min-width: 150px;
+    margin: 5px 0px 5px 5px;
+}
+
+.output-volume-scale trough highlight {
+    background-color: $c-blue-3;
+    border-radius: 5px;
+}

@@ -1,0 +1,31 @@
+(defvar reveal-volume false)
+(defpoll volume-level :initial "0" :interval "0.1s" "pactl get-sink-volume 0 | cut -d' ' -f6 | tr -d '%'")
+
+(defwidget output-volume []
+    (eventbox
+        :onhover "eww update reveal-volume=true"
+        :onhoverlost "eww update reveal-volume=false"
+        (box
+            :class "volume"
+            :space-evenly false
+            :orientation "h"
+            :halign "end"
+            (label
+                :class "output-volume-icon"
+                :text "󰕾")
+            (revealer
+                :transition "slideleft"
+                :duration "400ms"
+                :reveal reveal-volume
+                (box
+                    :space-evenly false
+                    (label
+                        :class "output-volume-percentage"
+                        :text "${volume-level}%")
+                    (scale
+                        :class "output-volume-scale"
+                        :orientation "h"
+                        :max 100 :min 0
+                        :tooltip "Volume: ${volume-level}%"
+                        :onchange "pactl set-sink-volume 0 {}%"
+                        :value volume-level))))))

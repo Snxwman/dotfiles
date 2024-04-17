@@ -1,84 +1,113 @@
-(include "./widgets/clock.yuck")
-(include "./widgets/volume.yuck")
-(include "./widgets/workspaces.yuck")
+(include "./util/util.yuck")
 
-; TODO:
-;    - Volume
-;    - Networking (wifi, eth, vpn, proxy, ifaces)
-;    - Bluetooth
-;    - Lock, sleep, poweroff, restart
-;    - Calendar
-;    - Notification center
-;    - Music
-;    - Systray
-;    - Hardware Monitor
-;    - Todo List
-;    - Packages/repos 
-;    - Weather
-;    - Stock/Crypto/News/Rss Ticker
-;    - Clipboard manager
-;    - Cmd line
-;    - Caps/Num Lock Indicator
-;    - Timer/Countdown/Alarms
-;    - Layout Normalizer
-;    - Current Screen
-;    - Email
-;    - Idle game
-;    - Call indicator (discord)
-;    - Messages (text, discord, irc, etc)
-;    - ei
+(include "./modules/bluetooth/bluetooth.yuck")
+(include "./modules/datetime/datetime.yuck")
+(include "./modules/music/music.yuck")
+;; (include "./modules/networking/")
+;; (include "./modules/updates/")
+(include "./modules/volume/volume.yuck")
+(include "./modules/wallpaper/wallpaper.yuck")
+(include "./modules/wm/workspaces.yuck")
 
-(defwidget logo [name ?cmd]
-    (button
-        :class "logo"
-        :onclick "${cmd}"
-        "${name}"))
+(defvar theme 'tokyonight')
 
-;; Window
+; TODO: Widget Ideas
+;    - [-] Volume
+;    - [ ] Networking (wifi, eth, vpn, proxy, ifaces)
+;    - [-] Bluetooth
+;    - [ ] Lock, logout, sleep, poweroff, restart
+;    - [-] Calendar
+;    - [ ] Notification center
+;    - [ ] Music
+;    - [ ] Systray
+;    - [ ] Hardware Monitor
+;    - [ ] Todo List
+;    - [ ] Packages/repos 
+;    - [ ] Weather
+;    - [ ] Stock/Crypto/News/Rss Ticker
+;    - [ ] Clipboard manager
+;    - [ ] Cmd line
+;    - [ ] Caps/Num Lock Indicator
+;    - [ ] Timer/Countdown/Alarms
+;    - [ ] Layout Normalizer
+;    - [ ] Current Screen
+;    - [ ] Email
+;    - [ ] Idle game
+;    - [ ] Call indicator (discord)
+;    - [ ] Messages (text, discord, irc, etc)
 
-(defwindow left-bar
-    :class "bar left-bar"
+(defwindow full-bar
     :monitor 0
     :wm-ignore false
-    :windowtype "dock"
+    :windowtype 'dock'
+    :stacking 'fg'
     :hexpand false :vexpand false
-    :geometry (geometry :x 5 :y 5 :height "45px" :anchor "top left")
-    :reserve (struts :distance "40px" :side "top")
-    (box
-        :space-evenly false
-        :spacing 10
-        (logo :name "" :cmd "")
-        (workspace-widget)
-        (layouts-widget :screen 0)))
+    :geometry (geometry :x 0 :y 45 :width '100%' :height '40px' :anchor 'top center')
+    :reserve (struts :distance '45px' :side 'top')
+    (centerbox 
+        :orientation 'horizontal'
+        (box
+            :space-evenly false
+            :spacing 10
+            (icon :icon '' :lclick '')
+            (workspaces)
+            (layouts-widget :screen 0)
+            (music))
+        (box
+            :space-evenly false
+            (date)
+            (time))
+        (box
+            :space-evenly false
+            :halign 'end'
+            (systray)
+            (icon :icon '' :lclick ''))))
 
-(defwindow middle-bar
-    :class "bar middle-bar"
-    :monitor 0
-    :wm-ignore false
-    :windowtype "dock"
-    :hexpand false :vexpand false
-    :geometry (geometry :x 0 :y 5 :height "45px" :width "10%" :anchor "top center")
-    :reserve (struts :distance "0px" :side "top")
-    (box
-        :space-evenly false
-        :spacing 10
-        :halign "center"
-        (date)
-        (time)
-        (volume)))
-
-(defwindow right-bar
-    :class "bar right-bar"
-    :halign "end"
-    :monitor 0
-    :wm-ignore false
-    :windowtype "dock"
-    :hexpand false :vexpand false
-    :geometry (geometry :x -5 :y 5 :height "45px" :width "10%" :anchor "top right")
-    :reserve (struts :distance "0px" :side "top")
-    (box
-        :space-evenly false
-        :spacing 10
-        (volume)
-        (logo :name "" :cmd "")))
-
+;; ;; Window
+;; (defwindow left-bar
+;;     :class "bar left-bar"
+;;     :monitor 0
+;;     :wm-ignore false
+;;     :windowtype "dock"
+;;     :hexpand false :vexpand false
+;;     :geometry (geometry :x 5 :y 5 :height "45px" :anchor "top left")
+;;     :reserve (struts :distance "50px" :side "top")
+;;     (box
+;;         :space-evenly false
+;;         :spacing 10
+;;         (icon :icon "" :cmd "")
+;;         (workspace-widget)
+;;         (layouts-widget :screen 0)))
+;;
+;; (defwindow middle-bar
+;;     :class "bar middle-bar"
+;;     :monitor 0
+;;     :wm-ignore false
+;;     :windowtype "dock"
+;;     :hexpand false :vexpand false
+;;     :geometry (geometry :x 0 :y 5 :height "45px" :anchor "top center")
+;;     :reserve (struts :distance "0px" :side "top")
+;;     (box
+;;         :space-evenly false
+;;         :spacing 10
+;;         :halign "center"
+;;         (date)
+;;         (time)))
+;;
+;; (defwindow right-bar
+;;     :class "bar right-bar"
+;;     :halign "end"
+;;     :monitor 0
+;;     :wm-ignore false
+;;     :windowtype "dock"
+;;     :hexpand false :vexpand false
+;;     :geometry (geometry :x -5 :y 5 :height "45px" :anchor "top right")
+;;     :reserve (struts :distance "0px" :side "top")
+;;     (box
+;;         :space-evenly false
+;;         :spacing 10
+;;         (icon :icon "󰄄" :cmd "flameshot gui &")
+;;         (bluetooth)
+;;         (output-volume)
+;;         (icon :icon "" :cmd "")))
+;;

@@ -1,25 +1,29 @@
-* {
-    all: unset;
-    font-family: "FiraCode Nerd Font Propo";
-    font-size: 24px;
-}
+$window-transparency: 100%;
 
-$color-dark-bg: #1a1b26;
-$color-light-bg: #c0caf5;
+$font-family-mono: "FiraCode Nerd Font";
+$font-family-propo: "Comfortaa";
+$font-family-symbol: "Symbols Nerd Font";
 
-$color-black: #15161e;
-$color-grey: #414868;
-$color-white: #a9b1d6;
-$color-red: #f7768e;
-$color-green: #9ece6a;
-$color-mint: #4fd6be;
-$color-yellow: #e0af68;
-$color-blue: #7aa2f7;
-$color-magenta: #bb9af7;
-$color-cyan: #7dcfff;
+$font-size-100: 8px;
+$font-size-200: 10px;
+$font-size-300: 14px;
+$font-size-400: 16px;
+$font-size-500: 20px;
+$font-size-600: 24px;
 
-window {
-    background-color: $color-grey;
+@import 'util/styles/util';
+@import 'util/styles/base';
+
+@import 'themes/tokyonight';
+
+@import 'modules/wm/workspaces';
+@import 'modules/music/music';
+
+
+tooltip * {
+    font-size: $font-size-400;
+    min-width: 50px;
+    margin: 3px;
 }
 
 .left-bar, .middle-bar, .right-bar {
@@ -27,84 +31,10 @@ window {
     margin-right: 20px;
 }
 
-.logo > label {
-    color: $color-light-bg;
-    font-size: 26px;
+.icon > label {
+    color: $color-light-5;
 }
-
-.workspace-widget {}
-
-.workspace-button {
-    margin: 3px;
-    color: $color-white;
-    background-color: $color-dark-bg;
-    border-radius: 8px;
-    border-width: 2px;
-    border-style: solid;
-    border-radius: 8px;
-    border-color: $color-dark-bg;
-}
-
-.workspace-button > label {
-    font-size: 18px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 2px;
-    margin-bottom: 2px;
-}
-
-.workspace-button-window-open {
-    color: $color-magenta;
-}
-
-.workspace-button-active {
-    color: $color-cyan;
-    border-color: $color-cyan;
-}
-
-.workspace-button-active-secondary {
-    color: $color-mint;
-    border-color: $color-mint;
-}
-
-.layout-widget {
-    font-size: 26px;
-}
-
-.active-layout {
-    color: $color-blue;
-    margin-right: 6px;
-}
-
-.active-layout-icon {
-    //margin-right: 6px;
-    font-size: 24px;
-}
-
-.available-layout-box {
-    background-color: $color-dark-bg;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    border-width: 2px;
-    border-style: solid;
-    border-color: $color-dark-bg;
-    color: $color-white;
-    margin-top: 5px;
-    margin-bottom: 5px
-}
-
-.available-layout-button {
-   margin-left: 6px; 
-   margin-right: 6px; 
-} 
-
-// middle
 
 .datetime > label {
-    font-family: "Comfortaa";
-}
-
-calendar {
-    font-family: "Comfortaa";
-    margin: 5px;
+    font-family: $propo-font;
 }

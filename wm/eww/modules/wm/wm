@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+
+_qtile() {
+    cmd="$1"; shift
+
+    case "$cmd" in
+        "togroup"   ) qtile cmd-obj -o group "$1" -f toscreen  ;;
+        "setlayout" ) qtile cmd-obj -o group -f setlayout "$1" ;;
+    esac
+}
+
+wm="$1"; shift
+case "$wm" in
+    qtile ) _qtile "$@" 
+esac    
+
