@@ -64,7 +64,10 @@ return {
             lspconfig.ltex.setup({ capabilities = capabilities })
             lspconfig.lua_ls.setup({ capabilities = capabilities })
             lspconfig.marksman.setup({ capabilities = capabilities })
-            lspconfig.pyright.setup({ capabilities = capabilities })
+            lspconfig.pyright.setup({ 
+                capabilities = capabilities,
+                filetypes = {"python"},
+            })
             -- lspconfig.rust_analyzer.setup({ capabilities = capabilities })
 
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
