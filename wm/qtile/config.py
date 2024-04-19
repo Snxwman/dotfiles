@@ -4,14 +4,15 @@ import json
 import subprocess
 from typing import List  # noqa: F401
 
-from libqtile import qtile, layout, bar, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
-from libqtile.command import lazy
-from libqtile.lazy import lazy
-from libqtile.backend.x11 import window
-from libqtile.confreader import ConfigError
-from libqtile.widget import base
-from libqtile.log_utils import logger
+from libqtile import qtile, widget, hook
+from libqtile.config import Screen
+# from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
+# from libqtile.command import lazy
+# from libqtile.lazy import lazy
+# from libqtile.backend.x11 import window
+# from libqtile.confreader import ConfigError
+# from libqtile.widget import base
+# from libqtile.log_utils import logger
 XEMBED_PROTOCOL_VERSION = 0
 
 ########################################################################################################################
@@ -199,7 +200,8 @@ if __name__ in ["config", "__main__"]:
 
 @hook.subscribe.startup_once
 def start_eww():
-    subprocess.run("~/.scripts/start_eww", shell=True)
+    script = os.path.expanduser('~/.config/qtile/autostart.sh')
+    subprocess.run([script])
 
 @hook.subscribe.startup_once
 @hook.subscribe.layout_change
@@ -207,7 +209,6 @@ def start_eww():
 @hook.subscribe.changegroup
 @hook.subscribe.focus_change
 async def _(*args):    
-    eww_bin = '/opt/eww'
     state = []
 
     scratchpads = ['terminal', 'chat', 'utils']
@@ -249,7 +250,11 @@ async def _(*args):
             }
 
             state.append(dict(group))
-
-    subprocess.run(f"{eww_bin} update wm-state='{json.dumps(state)}'", shell=True)
-    subprocess.run(f"/opt/eww --config ~/src/github/rancid update wm-state='{json.dumps(state)}'", shell=True)
+    
+    
+    subprocess.run(f"/opt/eww update wm-state='{json.dumps(state)}'", shell=True)
+    
+    subprocess.run(f"/opt/eww --config ~/.config/rancid/ update wm-state='{json.dumps(state)}'", shell=True)
+    
+    # subprocess.run(f"/opt/eww --config ~/src/github/rancid/.test/ update wm-state='{json.dumps(state)}'", shell=True)
 

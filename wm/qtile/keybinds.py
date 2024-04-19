@@ -20,7 +20,7 @@ up = 'Up'
 right = 'Right'
 backspace = 'BackSpace'
 
-# Special ergodox key combos
+# Special key combo names
 meh = [ctrl, alt, shift]
 hyper = [ctrl, alt, shift, super]
 
@@ -85,6 +85,12 @@ def init_keybinds():
         Key([super, shift], '3', lazy.group['alt'].toscreen()),
         Key([super, shift], '4', lazy.group['vms'].toscreen()),
         Key([super, shift], '5', lazy.group['gaming'].toscreen()),
+
+        # Screen Split Navigation
+        Key([super], 'o', lazy.layout.next_split()),
+        Key([super], 'u', lazy.layout.previous_split()),
+        Key([super, alt], 'o', lazy.layout.move_window_to_next_split()),
+        Key([super, alt], 'u', lazy.layout.move_window_to_previous_split()),
 
         # Layout control
         Key(hyper, space, lazy.next_layout()),
