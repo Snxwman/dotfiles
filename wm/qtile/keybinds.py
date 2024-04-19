@@ -88,9 +88,9 @@ def init_keybinds():
 
         # Screen Split Navigation
         Key([super], 'o', lazy.layout.next_split()),
-        Key([super], 'u', lazy.layout.previous_split()),
+        Key([super], 'y', lazy.layout.previous_split()),
         Key([super, alt], 'o', lazy.layout.move_window_to_next_split()),
-        Key([super, alt], 'u', lazy.layout.move_window_to_previous_split()),
+        Key([super, alt], 'y', lazy.layout.move_window_to_previous_split()),
 
         # Layout control
         Key(hyper, space, lazy.next_layout()),

@@ -218,6 +218,8 @@ async def _(*args):
         'alt': '',
         'vms': '',
         'gaming': '',
+        '2560': '󰯌',
+        '3440': '󰯌',
         'columns': '',
         'floating': '',
         '0': '󰎣',

@@ -40,7 +40,7 @@ splits_2560 = [
     },
     {
         'name': 'right',
-        'rect': (0.75, 0, 1, 1),
+        'rect': (0.75, 0, 0.25, 1),
         'layout': Columns(**columns_layout_theme),
     },
 ]
@@ -48,24 +48,24 @@ splits_2560 = [
 splits_3440 = [
     {
         'name': 'left',
-        'rect': (0, 0, 0.1640625, 1),
+        'rect': (0, 0, 0.16, 1),
         'layout': Columns(**columns_layout_theme),
     },
     {
         'name': 'middle',
-        'rect': (0.1640625, 0, 0.8359375, 1),
+        'rect': (0.16, 0, 0.68, 1),
         'layout': Columns(**columns_layout_theme),
     },
     {
         'name': 'right',
-        'rect': (0.8359375, 0, 1, 1),
+        'rect': (0.84, 0, 0.16, 1),
         'layout': Columns(**columns_layout_theme),
     },
 ]
 def init_layouts(): 
     layouts = [
-        layout.ScreenSplit(splits=splits_2560),
-        layout.ScreenSplit(splits=splits_3440),
+        layout.ScreenSplit(name='2560', splits=splits_2560),
+        layout.ScreenSplit(name='3440', splits=splits_3440),
         layout.Columns(**columns_layout_theme),
         layout.Floating(**floating_layout_theme),
     ]
