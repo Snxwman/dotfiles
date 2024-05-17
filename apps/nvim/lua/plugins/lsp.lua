@@ -30,6 +30,8 @@ return {
                 "marksman",
                 "pyright",
                 "rust_analyzer",
+                "svelte",
+                "tsserver"
             }
         },
     },
