@@ -1,23 +1,61 @@
-@import '../themes/theme';
+// .output-volume-icon, .output-volume-percentage {
+//     color: $c-light-5;
+// }
+//
+// .output-volume-percentage {
+//     font-size: 16px;
+//     margin-left: 5px;
+// }
+//
+// scale trough {
+//     background-color: $c-black-1;
+//     border-radius: 10px;
+//     min-height: 10px;
+//     min-width: 150px;
+//     margin: 5px 0px 5px 5px;
+// }
+//
+// .output-volume-scale trough highlight {
+//     background-color: $c-blue-3;
+//     border-radius: 5px;
+// }
+//
+//
 
-.output-volume-icon, .output-volume-percentage {
-    color: $c-light-5;
+.volume-window {
+    scale highlight {
+        background-color: $theme-volume-bar-fg; 
+        min-height: 10px;
+    }
+
+    scale trough {
+        background-color: $theme-volume-bar-bg;
+    }
+
+    scale slider {
+        background-color: $theme-volume-bar-slider;
+    }
 }
 
-.output-volume-percentage {
-    font-size: 16px;
-    margin-left: 5px;
+.volume-level-normal > scale highlight {
+    background-color: $theme-volume-bar-fg;
 }
 
-scale trough {
-    background-color: $c-black-1;
-    border-radius: 10px;
-    min-height: 10px;
-    min-width: 150px;
-    margin: 5px 0px 5px 5px;
+.volume-level-warning > scale highlight {
+    background-color: $theme-warning;
 }
 
-.output-volume-scale trough highlight {
-    background-color: $c-blue-3;
-    border-radius: 5px;
+.volume-level-danger > scale highlight {
+    background-color: $theme-danger;
 }
+
+.muted {
+    > button > label {
+        color: $theme-audio-muted;
+    }
+
+    > scale highlight {
+        background-color: $theme-audio-muted;
+    }
+}
+

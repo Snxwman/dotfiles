@@ -2,6 +2,7 @@
     (button
         :class 'icon'
         :timeout '500ms'
+        :vexpand false
         :onclick '${lclick}'
         :onmiddleclick '${mclick}'
         :onrightclick '${rclick}'

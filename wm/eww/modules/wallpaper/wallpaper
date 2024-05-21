@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-wallpaper_dir="$1"
+wallpaper_dir="$HOME/media/photos/wallpaper/32:9"
 readarray -t files <<< "$(/usr/bin/ls $wallpaper_dir/*.{jpg,jpeg,png} 2> /dev/null)"
 
 _as_json() {
@@ -23,4 +23,4 @@ _as_json() {
     jq .wallpapers <<< $wallpapers_json
 }
 
-rancid "$PPID" update wallpapers="$(_as_json "$files")"
+eww update wallpapers="$(_as_json "$files")"

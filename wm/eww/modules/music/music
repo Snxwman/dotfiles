@@ -58,7 +58,7 @@ get_player_metadata() {
                 \"loop\": null,
                 \"album\": {
                     \"name\": null,
-                    \"art\": \"./modules/util/null.jpg\"
+                    \"art\": \"./util/null.jpg\"
                 },
                 \"position\": {     
                     \"fmt\": \"0:00\",

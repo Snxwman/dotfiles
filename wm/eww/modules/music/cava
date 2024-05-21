@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Define the character bars and the dictionary for replacements
 bar="▁▂▃▄▅▆▇█"

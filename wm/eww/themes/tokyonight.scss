@@ -103,17 +103,17 @@ $theme-audio-muted: $color-light-3;
 // $theme-bluetooth-device-available: ;
 
 // Workspaces
-$theme-workspace-button: $color-light-4;
+$theme-workspace-button: $color-dark-4;
 $theme-workspace-button-background: $color-black-2;
 
-$theme-workspace-window-open: $color-blue-3;
+$theme-workspace-window-open: $color-light-4;
 
 $theme-workspace-active: $color-blue-5;
 $theme-workspace-active-primary: $color-blue-4;
 $theme-workspace-active-secondary: $color-purple-1;
 $theme-workspace-active-tertiary: $color-red-5;
 
-* {
+label {
     color: $theme-fg-500;
 }
 
@@ -127,6 +127,7 @@ tooltip {
 
 button:hover {
     background-color: $theme-bg-500;
+    border-color: $theme-bg-500;
 }
 
 button:hover * {

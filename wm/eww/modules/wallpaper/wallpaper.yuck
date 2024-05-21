@@ -29,5 +29,5 @@
                         :path "${wallpaper.thumb}"))))))
           
 (defwindow wallpaper-switcher-window
-    :geometry (geometry :x 500 :y 60 :anchor "top center")
+    :geometry (geometry :x 0 :y 200 :anchor "top center")
     (wallpaper-switcher-popup))

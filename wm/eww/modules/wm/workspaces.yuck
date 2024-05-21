@@ -1,4 +1,5 @@
-(defvar wm-state "[]")
+;; (defvar wm-state "[]")
+(deflisten wm-state :initial '[]' 'tail -F /tmp/qtile.state')
 (defvar reveal-layout false)
 
 (defwidget screen []
@@ -23,10 +24,10 @@
                     ${workspace.screen == "0" ? "workspace-button-active-primary" : ""} 
                     ${workspace.screen == "1" ? "workspace-button-active-secondary" : ""} 
                     ${workspace.screen == "2" ? "workspace-button-active-tertiary" : ""} 
-                    ${workspace.open_window == "true" ? "workspace-button-window-open" : ""}
+                    ${workspace.open_window == "true" ? "workspace-button-window-open" : ""} 
                     ${theme}'
                 :tooltip '${workspace.name}'
-                :onclick '$HOME/.config/eww/scripts/wm qtile togroup ${workspace.name}'
+                :onclick './modules/wm/wm qtile togroup ${workspace.name}'
                 '${workspace.icon}'))))
 
 (defwidget layouts-widget [screen]
@@ -44,7 +45,7 @@
                     (button 
                         :class "available-layout-button"
                         :tooltip "${layout.name}"
-                        :onclick ""
+                        :onclick "./modules/wm/wm qtile setlayout ${layout.name}"
                         "${layout.icon}")))))))
 
 (defwidget windows-widget [screen]
