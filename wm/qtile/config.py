@@ -3,6 +3,7 @@ import os
 import json
 import subprocess
 from typing import List  # noqa: F401
+from pathlib import Path
 
 from libqtile import qtile, widget, hook
 from libqtile.config import Screen
@@ -220,6 +221,7 @@ async def _(*args):
         'gaming': '',
         '2560': '󰯌',
         '3440': '󰯌',
+        'godot': 'G',
         'columns': '',
         'floating': '',
         '0': '󰎣',
@@ -253,10 +255,12 @@ async def _(*args):
 
             state.append(dict(group))
     
+    with open('/tmp/qtile.state', 'a') as f:
+        f.write(json.dumps(state) + '\n')
     
-    subprocess.run(f"/opt/eww update wm-state='{json.dumps(state)}'", shell=True)
-    
-    subprocess.run(f"/opt/eww --config ~/.config/rancid/ update wm-state='{json.dumps(state)}'", shell=True)
+    # subprocess.run(f"/opt/eww update wm-state='{json.dumps(state)}'", shell=True)
+
+    # subprocess.run(f"/opt/eww --config ~/.config/rancid/ update wm-state='{json.dumps(state)}'", shell=True)
     
     # subprocess.run(f"/opt/eww --config ~/src/github/rancid/.test/ update wm-state='{json.dumps(state)}'", shell=True)
 
