@@ -16,23 +16,15 @@ $font-size-600: 24px;
 
 @import 'themes/tokyonight';
 
-@import 'modules/wm/workspaces';
 @import 'modules/music/music';
+@import 'modules/volume/volume';
+@import 'modules/wm/workspaces';
 
 
 tooltip * {
     font-size: $font-size-400;
     min-width: 50px;
     margin: 3px;
-}
-
-.left-bar, .middle-bar, .right-bar {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.icon > label {
-    color: $color-light-5;
 }
 
 .datetime > label {
