@@ -72,3 +72,4 @@ export GIT_EDITOR="$EDITOR"
 
 export GOPATH="$HOME/.local/"
 
+export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
