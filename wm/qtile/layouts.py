@@ -147,7 +147,7 @@ def init_groups():
         Group(group_name[4], layout=default_layout),
 
         ScratchPad('terminal', [
-            DropDown('terminal', 'kitty --title scratchpad', **large_centered_kwargs),
+            DropDown('terminal', '/home/sam/.local/bin/ghostty --title=scratchpad', **large_centered_kwargs),
         ])
     ]
 

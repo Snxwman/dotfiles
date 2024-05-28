@@ -25,7 +25,7 @@ meh = [ctrl, alt, shift]
 hyper = [ctrl, alt, shift, super]
 
 # Applications
-terminal = 'kitty'
+terminal = '/home/sam/.local/bin/ghostty'
 launcher = '.config/rofi/scripts/launcher_t1'
 browser = 'brave'
 file_manager = 'nemo'
@@ -134,6 +134,5 @@ def init_keybinds():
 
         # Scratchpads
         Key([super, alt], enter, lazy.group['terminal'].dropdown_toggle('terminal')),
-        Key(hyper, 'F20', lazy.group['chat'].dropdown_toggle('signal')),
     ]
 
