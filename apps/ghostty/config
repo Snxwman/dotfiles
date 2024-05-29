@@ -601,7 +601,7 @@ mouse-scroll-multiplier = 1
 # 
 # Changing this value at runtime (and reloading config) will only affect new
 # windows, tabs, and splits.
-background-opacity = 1
+background-opacity = 0.95
 
 # A positive value enables blurring of the background when background-opacity
 # is less than 1. The value is the blur radius to apply. A value of 20
@@ -897,9 +897,9 @@ keybind = ctrl+shift+i=inspector:toggle
 # will appear in the logs.
 # 
 # Changing these values will only apply after restart.
-window-padding-x = 2
+window-padding-x = 4
+window-padding-y = 4
 
-window-padding-y = 2
 # The viewport dimensions are usually not perfectly divisible by the cell
 # size. In this case, some extra padding on the end of a column and the bottom
 # of the final row may exist. If this is `true`, then this extra padding
