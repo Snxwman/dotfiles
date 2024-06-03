@@ -1,6 +1,6 @@
 from libqtile import layout
 from libqtile.config import Key
-from libqtile.command import lazy
+from libqtile.lazy import lazy
 
 # Remap 'mod' keys to nice names
 alt = 'mod1'

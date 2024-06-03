@@ -1,5 +1,5 @@
 from libqtile.config import Click, Drag 
-from libqtile.command import lazy
+from libqtile.lazy import lazy
 
 def init_mouse():
     left_click = 'Button1'
