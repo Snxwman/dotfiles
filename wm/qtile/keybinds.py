@@ -96,6 +96,7 @@ def init_keybinds():
         Key(hyper, space, lazy.next_layout()),
         Key(hyper, 'm', lazy.layout.toggle_split()),
         Key([super, shift], 'm', lazy.window.toggle_fullscreen()),
+        Key(hyper, 'f', lazy.window.toggle_floating()),
         
         Key(hyper, 'h', lazy.layout.shuffle_left()),  # Hackish way to add columns
         Key(hyper, 'l', lazy.layout.shuffle_right()),
