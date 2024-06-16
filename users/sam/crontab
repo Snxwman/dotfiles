@@ -1,1 +1,3 @@
-@ 1s export now="$(date)"
+@jitter(255) 1s ~/.scripts/get_wan_ip
+
+@ 10m ~/.scripts/check_updates
