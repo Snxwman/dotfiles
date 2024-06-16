@@ -1,4 +1,5 @@
 export HOST=${HOST}
+export SVDIR="/run/runit/service/"
 
 # XDG Directories
 export XDG_CACHE_HOME="$HOME/.cache"

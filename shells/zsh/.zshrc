@@ -19,15 +19,16 @@ bindkey '^[[1;5D' backward-word   # ctrl <-
 autoload -U colors && colors
 
 # Add custom paths
+local SCRIPTS="$HOME/.scripts"
 local LOCAL_SOFTWARE="$HOME/.local/software"
 path=(
     "$LOCAL_SOFTWARE/bin"
     "$HOME/.local/bin"
+    "$SCRIPTS"
     "/opt"
     $path
 )
 
-local SCRIPTS="$HOME/.scripts"
 fpath=(
     "$SCRIPTS"
     "$SCRIPTS/completions"
