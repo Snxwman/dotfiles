@@ -7,5 +7,6 @@ alias v="nvim"
 alias ydl="yt-dlp"
 alias leet="nvim leetcode.nvim"
 alias evp="nvim \"+:Telescope find_files search_dirs=~/.config/nvim/\""
+alias crontab="fcrontab"
 
 alias vlime='sbcl --load ~/.local/share/nvim/lazy/vlime/lisp/start-vlime.lisp'
