@@ -29,6 +29,7 @@ return {
                 "lua_ls",
                 "marksman",
                 "pyright",
+                "ruff",
                 "rust_analyzer",
                 "svelte",
                 "tsserver"
@@ -42,6 +43,7 @@ return {
             "hrsh7th/cmp-nvim-lsp"
         },
         keys = {
+            {"<leader>h", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, desc = "Toggle inlay hints" },
         },
         config = function()
             local lspconfig = require("lspconfig")
@@ -51,6 +53,7 @@ return {
             lspconfig.bashls.setup({ capabilities = capabilities })
             lspconfig.clangd.setup({ capabilities = capabilities })
             lspconfig.clojure_lsp.setup({ capabilities = capabilities })
+            lspconfig.codelldb.setup({ capabilities = capabilities })
             lspconfig.cssls.setup({ capabilities = capabilities })
             lspconfig.dockerls.setup({ capabilities = capabilities })
             lspconfig.docker_compose_language_service.setup({ capabilities = capabilities })
@@ -64,13 +67,26 @@ return {
             lspconfig.jsonls.setup({ capabilities = capabilities })
             lspconfig.tsserver.setup({ capabilities = capabilities })
             lspconfig.ltex.setup({ capabilities = capabilities })
-            lspconfig.lua_ls.setup({ capabilities = capabilities })
+            lspconfig.lua_ls.setup({
+                capabilities = capabilities,
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = { "vim" }
+                        }
+                    }
+                }
+            })
             lspconfig.marksman.setup({ capabilities = capabilities })
-            lspconfig.pyright.setup({ 
+            lspconfig.pyright.setup({
                 capabilities = capabilities,
                 filetypes = {"python"},
             })
-            -- lspconfig.rust_analyzer.setup({ capabilities = capabilities })
+            -- lspconfig.rust_analyzer.setup({
+            --     settings = {
+            --         ["rust_analyzer"] = function() end,
+            --     },
+            -- })
 
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
@@ -83,7 +99,11 @@ return {
         event = "InsertEnter",
         dependencies = {
             "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-nvim-lua",
+            "hrsh7th/cmp-nvim-lsp-signature-help",
             "hrsh7th/cmp-path",
+            "hrsh7th/cmp-vsnip",
+            "hrsh7th/vim-vsnip",
             "L3MON4D3/LuaSnip",
             "saadparwaiz1/cmp_luasnip",
             "rafamadriz/friendly-snippets",
@@ -99,7 +119,7 @@ return {
 
             cmp.setup({
                 completion = {
-                    completeopt = "menu, menuone, preview, noselect"
+                    completeopt = "menu, menuone, preview, noselect, fuzzy"
                 },
                 snippet = {
                     expand = function(args)
@@ -107,9 +127,11 @@ return {
                     end
                 },
                 formatting = {
+                    fields = { "abbr", "kind", },
                     format = lspkind.cmp_format({
-                        maxwidth = 50,
+                        maxwidth = 32,
                         ellipsis_char = "…",
+                        menu = "",
                     }),
                 },
                 sources = cmp.config.sources({
@@ -119,7 +141,9 @@ return {
                     { name = "path" },
                 }),
                 window = {
-                    completion = cmp.config.window.bordered(),
+                    completion = cmp.config.window.bordered({
+                        scrollbar = false,
+                    }),
                     documentation = cmp.config.window.bordered(),
                 },
                 mapping = cmp.mapping.preset.insert({

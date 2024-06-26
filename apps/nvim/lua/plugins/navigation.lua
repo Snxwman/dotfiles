@@ -32,6 +32,15 @@ return {
             "3rd/image.nvim",
         },
         config = function()
+            vim.fn.sign_define("DiagnosticSignError", 
+                {text = " ", texthl = "DiagnosticSignError"})
+            vim.fn.sign_define("DiagnosticSignWarn",
+                {text = " ", texthl = "DiagnosticSignWarn"})
+            vim.fn.sign_define("DiagnosticSignInfo",
+                {text = " ", texthl = "DiagnosticSignInfo"})
+            vim.fn.sign_define("DiagnosticSignHint",
+                {text = "󰌵", texthl = "DiagnosticSignHint"})
+
             require("neo-tree").setup({
                 close_if_last_window = true,
                 window = {
@@ -46,22 +55,22 @@ return {
                     }
                 },
                 default_component_configs = {
-                icon = {
-                    folder_closed = "",
-                    folder_open = "",
-                    folder_empty = "",
-                },
-                modified = {
-                    symbol = "",
-                    highlight = "NeoTreeModified",
-                },
-                git_status = {
-                    symbols = {
-                        untracked = "",
-                        ignored = "",
-                        staged = "",
+                    icon = {
+                        folder_closed = "",
+                        folder_open = "",
+                        folder_empty = "",
+                    },
+                    modified = {
+                        symbol = "",
+                        highlight = "NeoTreeModified",
+                    },
+                    git_status = {
+                        symbols = {
+                            untracked = "",
+                            ignored = "",
+                            staged = "",
+                        }
                     }
-                }
                 },
             })
 
