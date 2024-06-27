@@ -3,13 +3,26 @@ return {
         "zaldih/themery.nvim",
         lazy = false,
         opts = {
+            themeConfigFile = "~/.config/nvim/lua/theme.lua",
+            livePreview = "true",
             themes = {
-                "tokyonight",
+                {
+                    name = "tokyonight moon",
+                    colorscheme = "tokyonight-moon",
+                },
+                {
+                    name = "tokyonight night",
+                    colorscheme = "tokyonight-night",
+                },
+                {
+                    name = "tokyonight storm",
+                    colorscheme = "tokyonight-storm",
+                },
                 "flexoki-dark",
                 "oxocarbon",
                 "moonfly",
                 "kanagawa",
-                "papercolor",
+                -- "papercolor",
                 "ayu",
                 "dracula",
                 "citruszest",
@@ -17,16 +30,34 @@ return {
                 "andromeda",
                 "truedark",
                 "smarties",
+                {
+                    name = "aura dark",
+                    colorscheme = "aura-dark",
+                    before = [[ vim.opt.rtp:append("~/.local/share/nvim/lazy/aura-dark/packages/neovim/") ]],
+                },
+                {
+                    name = "aura dark (soft text)",
+                    colorscheme = "aura-dark-soft-text",
+                    before = [[ vim.opt.rtp:append("~/.local/share/nvim/lazy/aura-dark/packages/neovim/") ]],
+                },
+                {
+                    name = "aura soft",
+                    colorscheme = "aura-soft-dark",
+                    before = [[ vim.opt.rtp:append("~/.local/share/nvim/lazy/aura-dark/packages/neovim/") ]],
+                },
+                {
+                    name = "aura soft (soft text)",
+                    colorscheme = "aura-soft-dark-soft-text",
+                    before = [[ vim.opt.rtp:append("~/.local/share/nvim/lazy/aura-dark/packages/neovim/") ]],
+                },
+
             },
-            themeConfigFile = "~/.config/nvim/lua/plugins/theme.lua",
-            livePreview = "true"
         },
     },
     {
         "folke/tokyonight.nvim",
         lazy = false,
         priority = 1000,
-        opts = { style = "night" },
     },
     {
         "kepano/flexoki-neovim",
@@ -71,9 +102,13 @@ return {
     {
         "bratpeki/truedark-vim",
         name = "truedark",
-    }, 
+    },
     {
         "justb3a/vim-smarties",
         name = "smarties",
+    },
+    {
+        "daltonmenezes/aura-theme",
+        name = "aura-dark",
     },
 }

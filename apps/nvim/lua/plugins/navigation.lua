@@ -93,7 +93,7 @@ return {
         },
         opts = {
             outline_window = {
-                position = "left",
+                position = "right",
                 width = default_lside_width,
                 relative_width = false,
                 focus_on_open = false,
