@@ -13,7 +13,7 @@ vim.opt.softtabstop = 4
 vim.opt.tabstop = 4
 
 -- visual
-vim.opt.colorcolumn = { 80, 110 }
+vim.opt.colorcolumn = { 80, 120 }
 vim.opt.signcolumn = "yes"
 
 vim.opt.scrolloff = 5

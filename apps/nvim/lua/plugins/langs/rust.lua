@@ -10,7 +10,7 @@ return {
         enabled = true,
         ft = { 'rust' },
         keys = {
-            {"K", "<cmd>RustLsp hover actions", desc = "Hover actions (rustaceanvim)"},
+            {"K", "<cmd>RustLsp hover actions<cr>", desc = "Hover actions (rustaceanvim)"},
             {"<leader>bk", "<cmd>RustLsp moveItem up<cr>", desc = "Move block up"},
             {"<leader>bj", "<cmd>RustLsp moveItem down<cr>", desc = "Move block down"},
             {"<leader>J", "<cmd>RustLsp joinLines<cr>", desc = "Join selected lines"},
