@@ -19,11 +19,11 @@
 # Changing this configuration at runtime will only affect new terminals, i.e.
 # new windows, tabs, etc.
 # font-family = Firacode Nerd Font
-font-family = Berkeley Mono Trial
+font-family = Berkeley Mono
 
-font-family-bold = 
-font-family-italic = 
-font-family-bold-italic = 
+font-family-bold =
+font-family-italic =
+font-family-bold-italic =
 # The named font style to use for each of the requested terminal font styles.
 # This looks up the style based on the font style string advertised by the
 # font itself. For example, "Iosevka Heavy" has a style of "Heavy".
@@ -55,10 +55,10 @@ font-style-bold-italic = default
 # feature name for programming ligatures. To look into what font features
 # your font has and what they do, use a font inspection tool such as
 # [fontdrop.info](https://fontdrop.info).
-# 
+#
 # To generally disable most ligatures, use `-calt`, `-liga`, and `-dlig` (as
 # separate repetitive entries in your config).
-# font-feature = calt
+font-feature = calt
 #
 # # i
 # font-feature = cv06
@@ -76,7 +76,7 @@ font-style-bold-italic = default
 # # @
 # font-feature = ss05
 # # >>=, |=, etc. as arrows
-# font-feature = ss09
+# font-feature = ss01
 
 
 # Font size in points. This value can be a non-integer and the nearest integer
@@ -104,11 +104,11 @@ font-size = 14
 # 
 # Common axes are: `wght` (weight), `slnt` (slant), `ital` (italic), `opsz`
 # (optical size), `wdth` (width), `GRAD` (gradient), etc.
-font-variation = 
+font-variation =
 
-font-variation-bold = 
-font-variation-italic = 
-font-variation-bold-italic = 
+font-variation-bold =
+font-variation-italic =
+font-variation-bold-italic =
 # Force one or a range of Unicode codepoints to map to a specific named font.
 # This is useful if you want to support special symbols or if you want to use
 # specific glyphs that render better for your specific font.
@@ -125,7 +125,7 @@ font-variation-bold-italic =
 # 
 # Changing this configuration at runtime will only affect new terminals,
 # i.e. new windows, tabs, etc.
-font-codepoint-map = 
+font-codepoint-map =
 
 # Draw fonts with a thicker stroke, if supported. This is only supported
 # currently on MacOS.
@@ -156,14 +156,14 @@ font-thicken = false
 # 
 #   * Powerline glyphs will be adjusted along with the cell height so
 #     that things like status lines continue to look aligned.
-adjust-cell-width = 
-adjust-cell-height = 
-adjust-font-baseline = 
-adjust-underline-position = 
-adjust-underline-thickness = 
-adjust-strikethrough-position = 
-adjust-strikethrough-thickness = 
-adjust-cursor-thickness = 
+adjust-cell-width =
+adjust-cell-height =
+adjust-font-baseline =
+adjust-underline-position =
+adjust-underline-thickness =
+adjust-strikethrough-position =
+adjust-strikethrough-thickness =
+adjust-cursor-thickness =
 # The method to use for calculating the cell width of a grapheme cluster.
 # The default value is `unicode` which uses the Unicode standard to determine
 # grapheme width. This results in correct grapheme width but may result in
@@ -216,14 +216,14 @@ theme = Argonaut
 background = #16161d
 
 # Foreground color for the window.
-foreground = 
+foreground =
 
 # The foreground and background color for selection. If this is not set, then
 # the selection color is just the inverted window background and foreground
 # (note: not to be confused with the cell bg/fg).
-selection-foreground = 
+selection-foreground =
 
-selection-background = 
+selection-background =
 # Swap the foreground and background colors of cells for selection. This
 # option overrides the `selection-foreground` and `selection-background`
 # options.
@@ -510,7 +510,7 @@ minimum-contrast = 1
 # palette = 255=#eeeeee
 
 # The color of the cursor. If this is not set, a default will be chosen.
-cursor-color = 
+cursor-color =
 
 # The opacity level (opposite of transparency) of the cursor. A value of 1
 # is fully opaque and a value of 0 is fully transparent. A value less than 0
@@ -540,11 +540,11 @@ cursor-style = bar
 # (AT&T cursor blink) as an alternate approach to turning blinking on/off. If
 # this is set to any value other than null, DEC mode 12 will be ignored but
 # `DECSCUSR` will still be respected.
-cursor-style-blink = 
+cursor-style-blink =
 
 # The color of the text under the cursor. If this is not set, a default will
 # be chosen.
-cursor-text = 
+cursor-text =
 
 # Enables the ability to move the cursor at prompts by using `alt+click` on
 # Linux and `option+click` on macOS.
@@ -622,7 +622,7 @@ background-blur-radius = 0
 # valid value.
 unfocused-split-opacity = 0.7
 
-unfocused-split-fill = 
+unfocused-split-fill =
 # The command to run, usually a shell. If this is not an absolute path, it'll
 # be looked up in the `PATH`. If this is not set, a default will be looked up
 # from your system. The rules for the default lookup are:
@@ -638,7 +638,7 @@ unfocused-split-fill =
 # If you're using the `ghostty` CLI there is also a shortcut to run a command
 # with arguments directly: you can use the `-e` flag. For example: `ghostty -e
 # fish --with --custom --args`.
-command = 
+command =
 
 # If true, keep the terminal open after the command exits. Normally, the
 # terminal window closes when the running command (such as a shell) exits.
@@ -714,7 +714,7 @@ fullscreen = false
 # The title Ghostty will use for the window. This will force the title of the
 # window to be this title at all times and Ghostty will ignore any set title
 # escape sequences programs (such as Neovim) may send.
-title = 
+title =
 
 # The setting that will change the application class value.
 # 
@@ -731,7 +731,7 @@ title =
 # The default is `com.mitchellh.ghostty`.
 # 
 # This only affects GTK builds.
-class = 
+class =
 
 # This controls the instance name field of the `WM_CLASS` X11 property when
 # running under X11. It has no effect otherwise.
@@ -739,7 +739,7 @@ class =
 # The default is `ghostty`.
 # 
 # This only affects GTK builds.
-x11-instance-name = 
+x11-instance-name =
 
 # The directory to change to after starting the command.
 # 
@@ -760,7 +760,7 @@ x11-instance-name =
 #   * `home` - The home directory of the executing user.
 # 
 #   * `inherit` - The working directory of the launching process.
-working-directory = 
+working-directory =
 
 # Key bindings. The format is `trigger=action`. Duplicate triggers will
 # overwrite previously set values.
@@ -947,7 +947,7 @@ window-decoration = false
 # The font that will be used for the application's window and tab titles.
 # 
 # This is currently only supported on macOS.
-window-title-font-family = 
+window-title-font-family =
 
 # The theme to use for the windows. Valid values:
 # 
@@ -1110,7 +1110,7 @@ click-repeat-interval = 0
 # 
 # Cycles are not allowed. If a cycle is detected, an error will be logged and
 # the configuration file will be ignored.
-config-file = 
+config-file =
 
 # Confirms that a surface should be closed before closing it. This defaults to
 # true. If set to false, surfaces will close without any confirmation.
@@ -1216,7 +1216,7 @@ vt-kam-allowed = false
 # 
 # Changing this value at runtime and reloading the configuration will only
 # affect new windows, tabs, and splits.
-custom-shader = 
+custom-shader =
 
 # If `true` (default), the focused terminal surface will run an animation
 # loop when custom shaders are used. This uses slightly more CPU (generally
@@ -1335,5 +1335,5 @@ term = xterm-ghostty
 
 # String to send when we receive `ENQ` (`0x05`) from the command that we are
 # running. Defaults to an empty string if not set.
-enquiry-response = 
+enquiry-response =
 
