@@ -935,7 +935,9 @@ vt-kam-allowed = false
 #
 # Changing this value at runtime and reloading the configuration will only
 # affect new windows, tabs, and splits.
-custom-shader =
+# FIXME: The crt shader doesnt work (makes whole screen white) without the bloom shader (idk why)?
+# custom-shader = /home/sam/.config/ghostty/shaders/bloom.glsl
+# custom-shader = /home/sam/.config/ghostty/shaders/crt.glsl
 
 # If `true` (default), the focused terminal surface will run an animation
 # loop when custom shaders are used. This uses slightly more CPU (generally
