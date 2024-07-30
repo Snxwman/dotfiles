@@ -3,7 +3,6 @@ return {
         "zaldih/themery.nvim",
         lazy = false,
         opts = {
-            themeConfigFile = "~/.config/nvim/lua/theme.lua",
             livePreview = "true",
             themes = {
                 {
