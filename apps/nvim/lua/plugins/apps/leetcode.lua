@@ -13,12 +13,16 @@ return {
         "nvim-tree/nvim-web-devicons",
     },
     keys = {
-
+            {"<leader>c", "<cmd>Leet console<cr>", desc = "Leet console"},
+            {"<leader>t", "<cmd>Leet test<cr>", desc = "Leet test"},
+            {"<leader>s", "<cmd>Leet submit<cr>", desc = "Leet submit"},
     },
     opts = {
         arg = leet_arg,
-        lang = "python3",
-        directory = vim.fn.stdpath("data") .. "/leetcode/",
+        lang = "rust",
+        storage = {
+            home = vim.fn.stdpath("data") .. "/leetcode/",
+        },
         logging = true,
         cache = { update_interval = 86400 }  -- One day in seconds
     },
