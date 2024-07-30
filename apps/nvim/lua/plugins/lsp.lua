@@ -21,6 +21,7 @@ return {
                 "docker_compose_language_service",
                 "elixirls",
                 "fennel_language_server",
+                "glsl_analyzer",
                 "gopls",
                 "html",
                 "jsonls",
@@ -53,7 +54,7 @@ return {
             lspconfig.bashls.setup({ capabilities = capabilities })
             lspconfig.clangd.setup({ capabilities = capabilities })
             lspconfig.clojure_lsp.setup({ capabilities = capabilities })
-            lspconfig.codelldb.setup({ capabilities = capabilities })
+            -- lspconfig.codelldb.setup({ capabilities = capabilities })
             lspconfig.cssls.setup({ capabilities = capabilities })
             lspconfig.dockerls.setup({ capabilities = capabilities })
             lspconfig.docker_compose_language_service.setup({ capabilities = capabilities })
@@ -62,6 +63,7 @@ return {
                 cmd = { "/home/sam/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" };
             })
             lspconfig.fennel_language_server.setup({ capabilities = capabilities })
+            lspconfig.glsl_analyzer.setup({})
             lspconfig.gopls.setup({ capabilities = capabilities })
             lspconfig.html.setup({ capabilities = capabilities })
             lspconfig.jsonls.setup({ capabilities = capabilities })
