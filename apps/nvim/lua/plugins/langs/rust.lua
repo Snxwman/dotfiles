@@ -6,18 +6,19 @@ return {
             "mfussenegger/nvim-dap",
             "adaszko/tree_climber_rust.nvim",
         },
-        version = '^4', -- Recommended
+        version = '^5', -- Recommended
         enabled = true,
+        lazy = false,
         ft = { 'rust' },
         keys = {
-            {"K", "<cmd>RustLsp hover actions<cr>", desc = "Hover actions (rustaceanvim)"},
-            {"<leader>bk", "<cmd>RustLsp moveItem up<cr>", desc = "Move block up"},
-            {"<leader>bj", "<cmd>RustLsp moveItem down<cr>", desc = "Move block down"},
-            {"<leader>J", "<cmd>RustLsp joinLines<cr>", desc = "Join selected lines"},
-            {"<leader>ca", "<cmd>RustLsp codeAction<cr>", desc = "Code actions (rustaceanvim)"},
-            {"<leader>dr", "<cmd>RustLsp debuggables<cr>", desc = "Debuggables"},
-            {"<leader>Oc", "<cmd>RustLsp openCargo<cr>", desc = "Open Cargo.toml"},
-            {"<leader>Od", "<cmd>RustLsp openDocs<cr>", desc = "Open web doc for current symbol"},
+            {"K", "<cmd>RustLsp hover actions<cr>", desc = "Hover actions (rust)"},
+            {"<leader>bk", "<cmd>RustLsp moveItem up<cr>", desc = "Move block up (rust)"},
+            {"<leader>bj", "<cmd>RustLsp moveItem down<cr>", desc = "Move block down (rust)"},
+            {"<leader>J", "<cmd>RustLsp joinLines<cr>", desc = "Join selected lines (rust)"},
+            {"<leader>ca", "<cmd>RustLsp codeAction<cr>", desc = "Code actions (rust)"},
+            {"<leader>dr", "<cmd>RustLsp debuggables<cr>", desc = "Debuggables (rust)"},
+            {"<leader>Oc", "<cmd>RustLsp openCargo<cr>", desc = "Open Cargo.toml (rust)"},
+            {"<leader>Od", "<cmd>RustLsp openDocs<cr>", desc = "Open web doc for current symbol (rust)"},
         },
         opts = {
             server = {
