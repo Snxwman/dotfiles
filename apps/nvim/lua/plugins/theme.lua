@@ -61,53 +61,66 @@ return {
     {
         "kepano/flexoki-neovim",
         name = "flexoki",
+        lazy = true,
     },
     {
         "nyoom-engineering/oxocarbon.nvim",
         name = "oxocarbon",
+        lazy = true,
     },
     {
         "bluz71/vim-moonfly-colors",
         name = "moonfly",
+        lazy = true,
     },
     {
         "rebelot/kanagawa.nvim",
         name = "kanagawa",
+        lazy = true,
     },
     {
         "NLKNguyen/papercolor-theme",
         name = "papercolor",
+        lazy = true,
     },
     {
         "ayu-theme/ayu-vim",
         name = "ayu",
+        lazy = true,
     },
     {
         "Mofiqul/dracula.nvim",
         name = "dracula",
+        lazy = true,
     },
     {
         "zootedb0t/citruszest.nvim",
         name = "citruszest",
+        lazy = true,
     },
     {
         "jaredgorski/SpaceCamp",
         name = "spacecamp",
+        lazy = true,
     },
     {
         "safv12/andromeda.vim",
         name = "andromeda",
+        lazy = true,
     },
     {
         "bratpeki/truedark-vim",
         name = "truedark",
+        lazy = true,
     },
     {
         "justb3a/vim-smarties",
         name = "smarties",
+        lazy = true,
     },
     {
         "daltonmenezes/aura-theme",
         name = "aura-dark",
+        lazy = true,
     },
 }
