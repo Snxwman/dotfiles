@@ -44,6 +44,9 @@ return {
             "hrsh7th/cmp-nvim-lsp"
         },
         keys = {
+            {"K", function() vim.lsp.buf.hover() end, desc = "Display hover hints (LSP)"},
+            {"gd", function() vim.lsp.buf.definition() end, desc = "Jump to definition (LSP)"},
+            {"<leader>ca", mode = {"n", "v"}, function() vim.lsp.buf.code_action() end, desc = "Show code actions (LSP)"},
             {"<leader>h", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, desc = "Toggle inlay hints" },
         },
         config = function()
@@ -64,11 +67,35 @@ return {
             })
             lspconfig.fennel_language_server.setup({ capabilities = capabilities })
             lspconfig.glsl_analyzer.setup({})
-            lspconfig.gopls.setup({ capabilities = capabilities })
+            lspconfig.gopls.setup({
+                capabilities = capabilities,
+                cmd = { "gopls" },
+                filetypes = { "go", "gomod", "gowork", "gotmpl" },
+                settings = {
+                    gopls = {
+                        completeUnimported = true,
+                        usePlaceholders = true,
+                        analyses = {
+                            shadow = true,
+                            unusedvariable = true,
+                            useany = true,
+                        },
+                        hints = {
+                            assignVariableTypes = true,
+                            compositeLiteralFields = true,
+                            parameterNames = true,
+                            rangeVariableTypes = true,
+                        },
+                    }
+                }
+            })
             lspconfig.html.setup({ capabilities = capabilities })
             lspconfig.jsonls.setup({ capabilities = capabilities })
             lspconfig.tsserver.setup({ capabilities = capabilities })
-            lspconfig.ltex.setup({ capabilities = capabilities })
+            lspconfig.ltex.setup({
+                capabilities = capabilities,
+                filetypes = {"tex"}
+            })
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
                 settings = {
@@ -89,10 +116,6 @@ return {
             --         ["rust_analyzer"] = function() end,
             --     },
             -- })
-
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-            vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
         end
     },
     {
