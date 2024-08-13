@@ -26,7 +26,7 @@ vim.opt.cursorline = true
 
 vim.opt.breakindent = true
 
-vim.opt.list = true
+vim.opt.list = false
 vim.opt.listchars = { trail = "", nbsp = "␣", }
 
 vim.opt.hlsearch = true
