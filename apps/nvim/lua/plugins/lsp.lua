@@ -24,7 +24,9 @@ return {
                 "glsl_analyzer",
                 "gopls",
                 "html",
+                "htmx",
                 "jsonls",
+                "templ",
                 "tsserver",
                 "ltex",
                 "lua_ls",
@@ -70,7 +72,7 @@ return {
             lspconfig.gopls.setup({
                 capabilities = capabilities,
                 cmd = { "gopls" },
-                filetypes = { "go", "gomod", "gowork", "gotmpl" },
+                filetypes = { "go", "gomod", "gowork", "gotmpl", "templ" },
                 settings = {
                     gopls = {
                         completeUnimported = true,
@@ -89,6 +91,11 @@ return {
                     }
                 }
             })
+            lspconfig.templ.setup({
+                capabilities = capabilities,
+                filetypes = { 'templ' },
+            })
+            lspconfig.htmx.setup({ capabilities = capabilities })
             lspconfig.html.setup({ capabilities = capabilities })
             lspconfig.jsonls.setup({ capabilities = capabilities })
             lspconfig.tsserver.setup({ capabilities = capabilities })
