@@ -11,7 +11,6 @@ return {
         lazy = false,
         ft = { 'rust' },
         keys = {
-            {"K", "<cmd>RustLsp hover actions<cr>", desc = "Hover actions (rust)"},
             {"<leader>bk", "<cmd>RustLsp moveItem up<cr>", desc = "Move block up (rust)"},
             {"<leader>bj", "<cmd>RustLsp moveItem down<cr>", desc = "Move block down (rust)"},
             {"<leader>J", "<cmd>RustLsp joinLines<cr>", desc = "Join selected lines (rust)"},
@@ -49,6 +48,7 @@ return {
                 server = {
                     on_attach = function(_, bufnr)
                         local opts = { noremap=true, silent=true }
+                        vim.api.nvim_buf_set_keymap(bufnr, 'n', 's', '<cmd>RustLsp hover actions<CR>', opts)
                         vim.api.nvim_buf_set_keymap(bufnr, 'n', 's', '<cmd>lua require("tree_climber_rust").init_selection()<CR>', opts)
                         vim.api.nvim_buf_set_keymap(bufnr, 'x', 's', '<cmd>lua require("tree_climber_rust").select_incremental()<CR>', opts)
                         vim.api.nvim_buf_set_keymap(bufnr, 'x', 'S', '<cmd>lua require("tree_climber_rust").select_previous()<CR>', opts)

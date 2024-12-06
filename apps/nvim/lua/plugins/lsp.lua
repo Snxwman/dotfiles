@@ -26,8 +26,9 @@ return {
                 "html",
                 "htmx",
                 "jsonls",
+                "nil_ls",
                 "templ",
-                "tsserver",
+                "ts_ls",
                 "ltex",
                 "lua_ls",
                 "marksman",
@@ -35,7 +36,8 @@ return {
                 "ruff",
                 "rust_analyzer",
                 "svelte",
-                "tsserver"
+                "tailwindcss",
+                "ts_ls"
             }
         },
     },
@@ -91,6 +93,7 @@ return {
                     }
                 }
             })
+            lspconfig.nil_ls.setup({})
             lspconfig.templ.setup({
                 capabilities = capabilities,
                 filetypes = { 'templ' },
@@ -98,7 +101,7 @@ return {
             lspconfig.htmx.setup({ capabilities = capabilities })
             lspconfig.html.setup({ capabilities = capabilities })
             lspconfig.jsonls.setup({ capabilities = capabilities })
-            lspconfig.tsserver.setup({ capabilities = capabilities })
+            lspconfig.ts_ls.setup({ capabilities = capabilities })
             lspconfig.ltex.setup({
                 capabilities = capabilities,
                 filetypes = {"tex"}
@@ -123,6 +126,9 @@ return {
             --         ["rust_analyzer"] = function() end,
             --     },
             -- })
+            lspconfig.tailwindcss.setup({
+                capabilities = capabilities
+            })
         end
     },
     {
