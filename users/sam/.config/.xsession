@@ -4,7 +4,7 @@
 /usr/bin/xmodmap ~/.config/.xmodmap  # Cannot be forked or sxhkd will not load the correct binds.
 
 # Audio
-/usr/bin/pipewire -c ~/.config/pipewire.conf &  # pipewire.conf loads wireplumber as a module
+/usr/bin/pipewire &  # pipewire.conf loads wireplumber as a module
 
 # Backgroud programs
 /usr/bin/blueman-applet &
