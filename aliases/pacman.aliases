@@ -1,0 +1,11 @@
+#!/usr/bin/zsh
+
+alias pac="sudo pacman"
+
+alias pacI="sudo pacman -S"
+alias paci="sudo pacman -Syu"
+alias pacu="sudo pacman -Sy"
+alias pacr="sudo pacman -Rsu"
+alias pacR="sudo pacman -Rcns"
+
+alias pacinfo="pacman -Qi"
