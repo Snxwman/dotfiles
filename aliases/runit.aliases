@@ -1,6 +1,17 @@
 #!/usr/bin/env zsh
 
 case $(lsb_release --id --short) in
-	Artix ) alias lssv="ll /run/runit/service/" ;;
-	*     ) alias lssv="ll /var/service/" ;;
+	Artix )
+        _svdir="/etc/runit/sv"
+        _runsvdir="/run/runit/service"  
+        ;;
+	VoidLinux )
+        _svdir="/etc/sv"
+        _runsvdir="/var/service"
+        ;;
 esac
+
+alias sv="sudo sv"
+
+alias lssva="ll $_svdir/"
+alias lssv="ll $_runsvdir/"
