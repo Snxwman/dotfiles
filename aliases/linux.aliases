@@ -27,7 +27,7 @@ alias mv="mv --verbose"
 alias rm="rm --verbose"
 
 # Workarounds
-alias wget="wget --hsts-file $XDG_CACHE_HOME/history/.wget-hsts"
+alias wget="wget --hsts-file $XDG_CACHE_HOME/.wget-hsts"
 
 # Misc
 alias emptytrash="rm --force --recursive $XDG_DATA_HOME/Trash"  # Does not delete files on external devices
