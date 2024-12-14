@@ -2,3 +2,4 @@
 
 alias senv="source $ZDOTDIR/.zshenv"
 alias szrc="source $ZDOTDIR/.zshrc"
+alias rgh="fc -li 0 | rg"

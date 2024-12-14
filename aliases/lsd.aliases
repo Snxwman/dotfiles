@@ -5,6 +5,7 @@
 # TODO:
 #     - Fix all aliases that use a filter. They currently only work on the CWD.
 
+alias gls="/usr/bin/ls"
 alias ls="lsd"
 
 alias ll="ls --long --group-dirs first"        # Respecify `--group-dirs last` at prompt to override `first`.

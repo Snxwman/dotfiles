@@ -2,5 +2,6 @@
 
 # Bat: A cat(1) clone with syntax highlighting and Git integration. [https://github.com/sharkdp/bat]
 
+alias gcat="/usr/bin/cat"
 alias cat="bat"
 
