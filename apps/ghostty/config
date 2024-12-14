@@ -671,7 +671,7 @@ window-inherit-font-size = true
 
 # If false, windows won't have native decorations, i.e. titlebar and
 # borders.
-window-decoration = false
+window-decoration = true
 
 # The font that will be used for the application's window and tab titles.
 #
