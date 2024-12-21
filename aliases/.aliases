@@ -34,5 +34,7 @@ source "$ALIASES/user.aliases"
 [[ -n $(bat --version) ]] && source "$ALIASES/bat.aliases"
 [[ -n $(lsd --version) ]] && source "$ALIASES/lsd.aliases"
 
+[[ -n $(qtile --version) ]] && source "$ALIASES/qtile.aliases"
+
 alias sa="source $ALIASES/.aliases"
 

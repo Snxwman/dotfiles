@@ -1,0 +1,7 @@
+#!/usr/bin/zsh
+
+alias qrestart="qtile cmd-obj -o root -f restart"
+alias qreload="qtile cmd-obj -o root -f reload_config"
+alias qwindows="qtile cmd-obj -o root -f windows"
+
+alias qgroup="qtile cmd-obj -o group"
