@@ -32,3 +32,5 @@ alias wget="wget --hsts-file $XDG_CACHE_HOME/.wget-hsts"
 # Misc
 alias emptytrash="rm --force --recursive $XDG_DATA_HOME/Trash"  # Does not delete files on external devices
 alias lsenv="printenv | sort"
+
+alias lsblkf="sudo lsblk --output SIZE,NAME,FSTYPE,LABEL,MOUNTPOINTS,UUID"
