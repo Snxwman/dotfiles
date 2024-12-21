@@ -2,6 +2,7 @@
 .zcompdump
 
 __pycache__
+.mypy_cache
 
 secrets
 
