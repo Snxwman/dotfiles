@@ -462,7 +462,7 @@ mouse-scroll-multiplier = 1
 #
 # Changing this value at runtime (and reloading config) will only affect new
 # windows, tabs, and splits.
-background-opacity = .5
+background-opacity = 0.9
 
 # The opacity level (opposite of transparency) of an unfocused split.
 # Unfocused splits by default are slightly faded out to make it easier to see
