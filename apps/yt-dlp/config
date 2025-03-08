@@ -1,0 +1,75 @@
+# vim: set filetype=config:
+
+# title_[site].ext
+#--output "%(title)s_[%()s].%(ext)s"
+#--restrict-filenames
+
+# General Options
+--color always
+--live-from-start
+--no-playlist
+
+# Network Options
+#--proxy
+
+# Geo-restrictions
+
+# Video Selection
+
+# Download Options
+--concurrent-fragments 20
+--buffer-size 16k
+
+# Filesystem Options
+#--batch-file "~/dl.urls
+#--paths \
+#    temp:/tmp
+--output-na-placeholder ""
+--trim-filenames 200
+--no-overwrites
+--no-mtime
+--write-description
+--write-info-json
+--no-clean-info-json
+--write-comments
+# Major issues with YouTube blocking accounts that use cookies
+#--cookies-from-browser brave
+
+# Thumbnail Options
+--write-thumbnail
+
+# Internet Shortcut Options
+
+# Verbosity and Simulation Options
+#--progress-template \
+#    
+
+# Workarounds
+
+# Video Format Options
+--format "bv*+ba/b"
+#--merge-output-format "mp4/av1"
+#--merge-output-format "mp4/mkv"
+
+# Subtitle Options
+--write-subs
+--write-auto-subs
+--sub-langs "en.*,-live_chat"
+
+# Authenticaton Options
+
+# Post-Processing Options
+#--remux-video "aac>m4a/mov>mp4/mkv"
+#--recode-video av1
+#--embed-thumbnail
+#--embed-chapters
+#--ffmpeg-location ""
+#--exec
+#--convert-thumbnails png
+#--force-keyframs-at-cuts  # NEED TO LOOK INTO
+
+# SponsorBlock Options
+#--sponsorblock-mark "sponsor,selfpromo,preview,outro,poi_highlight"
+
+# Extractor Options
+
