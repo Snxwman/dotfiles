@@ -15,8 +15,8 @@ export XDG_MUSIC_DIR="$HOME/media/audio/music"
 export XDG_PICTURES_DIR="$HOME/media/pictures"
 export XDG_VIDEOS_DIR="$HOME/media/videos"
 
-#export XDG_PUBLICSHARE_DIR="$HOME/cloud/public"
-#export XDG_TEMPLATES_DIR="$HOME/documents/templates"
+#export XDG_TEMPLATES_DIR="$HOME/documents/.templates"
+#export XDG_PUBLICSHARE_DIR=""
 
 # Short Hands
 local APP_CONFIG="$XDG_CONFIG_HOME/.app"
@@ -36,13 +36,13 @@ export WGETRC="$XDG_CONFIG_HOME/.wgetrc"
 # Default apps
 export BROWSER="brave"
 export EDITOR="nvim"
+#export VISUAL="code-oss"
 #export PAGER=""
 export READER="zathura"
 export SHELL="zsh"
 # This gets set by the terminal app itself so it will adapt to using different terminals.
 # The line is left here only for documentation on where it is actually set.
 #export TERMINAL=""
-#export VISUAL="code-oss"
 
 # History files and options
 export HISTFILE="$HISTORY_DIR/zsh"
@@ -56,6 +56,13 @@ export NODE_REPL_HISTORY_SIZE="1000000"
 export NODE_REPL_MODE="sloppy"
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/js/npm/"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npmrc"
+
+# Works post python 3.13
+export PYTHON_HISTORY="$HISTORY_DIR/python"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/.repl.py"
+
+export YARNRC_STORE="$XDG_CONFIG_HOME/yarn/store/"
+export YARNRC="$XDG_CONFIG_HOME/yarn/.yarnrc"
 
 # Non-default config locations
 
@@ -73,6 +80,6 @@ export GH_NO_UPDATE_NOTIFIER="1"
 
 export GIT_EDITOR="$EDITOR"
 
-export GOPATH="$HOME/.local/"
-
 export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
+export ZSH_WAKATIME_BIN="$XDG_CONFIG_HOME/wakatime/.wakatime/wakatime-cli-linux-amd64"
+

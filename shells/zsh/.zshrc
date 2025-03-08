@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/zsh
 
 # Uncomment for profiling
 # zmodload zsh/zprof
@@ -15,6 +15,7 @@ bindkey '^A' beginning-of-line    # ctrl a
 bindkey '^E' end-of-line          # ctrl e
 bindkey '^[[1;5C' forward-word    # ctrl ->
 bindkey '^[[1;5D' backward-word   # ctrl <-
+bindkey '^R' history-search-backward 
 
 autoload -U colors && colors
 
@@ -54,12 +55,13 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)
 
-autoload -Uz cd edit extract
+autoload -Uz cd edit extract set_title
 
-chpwd_functions=()     # Executes when the working directory changes.
-periodic_functions=()  # Executes every $PERIOD seconds, just before a prompt.
-precmd_functions=()    # Executes just before each prompt.
-preexec_functions=()   # Executes after a cmd is read, but before it is executed.
+set_title -user -host
+chpwd_functions=()                  # Executes when the working directory changes.
+periodic_functions=()               # Executes every $PERIOD seconds, just before a prompt.
+precmd_functions=( set_title )      # Executes just before each prompt.
+preexec_functions=( set_title )     # Executes after a cmd is read, but before it is executed. 
 
 # On sourcing .zshenv again:
 # Without resourcing .zshenv `HISTFILE` gets set to "$ZDOTDIR/.zsh_history" instead
