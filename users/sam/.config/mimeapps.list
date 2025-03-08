@@ -51,3 +51,4 @@ x-scheme-handler/sgnl=signal.desktop
 x-scheme-handler/signalcaptcha=signal.desktop
 x-scheme-handler/postman=Postman.desktop
 # x-scheme-handler/mailto=trojita.desktop;
+x-scheme-handler/betterdiscord=discord.desktop

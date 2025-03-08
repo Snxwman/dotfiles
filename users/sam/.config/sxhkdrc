@@ -5,4 +5,4 @@ shift + ctrl + alt + super + F22
     flameshot gui
 
 shift + ctrl + alt + v
-    kitty --title vm_launcher --command ~/.scripts/vm_launch
+    ghostty --title vm_launcher --command ~/.scripts/vm_launch
