@@ -14,6 +14,7 @@ secrets
 apps/ghostty/share/
 apps/lazygit/state.yml
 apps/mpv/scripts/
+apps/rofi/
 
 shells/zsh/plugins
 
