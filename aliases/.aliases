@@ -16,6 +16,7 @@ case $(uname) in
             Artix ) 
                 source "$ALIASES/artix.aliases"
                 source "$ALIASES/pacman.aliases"
+                source "$ALIASES/yay.aliases"
                 source "$ALIASES/runit.aliases"
                 ;;
 

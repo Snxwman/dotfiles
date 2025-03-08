@@ -1,7 +1,12 @@
 #!/usr/bin/zsh
 
+alias qcmd="qtile cmd-obj -o"
+alias qgroup="qtile cmd-obj -o group"
+
 alias qrestart="qtile cmd-obj -o root -f restart"
 alias qreload="qtile cmd-obj -o root -f reload_config"
+
 alias qwindows="qtile cmd-obj -o root -f windows"
 
-alias qgroup="qtile cmd-obj -o group"
+alias qlog="cat ~/.local/share/qtile/qtile.log"
+alias qclog="echo -n > ~/.local/share/qtile/qtile.log"

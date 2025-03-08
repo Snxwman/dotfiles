@@ -3,3 +3,5 @@
 alias senv="source $ZDOTDIR/.zshenv"
 alias szrc="source $ZDOTDIR/.zshrc"
 alias rgh="fc -li 0 | rg"
+alias lsfpath="echo $fpath | tr ' ' '\n'"
+alias lszpaths="echo '\$PATH\n====='; echo $PATH | tr ':' '\n'; echo '\n\$fpath\n====='; echo $fpath | tr ' ' '\n'"

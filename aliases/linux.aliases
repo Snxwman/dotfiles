@@ -12,6 +12,9 @@ alias rmrf="rm --force --recursive"
 alias s="source"
 alias t="type -a"
 alias open="xdg-open"
+alias chmodx="sudo chmod +x"
+alias rmmodx="sudo chmod -x"
+alias lspath="echo $PATH | tr ':' '\n'"
 
 # Rebinds
 alias which="type -a"

@@ -1,0 +1,4 @@
+#!/usr/bin/zsh
+
+# The system python path is obscured by asdf
+alias yay="PATH=$(getconf PATH) yay"
