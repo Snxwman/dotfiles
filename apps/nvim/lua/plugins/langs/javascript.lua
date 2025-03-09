@@ -1,20 +1,11 @@
 return {
     {
-        "MeanderingProgrammer/markdown.nvim",
-        enabled = false,
-        ft = { "markdown" },
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "echasnovski/mini.icons",
-        },
-        opts = {},
-    },
-    {
         "nvim-treesitter/nvim-treesitter",
         opts = {
             ensure_installed = {
-                "markdown",
-                "markdown_inline",
+                "javascript",
+                "svelte",
+                "typescript",
             }
         },
     },
@@ -22,7 +13,9 @@ return {
         "williamboman/mason-lspconfig.nvim",
         opts = {
             ensure_installed = {
-                "marksman",
+                "htmx",
+                "svelte",
+                "ts_ls",
             },
         },
     },
@@ -30,8 +23,12 @@ return {
         "neovim/nvim-lspconfig",
         opts = {
             servers = {
-                marksman = {},
+                htmx = {},
+                svelte = {},
+                ts_ls = {}
             }
         }
     }
 }
+
+

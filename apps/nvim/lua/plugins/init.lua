@@ -1,5 +1,9 @@
 return {
-    { import = 'plugins.apps' },
-    { import = 'plugins.langs' },
-    { import = 'plugins.ui' },
+    { import = "plugins.theme" },
+    { import = "plugins.ui" },
+    { import = "plugins.coding" },
+    { import = "plugins.util" },
+    { import = "plugins.lsp" },
+    { import = "plugins.langs" },
+    { import = "plugins.apps" },
 }

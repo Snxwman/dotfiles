@@ -1,9 +1,10 @@
 return {
     "epwalsh/obsidian.nvim",
+    enabled = false,
     version = "*",  -- recommended, use latest release instead of latest commit
     lazy = true,
     event = {
-      -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+      -- If you want to use the home shortcut "~" here you need to call "vim.fn.expand".
       -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
       "BufReadPre " .. vim.fn.expand "~" .. "/documents/obsidian/**/**.md",
       "BufNewFile " .. vim.fn.expand "~" .. "/documents/obsidian/**/**.md",
@@ -18,6 +19,5 @@ return {
                 path = "~/documents/obsidian/Personal",
             },
         },
-        -- see below for full list of options 👇
     },
 }

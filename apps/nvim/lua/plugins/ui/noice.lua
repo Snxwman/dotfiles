@@ -9,6 +9,15 @@ return {
         "rcarriga/nvim-notify",
     },
     event = "VeryLazy",
+    keys = function()
+        require("which-key").add({
+            {
+                {"<leader>nd", "<cmd>NoiceDismiss<cr>", desc = "[Noice] Dismiss all messages"},
+                {"<leader>ne", "<cmd>NoiceErrors<cr>",  desc = "[Noice] Show errors"},
+                {"<leader>nh", "<cmd>NoiceHistory<cr>", desc = "[Noice] Show history"},
+            }
+        })
+    end,
     opts = {
         lsp = {
             -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -23,7 +32,7 @@ return {
             command_palette = true, -- position the cmdline and popupmenu together
             long_message_to_split = true, -- long messages will be sent to a split
             inc_rename = false, -- enables an input dialog for inc-rename.nvim
-            lsp_doc_border = false, -- add a border to hover docs and signature help
+            lsp_doc_border = true, -- add a border to hover docs and signature help
         },
     },
 }

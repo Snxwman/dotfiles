@@ -1,77 +1,34 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    config = function()
-        local configs = require("nvim-treesitter.configs")
-
-        vim.filetype.add {
-            extension = {
-                zsh = "sh",
-                sh = "sh"
+    opts = {
+        highlight = { enable = true },
+        indent = { enable = true },
+        incremental_selection = {
+            enable = true,
+            keymaps = {
+                init_selection = "<C-n>",
+                node_incremental = "<C-n>",
+                node_decremental = "<C-m>",
+                scope_incremental = "<C-s>",
             },
-            filename = {
-                [".zshrc"] = "sh",
-                [".zshenv"] = "sh"
-            }
-        }
-
-        configs.setup({
-            ensure_installed = {
-                "bash",
-                "c",
-                "clojure",
-                "cmake",
-                "commonlisp",
-                "cpp",
-                "css",
-                "csv",
-                "dockerfile",
-                "elixir",
-                "fennel",
-                "git_config",
-                "git_rebase",
-                "gitattributes",
-                "gitcommit",
-                "gitignore",
-                "glsl",
-                "go",
-                "gomod",
-                "gosum",
-                "gotmpl",
-                "gowork",
-                "gpg",
-                "html",
-                "ini",
-                "java",
-                "javascript",
-                "jq",
-                "json",
-                "json5",
-                "latex",
-                "lua",
-                "make",
-                "markdown",
-                "markdown_inline",
-                "python",
-                "passwd",
-                "pem",
-                "rasi",
-                "rust",
-                "sql",
-                "ssh_config",
-                "svelte",
-                "sxhkdrc",
-                "templ",
-                "toml",
-                "typescript",
-                "vim",
-                "vimdoc",
-                "xml",
-                "yaml",
-                "yuck",
-            },
-            highlight = { enable = true },
-            indent = { enable = true},
-        })
-    end
+        },
+        ensure_installed = {
+            "csv",
+            "gpg",
+            "ini",
+            "make",
+            "passwd",
+            "pem",
+            "rasi",
+            "ssh_config",
+            "sxhkdrc",
+            "toml",
+            "vim",
+            "vimdoc",
+            "xml",
+            "yaml",
+            "yuck",  -- TODO: put somwhere else
+        },
+    },
 }

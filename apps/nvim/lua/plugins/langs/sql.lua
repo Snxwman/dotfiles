@@ -1,20 +1,9 @@
 return {
     {
-        "MeanderingProgrammer/markdown.nvim",
-        enabled = false,
-        ft = { "markdown" },
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "echasnovski/mini.icons",
-        },
-        opts = {},
-    },
-    {
         "nvim-treesitter/nvim-treesitter",
         opts = {
             ensure_installed = {
-                "markdown",
-                "markdown_inline",
+                "sql",
             }
         },
     },
@@ -22,7 +11,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         opts = {
             ensure_installed = {
-                "marksman",
+                "html",
             },
         },
     },
@@ -30,8 +19,9 @@ return {
         "neovim/nvim-lspconfig",
         opts = {
             servers = {
-                marksman = {},
+                html = {},
             }
         }
     }
 }
+

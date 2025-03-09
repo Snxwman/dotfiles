@@ -8,7 +8,7 @@ return {
                 enable = true,
                 parsers = { "css" },
             },
-            tailwind = 'both',
+            tailwind = "both",
             always_update = true,
         },
         filetypes = {
