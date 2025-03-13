@@ -12,6 +12,10 @@ function lsp.toggle_hints()
     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end
 
+function lsp.toggle_diagnostics()
+    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end
+
 function lsp.use_treesitter_hl(buf, lsp_client_id)
     vim.treesitter.start(buf)
     vim.lsp.semantic_tokens.stop(buf, lsp_client_id)

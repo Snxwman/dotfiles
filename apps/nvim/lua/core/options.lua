@@ -1,9 +1,5 @@
 vim.g.have_nerd_font = true
 
--- Keys
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
 -- Indentation
 vim.opt.expandtab = true
 vim.opt.shiftround = true

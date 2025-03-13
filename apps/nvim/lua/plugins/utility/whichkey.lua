@@ -18,31 +18,32 @@ return {
         },
         ---@type number | fun(ctx: { keys: string, mode: string, plugin?: string }):number
         delay = function(ctx)
-            -- local modKey = 
             return ctx.plugin and 0 or 100
         end,
         spec = {
             { "<leader>e", group = "Explorer",      icon = { icon = " ", color = "yellow" } },
-            { "<leader>f", group = "File",          icon = { icon = " ", color = "yellow" } },
-            { "<leader>b", group = "Buffer",        icon = { icon = " ", color = "red"    } },
+            { "<leader>f", group = "File",          icon = { icon = " ", color = "yellow" } },
+            { "<leader>b", group = "Buffer",        icon = { icon = " ", color = "yellow" } },
             { "<leader>w", group = "Window",        icon = { icon = " ", color = "blue"   } },
             { "<leader>a", group = "AI",            icon = { icon = " ", color = "red"    } },
             { "<leader>l", group = "LSP",           icon = { icon = "󱃖 ", color = "purple" } },
             { "<leader>g", group = "Git",           icon = { icon = " ", color = "orange" } },
             { "<leader>n", group = "Notifications", icon = { icon = " ", color = "yellow" } },
             { "<leader>t", group = "Toggle",        icon = { icon = " ", color = "green"  } },
-            { "<leader>x", group = "Trouble",       icon = { icon = "󰔫 ", color = "orange" } },
-            { "<leader>v", group = "Neovim",        icon = { icon = " ", color = "green" } },
+            { "<leader>x", group = "Trouble",       icon = { icon = "󱍼 ", color = "orange" } },
+            { "<leader>v", group = "Neovim",        icon = { icon = " ", color = "green"  } },
             { "<leader>u", group = "Utilities",     icon = { icon = " ", color = "cyan"   } },
 
-            { "<leader>?", "<cmd>WhichKey<cr>", icon = "󱍊 " },
+            { "<leader>tw", "<cmd>set wrap<cr>", icon = { icon = "󰖶 ", color = "blue"}, desc = "Toggle line wrapping" },
+
+            { "<leader>?", "<cmd>WhichKey<cr>", icon = { icon = "󱍊 ", color = "green" }, desc = "Open WhichKey menu"},
         },
         icons = {
             rules = {
-                -- { pattern = "[LSP]", icon = "" },
                 { pattern = "rust", icon = "", color = "orange" },
             },
         },
+        ---@type number|fun(node: wk.Node):boolean?
         expand = function (node)
             local maxChildren = 2
             return node:count() < maxChildren or not node.desc
@@ -54,6 +55,5 @@ return {
         layout = {
             -- max = 100
         },
-        ---@type number|fun(node: wk.Node):boolean?
     },
 }
