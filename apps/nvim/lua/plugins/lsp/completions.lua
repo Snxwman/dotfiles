@@ -47,8 +47,8 @@ return {
                     { name = "luasnip", group_index = 2 },
                     { name = "buffer", group_index = 2 },
                     { name = "path", group_index = 2 },
-                    { name = "emoji", keyword_length = 2 },
-                    { name = "nerdfont", keyword_length = 2 },
+                    { name = "emoji", keyword_length = 3 },
+                    { name = "nerdfont", keyword_length = 3 },
                 }),
                 sorting = {
                     comparators = {
@@ -138,43 +138,96 @@ return {
             -- TODO: put somewhere else
             vim.api.nvim_create_autocmd("VimEnter", {
                 callback = function()
-                    require("cmp")
-                    local function get_hl(name)
+                    -- require("cmp")
+                    local color = require("util.color")
+
+                    local function get_hl_group(name)
                         local hl = vim.api.nvim_get_hl(0, { name = name })
+
                         while hl and hl.link do
                             local link = hl.link
                             hl = vim.api.nvim_get_hl(0, { name = link })
                         end
+
                         return hl
                     end
 
-                    local function swap_hl_colors(hl_name)
-                        local hl_info = get_hl(hl_name)
-
-                        local color = type(hl_info.fg) == "number" and string.format("#%06x", hl_info.fg) or ""
-                        local new_hl = {}
-                        new_hl.bg = color
-                        return new_hl
-                    end
-
-                    local function set_inverted_hl_groups(hl1, text)
-                        local hl_inv = swap_hl_colors(hl1)
-                        if type(hl_inv) == "table" then
-                            hl_inv.fg = string.format("#%06x", text.bg)   -- Set new foreground to hl2's foreground
-                            vim.api.nvim_set_hl(0, hl1, hl_inv)
-                            -- CmpItemAbbrMatch
-                            -- CmpItemAbbrMatchFuzzy
-                            -- FIX: CmpItemKindText (too dark)
+                    local function hex(c)
+                        if type(c) == "number" then
+                            return string.format("#%06x", c)
                         end
                     end
 
-                    local cmpKinds = require("cmp.types.lsp")
-                    for kind in pairs(cmpKinds.CompletionItemKind) do
+                    local function new_hl(hl)
+                        local nhl = {
+                            bg = hex(hl.bg),
+                            fg = hex(hl.fg),
+                            sp = hex(hl.sp),
+                            bold = hl.bold,
+                            underline = hl.underline,
+                            italic = hl.italic,
+                        }
+                        return nhl
+                    end
+
+                    local function swap_fg_bg(hl_name)
+                        local hl = new_hl(get_hl_group(hl_name))
+                        local bg = hl.bg
+                        hl.bg = hl.fg
+                        hl.fg = bg
+                        return hl
+                    end
+
+                    local function set_inverted_hl_group(hl_name, fg_hl)
+                        local kind_hl = swap_fg_bg(hl_name)
+                        if type(kind_hl) == "table" then
+                            kind_hl.fg = hex(fg_hl.fg)
+                            vim.api.nvim_set_hl(0, hl_name, kind_hl)
+                        end
+                    end
+
+                    local function set_dark_hl_group(hl_name, bg_hl)
+                        local kind_hl = new_hl(get_hl_group(hl_name))
+                        if type(kind_hl) == "table" then
+                            kind_hl.bg = color.mix(hex(bg_hl.fg), "#000000", 50)
+                            vim.api.nvim_set_hl(0, hl_name, kind_hl)
+                        end
+                    end
+
+                    local function set_atom_hl_group(hl_name)
+                        local kind_hl = new_hl(get_hl_group(hl_name))
+                        if type(kind_hl) == "table" then
+                            if kind_hl.fg then
+                                kind_hl.bg = color.mix(kind_hl.fg, "#000000", 70)
+                            else
+                                local pmenu_hl = new_hl(get_hl_group("Pmenu"))
+                                kind_hl.bg = color.mix(pmenu_hl.fg, "#000000", 70)
+                            end
+                                vim.api.nvim_set_hl(0, hl_name, kind_hl)
+                        end
+                    end
+
+                    local style = "atom"
+                    local cmp_kinds = require("cmp.types.lsp")
+                    for kind in pairs(cmp_kinds.CompletionItemKind) do
                         if type(kind) == "string" then
-                            local name = ("CmpItemKind%s"):format(kind)
-                            set_inverted_hl_groups(name, get_hl("Pmenu"))
+                            local hl_name = "CmpItemKind" .. kind
+
+                            if style == "dark" then
+                                -- Dark bg, colored fg
+                                set_dark_hl_group(hl_name, get_hl_group("CmpItemMenu"))
+                            elseif style == "atom" then
+                                set_atom_hl_group(hl_name)
+                            else
+                                -- Colored bg, darg fg
+                                set_inverted_hl_group(hl_name, get_hl_group("CmpItemMenu"))
+                            end
                         end
                     end
+
+                    local abbr_match_hl = new_hl(get_hl_group("CmpItemAbbrMatch"))
+                    abbr_match_hl.bold = true
+                    vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", abbr_match_hl)
                 end
             })
         end
