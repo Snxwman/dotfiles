@@ -1,8 +1,41 @@
-shift + ctrl + alt + super + F21
-    ~/.scripts/bt_toggle
+# Reload sxhkd config
+shift + ctrl + alt + super + F23
+    pkill -USR1 --exact sxhkd
 
-shift + ctrl + alt + super + F22
-    flameshot gui
+# Global media player controls
+XF86AudioPlay
+    playerctl --player=spotify,brave play-pause 2>/dev/null
 
-shift + ctrl + alt + v
-    ghostty --title vm_launcher --command ~/.scripts/vm_launch
+XF86AudioNext
+    playerctl --player=spotify,brave next 2>/dev/null
+
+XF86AudioPrev
+    playerctl --player=spotify,brave prev 2>/dev/null
+
+XF86AudioForward
+    playerctl --player=spotify,brave position 2+ 2>/dev/null
+
+XF86AudioRewind
+    playerctl --player=spotify,brave position 2- 2>/dev/null
+
+shift + XF86AudioPlay
+    playerctl --player=spotify,brave shuffle Toggle 2>/dev/null
+
+# Screenshots (also saves to file due to saveAfterCopy=true in flameshot.ini)
+Print
+    ~/.scripts/screenshot select 2>/dev/null
+
+shift + Print
+    ~/.scripts/screenshot region 2>/dev/null
+
+shift + ctrl + Print
+    ~/.scripts/screenshot monitor 0 2>/dev/null
+
+shift + alt + Print
+    ~/.scripts/screenshot monitor 1 2>/dev/null
+
+shift + ctrl + alt + Print
+    ~/.scripts/screenshot all-monitors 2>/dev/null
+
+#shift + ctrl + alt + v
+#    ghostty --title vm_launcher --command ~/.scripts/vm_launch
