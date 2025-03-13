@@ -30,7 +30,9 @@ return {
                                 disable = { "missing-fields" },
                             },
                             workspace = {
-                                library = { vim.env.VIMRUNTIME },
+                                library = {
+                                    vim.env.VIMRUNTIME,
+                                },
                                 checkThirdParty = false,
                             },
                             telemetry = {

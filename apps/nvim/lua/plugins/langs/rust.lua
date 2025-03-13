@@ -16,21 +16,20 @@ return {
             "adaszko/tree_climber_rust.nvim",
         },
         version = "^5",
-        enabled = true,
         lazy = false,
-        init = function()
-            vim.api.nvim_create_autocmd({"BufEnter", "DirChanged"}, {
-                -- Slightly less lazy, force starts lsp when the cwd has a Cargo.toml
-                callback = function()
-                    local lsp_not_started = not vim.g.loaded_rustaceanvim
-                    local in_rust_dir = vim.fn.filereadable(vim.fn.getcwd() .. "/Cargo.toml") == 1
-
-                    if lsp_not_started and in_rust_dir then
-                        require("rustaceanvim.lsp").start()
-                    end
-                end,
-            })
-        end,
+        -- init = function()
+        --     vim.api.nvim_create_autocmd({"BufEnter", "DirChanged"}, {
+        --         -- Slightly less lazy, force starts lsp when the cwd has a Cargo.toml
+        --         callback = function()
+        --             local lsp_not_started = not vim.g.loaded_rustaceanvim
+        --             local in_rust_dir = vim.fn.filereadable(vim.fn.getcwd() .. "/Cargo.toml") == 1
+        --
+        --             if lsp_not_started and in_rust_dir then
+        --                 require("rustaceanvim.lsp").start()
+        --             end
+        --         end,
+        --     })
+        -- end,
         config = function()
             -- vim.g.rustaceanvim
             local rustaceanvim = { tools=nil, server=nil, dap=nil }
@@ -79,14 +78,6 @@ return {
                 },
             }
 
-            -- Using codelldb for debugging (modified for linux only)
-            -- vim.g.rustaceanvim.dap.adapter
-            local ext_path = "/.vscode/extensions/vadimcn.vscode-lldb-1.10.0"
-            local adapter = require("rustaceanvim.config").get_codelldb_adapter(
-                vim.env.HOME .. ext_path .. "/adapter/codelldb",
-                vim.env.HOME .. ext_path .. "/lldb/lib/liblldb.so"
-            )
-
             local server = {
                 on_attach = on_attach,
                 default_settings = default_settings,
@@ -98,6 +89,14 @@ return {
                     ui_select_fallback = true,
                 },
             }
+
+            -- Using codelldb for debugging (modified for linux only)
+            -- vim.g.rustaceanvim.dap.adapter
+            local ext_path = "/.vscode/extensions/vadimcn.vscode-lldb-1.10.0"
+            local adapter = require("rustaceanvim.config").get_codelldb_adapter(
+                vim.env.HOME .. ext_path .. "/adapter/codelldb",
+                vim.env.HOME .. ext_path .. "/lldb/lib/liblldb.so"
+            )
 
             local dap = {
                 adapter = adapter,
