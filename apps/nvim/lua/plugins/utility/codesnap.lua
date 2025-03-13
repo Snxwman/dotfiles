@@ -7,11 +7,11 @@ return {
                 { "<leader>us", group = "Screenshot" },
                 icon = { icon = " " },
                 { "<leader>usc", "<Esc><cmd>CodeSnap<cr>",
-                    desc = "[Codesnap] Save screenshot to clipboard" },
+                    desc = "[Codesnap] Save to clipboard" },
                 { "<leader>usC", "<Esc><cmd>CodeSnapHighlight<cr>",
-                    desc = "[Codesnap] Save screenshot to clipboard (with line highlighting)" },
-                { "<leader>usf", "<Esc><cmd>CodeSnapSave<cr>", 
-                    desc = "[Codesnap] Save screenshot to file" },
+                    desc = "[Codesnap] Save to clipboard (line highlights)" },
+                { "<leader>usf", "<Esc><cmd>CodeSnapSave<cr>",
+                    desc = "[Codesnap] Save to file" },
             }
         })
     end,

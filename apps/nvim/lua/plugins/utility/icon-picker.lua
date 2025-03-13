@@ -11,7 +11,7 @@ return {
                     {"<leader>ui", group = "Icon Picker" },
                     {"<leader>uin", "<cmd>IconPickerYank nerd_font_v3<cr>", desc = "[Icon Picker] normal"},
                     {"<leader>uiy", "<cmd>IconPickerYank nerd_font_v3<cr>", desc = "[Icon Picker] yank"},
-                    {"<leader>uiI", "<cmd>IconPickerInsert nerd_font_v3<cr>", desc = "[Icon Picker] insert)"},
+                    {"<leader>uiI", "<cmd>IconPickerInsert nerd_font_v3<cr>", desc = "[Icon Picker] insert"},
                 }
             })
         end,
