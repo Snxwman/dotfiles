@@ -1,6 +1,11 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    lazy = false,
+    init = function(plugin)
+        require("lazy.core.loader").add_to_rtp(plugin)
+        require("nvim-treesitter.query_predicates")
+    end,
     opts = {
         highlight = { enable = true },
         indent = { enable = true },
@@ -21,6 +26,7 @@ return {
             "passwd",
             "pem",
             "rasi",
+            "regex",
             "ssh_config",
             "sxhkdrc",
             "toml",
@@ -31,4 +37,7 @@ return {
             "yuck",  -- TODO: put somwhere else
         },
     },
+    config = function(_, opts)
+        require("nvim-treesitter.configs").setup(opts)
+    end
 }
