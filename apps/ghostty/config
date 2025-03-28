@@ -626,8 +626,8 @@ working-directory =
 # will appear in the logs.
 #
 # Changing these values will only apply after restart.
-window-padding-x = 6
-window-padding-y = 6
+window-padding-x = 4
+window-padding-y = 4
 
 # The viewport dimensions are usually not perfectly divisible by the cell
 # size. In this case, some extra padding on the end of a column and the bottom
