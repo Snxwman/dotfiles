@@ -31,11 +31,11 @@ class DropDownConfig:
 
 
     def as_dict(self) -> DropDownConfigDict:
-        return DropDownConfigDict(**self.__dict__)  # type: ignore
+        return DropDownConfigDict(**self.__dict__)  # pyright: ignore
 
 
 # TODO: Find a way to set a minimum size based on screen size
-def center_window(width: float=0.5, height: float=0.5):
+def center_window(width: float=0.5, height: float=0.5) -> dict[str, float]:
     """Calculates the initial position, and size of a window that should be centered"""
 
     # min_height = 1000.0 / qtile.current_screen.height
@@ -43,10 +43,10 @@ def center_window(width: float=0.5, height: float=0.5):
 
     # height = max(height, min_height, 0.05)
     # width = max(width, min_width, 0.05)
-    x = round((1 - width) / 2, 2)
-    y = round((1 - height) / 2, 2)
-    width = max(width, 0.05)
-    height = max(height, 0.05)
+    x: float = round((1 - width) / 2, 2)
+    y: float = round((1 - height) / 2, 2)
+    w: float = max(width, 0.05)
+    h: float = max(height, 0.05)
 
     # self.x = (1-width) / 2
     # self.y = (1-height) / 2
@@ -56,8 +56,8 @@ def center_window(width: float=0.5, height: float=0.5):
     return {
         'x': x,
         'y': y,
-        'width': width,
-        'height': height,
+        'width': w,
+        'height': h,
     }
 
 
@@ -96,7 +96,7 @@ class GhosttyLaunchConfig:
 
 
     # TODO: Make return type a QtileSpawnDict
-    def spawn(self):
+    def spawn(self) -> str:
         # Hardcoded because these are the launch options specifically for ghostty
         bin = self.bin if self.bin is not None else 'ghostty'
 
@@ -128,13 +128,10 @@ base_dropdown_config = {
 #          with the desired env after the shell is already loaded.
 ghostty_config = GhosttyLaunchConfig(
     bin='/usr/bin/ghostty',
-    # env=[
-    #     ('SCRATCHPAD', 'true')
-    # ],
     command="SCRATCHPAD= zsh"
 )
 terminal_config = DropDownConfig(
-    **base_dropdown_config,  # type: ignore
+    **base_dropdown_config,  # pyright: ignore
     **center_window(0.3, 0.7)
 ).as_dict()
 
@@ -144,8 +141,8 @@ mullvad_config = DropDownConfig(
     opacity=1,
     warp_pointer=True,
     # TODO: Split the single and multiple functions up
-    match=title('Mullvad VPN'),  # type: ignore
-    **center_window(0.0625, 0.3944)  # type: ignore
+    match=title('Mullvad VPN'),  # pyright: ignore
+    **center_window(0.0625, 0.3944)
 ).as_dict()
 
 scratchpad = ScratchPad('Scratchpad', [

@@ -88,10 +88,12 @@ keys = [
     Key([super, ctrl], 'j', lazy.layout.grow_down()),
     Key([super, ctrl], 'h', lazy.layout.grow_left()),
     Key([super, ctrl], 'l', lazy.layout.grow_right()),
+    Key(hyper, 'n', lazy.layout.normalize()),
 
     # Multimedia
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume 0 -5%")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume 0 +5%")),
+    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute 0 toggle")),
 
     # Floating
     Key([super, shift], 'm', lazy.window.toggle_fullscreen()),
@@ -102,8 +104,5 @@ keys = [
     # Scratchpads
     Key([super, alt], enter, lazy.group['Scratchpad'].dropdown_toggle('Terminal')),
     Key([super, alt], 'm', lazy.group['Scratchpad'].dropdown_toggle('VPN')),
-    # Key([super, alt], enter, 
-    #     lazy.function(center_dropdown, 'Terminal', 0.7, 0.3),
-    #     lazy.group['Scratchpad'].dropdown_toggle('Terminal')),
 ]
 

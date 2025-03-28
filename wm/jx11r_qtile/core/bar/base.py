@@ -7,6 +7,7 @@ from libqtile import bar
 from extras import PowerLineDecoration, RectDecoration
 from utils.config import cfg
 
+
 defaults = {
     "font": "Hasklug Nerd Font Mono Medium",
     "fontsize": 11,
@@ -16,7 +17,7 @@ defaults = {
 
 class Bar:
     def __init__(self, theme: str):
-        self.theme = theme
+        self.theme: str = theme
 
     @property
     def themes(self) -> set[str]:
@@ -48,12 +49,12 @@ def base(bg: str | None, fg: str) -> dict:
     }
 
 
-def symbol(size=16) -> dict:
+def symbol(size: int=16) -> dict:
     font = "Symbols Nerd Font Mono Regular"
     return {"font": font, "fontsize": size}
 
 
-def powerline(path: str | list[tuple], size=10):
+def powerline(path: str | list[tuple], size: int=10):
     return { "decorations": [
         PowerLineDecoration(
             path=path,

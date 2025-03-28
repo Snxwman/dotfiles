@@ -5,13 +5,13 @@ from libqtile.config import Match
 
 class Matches:
     def __init__(self, property: str):
-        self.property = property
+        self.property: str = property
 
     def generate(self, values: tuple) -> list[Match]:
-        return [Match(**{self.property: i}) for i in values]
+        return [Match(**{self.property: i}) for i in values]  # pyright: ignore
 
 
-def wm_class(*values: str | re.Pattern):
+def wm_class(*values: str | re.Pattern) -> list[Match]:
     return Matches("wm_class").generate(values)
 
 

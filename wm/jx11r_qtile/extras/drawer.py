@@ -1,3 +1,5 @@
+from typing import override
+
 from libqtile.backend.base import drawer
 
 
@@ -15,6 +17,7 @@ class TextFrame(drawer.TextFrame):
             layout, border_width, border_color, pad_x, pad_y, highlight_color
         )
 
+    @override
     def draw(
         self, x, y, rounded=True, fill=False, line=False, highlight=False, invert=False
     ):

@@ -58,8 +58,10 @@ class GroupBox(groupbox.GroupBox):
         self.layout.font_family = self.font
         self.layout.font_size = self.fontsize
         self.layout.colour = textcolor
+
         if width is not None:
             self.layout.width = width
+
         if line:
             pad_y = [
                 (self.bar.height - self.layout.height - self.borderwidth) / 2,
@@ -87,12 +89,14 @@ class GroupBox(groupbox.GroupBox):
                 if t[0] == "margin":
                     y += (self.bar.height - framed.height) / 2 - t[1]
                     break
+
         if block and bordercolor is not None:
             framed.draw_fill(offset, y, rounded)
         elif line:
             framed.draw_line(offset, y, highlighted, inverted)
         else:
             framed.draw(offset, y, rounded)
+
 
     def draw(self):
         self.drawer.clear(self.background or self.bar.background)
@@ -161,11 +165,7 @@ class GroupBox(groupbox.GroupBox):
                             else:
                                 border = self.other_screen_border
 
-            elif self.group_has_urgent(g) and self.urgent_alert_method in (
-                "border",
-                "block",
-                "line",
-            ):
+            elif self.group_has_urgent(g) and self.urgent_alert_method in ("border", "block", "line"):
                 border = self.urgent_border
                 if self.urgent_alert_method == "block":
                     is_block = True

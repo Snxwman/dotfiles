@@ -1,6 +1,6 @@
-from qtile_extras import widget  # type: ignore
-from qtile_extras.widget import modify  # type: ignore
-from qtile_extras.widget.decorations import (  # type: ignore
+from qtile_extras import widget
+from qtile_extras.widget import modify
+from qtile_extras.widget.decorations import (
     BorderDecoration,
     PowerLineDecoration,
     RectDecoration,
