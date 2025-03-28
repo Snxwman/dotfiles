@@ -1,11 +1,12 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    lazy = false,
     init = function(plugin)
+        -- Source: https://github.com/LazyVim/LazyVim/blob/ec5981dfb1222c3bf246d9bcaa713d5cfa486fbd/lua/lazyvim/plugins/treesitter.lua#L21
         require("lazy.core.loader").add_to_rtp(plugin)
         require("nvim-treesitter.query_predicates")
     end,
+    opts_extend = { "ensure_installed" },
     opts = {
         highlight = { enable = true },
         indent = { enable = true },

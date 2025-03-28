@@ -13,6 +13,7 @@ return {
         require("which-key").add({
             {
                 icon = { icon = " ", color = "yellow" },
+                {"<leader>na", "<cmd>NoiceAll<cr>", desc = "[Noice] Show all messages"},
                 {"<leader>nd", "<cmd>NoiceDismiss<cr>", desc = "[Noice] Dismiss all messages"},
                 {"<leader>ne", "<cmd>NoiceErrors<cr>",  desc = "[Noice] Show errors"},
                 {"<leader>nh", "<cmd>NoiceHistory<cr>", desc = "[Noice] Show history"},
@@ -27,7 +28,9 @@ return {
                 ["vim.lsp.util.stylize_markdown"] = true,
                 ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
             },
-            hover = { silent = true },
+            hover = {
+                silent = true,
+            },
         },
         presets = {
             bottom_search = true, -- use a classic bottom cmdline for search

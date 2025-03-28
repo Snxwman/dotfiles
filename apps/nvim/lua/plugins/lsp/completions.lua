@@ -138,7 +138,6 @@ return {
             -- TODO: put somewhere else
             vim.api.nvim_create_autocmd("VimEnter", {
                 callback = function()
-                    -- require("cmp")
                     local color = require("util.color")
 
                     local function get_hl_group(name)
@@ -203,7 +202,7 @@ return {
                                 local pmenu_hl = new_hl(get_hl_group("Pmenu"))
                                 kind_hl.bg = color.mix(pmenu_hl.fg, "#000000", 70)
                             end
-                                vim.api.nvim_set_hl(0, hl_name, kind_hl)
+                            vim.api.nvim_set_hl(0, hl_name, kind_hl)
                         end
                     end
 

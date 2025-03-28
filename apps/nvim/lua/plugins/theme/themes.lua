@@ -35,12 +35,20 @@ return {
     {
         "folke/tokyonight.nvim",
         lazy = false,
+        ---@class tokyonight.Config
+        ---@field on_colors fun(colors: ColorScheme)
+        ---@field on_highlights fun(highlights: tokyonight.Highlights, colors: ColorScheme)
         opts = {
             style = "moon",
             styles = {
                 comments = { italic = false },
                 keywords = { italic = false },
             },
+            ---@param highlights tokyonight.Highlights
+            ---@param colors ColorScheme
+            on_highlights = function(highlight_group, colors)
+                highlight_group["@lsp.typemod.variable.readonly"] = "@constant"
+            end,
         },
     },
 }

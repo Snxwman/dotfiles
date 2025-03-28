@@ -10,12 +10,14 @@ return {
     end,
     opts = {
         preset = "modern",
-        triggers = {
-            { "<auto>", mode = "nxso" },
-            { "<C>", mode = { "n", "v", "i", "o" } },
-            { "<M>", mode = "nvio" },
-            { "<D>", mode = "nvio" },
-        },
+        -- TODO: Make holding a mod key open the whichkey menu
+        --
+        -- triggers = {
+        --     { "<auto>", mode = "nxso" },
+        --     { "<C>", mode = { "n", "v", "i", "o" } },
+        --     { "<M>", mode = "nvio" },
+        --     { "<D>", mode = "nvio" },
+        -- },
         ---@type number | fun(ctx: { keys: string, mode: string, plugin?: string }):number
         delay = function(ctx)
             return ctx.plugin and 0 or 100
@@ -38,22 +40,18 @@ return {
 
             { "<leader>?", "<cmd>WhichKey<cr>", icon = { icon = "󱍊 ", color = "green" }, desc = "Open WhichKey menu"},
         },
-        icons = {
-            rules = {
-                { pattern = "rust", icon = "", color = "orange" },
-            },
-        },
         ---@type number|fun(node: wk.Node):boolean?
-        expand = function (node)
-            local maxChildren = 2
-            return node:count() < maxChildren or not node.desc
-        end,
+        -- expand = function (node)
+        --     local maxChildren = 2
+        --     return node:count() < maxChildren or not node.desc
+        -- end,
+
         sort = { "order", "group", "manual", "alphanum", "mod" },
         win = {
             wo = { winblend = 20 }
         },
-        layout = {
-            -- max = 100
-        },
+        -- layout = {
+        --     -- max = 100
+        -- },
     },
 }

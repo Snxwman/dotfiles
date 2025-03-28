@@ -1,6 +1,7 @@
 return {
     "mistricky/codesnap.nvim",
     build = "make build_generator",
+    cmd = { "CodeSnap", "CodeSnapHighlight", "CodeSnapSave" },
     keys = function(_, _)
         require("which-key").add({
             {

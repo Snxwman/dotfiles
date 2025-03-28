@@ -7,4 +7,9 @@ return {
            rtp = "vim/"
         end
     },
+    {
+        -- TODO: Move to langs/lisp.lua
+        "eraserhd/parinfer-rust",
+        enabled = false,
+    },
 }

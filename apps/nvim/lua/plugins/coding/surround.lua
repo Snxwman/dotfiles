@@ -1,12 +1,7 @@
 return {
     {
-        "kylechui/nvim-surround",
+        "echasnovski/mini.surround",
         version = '*',
-        event = 'VeryLazy',
-        opts = {},
-    },
-    {
-        "eraserhd/parinfer-rust",
-        enabled = false,
+        opts = {}
     },
 }

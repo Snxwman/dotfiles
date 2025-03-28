@@ -1,3 +1,39 @@
+local setup_plugin_keybinds = function(args)
+    require("which-key").add({
+        -- Custom icon and color for rustaceanvim specific keybinds (will still be in whichkey's LSP group)
+        icon = { icon = " ", color = "orange" },
+        {
+            { "<leader>ld", "<cmd>RustLsp renderDiagnostic<cr>", desc = "[LSP] Show cargo diagnostics"},
+            {
+                { "<leader>lb", group = "Move block" },
+                { "<leader>lbk", "<cmd>RustLsp moveItem up<cr>", desc = "[LSP] Move block up"},
+                { "<leader>lbj", "<cmd>RustLsp moveItem down<cr>", desc = "[LSP] Move block down"},
+            },
+            -- Upper case keys for any command that will change something in the buffer
+            { "<leader>lJ", "<cmd>RustLsp joinLines<cr>", desc = "Join selected lines"},
+            {
+                { "<leader>lg", group = "Go to..." },
+                { "<leader>lgd", "<cmd>RustLsp relatedDiagnostics<cr>", desc = "[LSP] Go to related diagnostics" },
+            },
+        },
+        {
+            { "<leader>lO", group = "Open..." },
+            { "<leader>lOc", "<cmd>RustLsp openCargo<cr>", desc = "[LSP] Open Cargo.toml"},
+            { "<leader>lOd", "<cmd>RustLsp openDocs<cr>", desc = "[LSP] Open web doc for current symbol"}
+        },
+        {
+            -- TODO: Can require be removed from these keybinds, or moved to its own plugin config?
+            group = "Tree climber",
+            {"s", "<cmd>lua require('tree_climber_rust').init_selection()<CR>", desc = "[Tree climber] start selection"},
+            {
+                mode = "x",
+                {"s", "<cmd>lua require('tree_climber_rust').select_incremental()<CR>", desc = "[Tree climber] increment selection" },
+                {"S", "<cmd>lua require('tree_climber_rust').select_previous()<CR>", desc = "[Tree climber] decrement selection" }
+            }
+        },
+    });
+end
+
 return {
     {
         "nvim-treesitter/nvim-treesitter",
@@ -12,51 +48,33 @@ return {
         "mrcjkb/rustaceanvim",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            "mfussenegger/nvim-dap",
+            -- "mfussenegger/nvim-dap",
             "adaszko/tree_climber_rust.nvim",
         },
         version = "^5",
-        lazy = false,
-        -- init = function()
-        --     vim.api.nvim_create_autocmd({"BufEnter", "DirChanged"}, {
-        --         -- Slightly less lazy, force starts lsp when the cwd has a Cargo.toml
-        --         callback = function()
-        --             local lsp_not_started = not vim.g.loaded_rustaceanvim
-        --             local in_rust_dir = vim.fn.filereadable(vim.fn.getcwd() .. "/Cargo.toml") == 1
-        --
-        --             if lsp_not_started and in_rust_dir then
-        --                 require("rustaceanvim.lsp").start()
-        --             end
-        --         end,
-        --     })
-        -- end,
         config = function()
+            -- Dont clear the group here, we are adding to it.
+            -- Clearing is handled in lspconfig's init function.
+            local lsp_attach_augroup = vim.api.nvim_create_augroup("user_lsp_config", { clear = false })
+
+            -- This autocmd is created in the config function, so that it is defined after the autocmds defined 
+            -- in lspconfig's init function, which allows these keybinds to override any previously defined.
+            -- Lazy.nvim executes all init functions prior to config functions.
+            --
+            -- Defining ft for lazy.nvim ensures that the autocommand is not added when not in a rust file.
+            --
+            -- Keybinds are in addition to, or overrides of, any lsp keybinds already defined.
+            vim.api.nvim_create_autocmd("LspAttach", {
+                group = lsp_attach_augroup,
+                desc = "[Rustaceanvim] Setup LSP keybinds with whichkey",
+                pattern = { "*.rs" },
+                callback = function(args)
+                    setup_plugin_keybinds(args)
+                end
+            })
+
             -- vim.g.rustaceanvim
             local rustaceanvim = { tools=nil, server=nil, dap=nil }
-
-            -- vim.g.rustaceanvim.server.on_attach
-            local on_attach = function (_, bufnr)
-                local map = function (key)  -- mimics the syntax for lazy's keys table
-                    key.mode = key.mode or "n"
-                    key.desc = key.desc or ""
-                    key.desc = "LSP: " .. key.desc .. " (rust)"
-
-                    local opts = { silent = true, buffer = bufnr, desc = key.desc }
-                    vim.keymap.set(key.mode, key[1], key[2], opts)
-                end
-
-                map({"<leader>bk", "<cmd>RustLsp moveItem up<cr>", desc = "Move block up"})
-                map({"<leader>bj", "<cmd>RustLsp moveItem down<cr>", desc = "Move block down"})
-                map({"<leader>J", "<cmd>RustLsp joinLines<cr>", desc = "Join selected lines"})
-                map({"<leader>ca", "<cmd>RustLsp codeAction<cr>", desc = "Code actions"})
-                map({"<leader>dr", "<cmd>RustLsp debuggables<cr>", desc = "Debuggables"})
-                map({"<leader>Oc", "<cmd>RustLsp openCargo<cr>", desc = "Open Cargo.toml"})
-                map({"<leader>Od", "<cmd>RustLsp openDocs<cr>", desc = "Open web doc for current symbol"})
-                map({"K", "<cmd>RustLsp hover actions<CR>", desc = "LSP: Hover actions"})
-                map({"s", "<cmd>lua require('tree_climber_rust').init_selection()<CR>", desc = "Tree climber, start selection"})
-                map({"s", "<cmd>lua require('tree_climber_rust').select_incremental()<CR>", mode = "x", "Tree climber, increment selection"})
-                map({"S", "<cmd>lua require('tree_climber_rust').select_previous()<CR>", mode = "x", "Tree climber, decrement selection"})
-            end
 
             -- vim.g.rustaceanvim.server.default_settings
             local default_settings = {
@@ -79,28 +97,30 @@ return {
             }
 
             local server = {
-                on_attach = on_attach,
                 default_settings = default_settings,
                 load_vscode_settings = false,
             }
 
             local tools = {
                 code_actions = {
-                    ui_select_fallback = true,
+                    ui_select_fallback = false,
+                },
+                hover_actions = {
+                    replace_builtin_hover = false,
                 },
             }
 
             -- Using codelldb for debugging (modified for linux only)
             -- vim.g.rustaceanvim.dap.adapter
-            local ext_path = "/.vscode/extensions/vadimcn.vscode-lldb-1.10.0"
-            local adapter = require("rustaceanvim.config").get_codelldb_adapter(
-                vim.env.HOME .. ext_path .. "/adapter/codelldb",
-                vim.env.HOME .. ext_path .. "/lldb/lib/liblldb.so"
-            )
+            -- local ext_path = "/.vscode/extensions/vadimcn.vscode-lldb-1.10.0"
+            -- local adapter = require("rustaceanvim.config").get_codelldb_adapter(
+            --     vim.env.HOME .. ext_path .. "/adapter/codelldb",
+            --     vim.env.HOME .. ext_path .. "/lldb/lib/liblldb.so"
+            -- )
 
-            local dap = {
-                adapter = adapter,
-            }
+            -- local dap = {
+            --     adapter = adapter,
+            -- }
 
             rustaceanvim.server = server
             rustaceanvim.tools = tools
