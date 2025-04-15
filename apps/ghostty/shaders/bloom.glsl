@@ -1,3 +1,5 @@
+const float intensity = 0.06;
+
 // Golden spiral samples, [x, y, weight] weight is inverse of distance.
 const vec3[24] samples = {
   vec3(0.1693761725038636, 0.9855514761735895, 1),
@@ -42,7 +44,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec4 c = texture(iChannel0, uv + s.xy * step);
     float l = lum(c);
     if (l > 0.2) {
-      color += l * s.z * c * 0.2;
+      color += l * s.z * c * intensity;
     }
   }
 

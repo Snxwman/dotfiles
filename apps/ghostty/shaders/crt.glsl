@@ -1,3 +1,5 @@
+// source: https://gist.github.com/qwerasd205/c3da6c610c8ffe17d6d2d3cc7068f17f
+// credits: https://github.com/qwerasd205
 //==============================================================
 //
 //    [CRTS] PUBLIC DOMAIN CRT-STYLED SCALAR by Timothy Lottes
@@ -63,24 +65,24 @@
 #define SCALE 0.33333333
 
 // "Tube" warp
-#define CRTS_WARP 2
+#define CRTS_WARP 1
 
 // Darkness of vignette in corners after warping
 //  0.0 = completely black
 //  1.0 = no vignetting
-#define MIN_VIN 0.3
+#define MIN_VIN 0.5
 
 // Try different masks
-#define CRTS_MASK_GRILLE 1
+// #define CRTS_MASK_GRILLE 1
 // #define CRTS_MASK_GRILLE_LITE 1
 // #define CRTS_MASK_NONE 1
-// #define CRTS_MASK_SHADOW 1
+#define CRTS_MASK_SHADOW 1
 
 // Scanline thinness
 //  0.50 = fused scanlines
 //  0.70 = recommended default
 //  1.00 = thinner scanlines (too thin)
-#define INPUT_THIN 0.70
+#define INPUT_THIN 0.75
 
 // Horizonal scan blur
 //  -3.0 = pixely
