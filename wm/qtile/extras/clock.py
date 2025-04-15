@@ -1,7 +1,7 @@
-from libqtile.widget import clock
+from qtile_extras import widget
 
 
-class Clock(clock.Clock):
+class Clock(widget.Clock):
     defaults = [
         (
             "long_format",
@@ -16,6 +16,7 @@ class Clock(clock.Clock):
         self.short_format = self.format
         self.toggled = False
         self.add_callbacks({"Button1": self.toggle})
+
 
     def toggle(self):
         if self.toggled:

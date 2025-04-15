@@ -4,23 +4,15 @@ from libqtile.backend.base import drawer
 
 
 def framed(self, border_width, border_color, pad_x, pad_y, highlight_color=None):
-    return TextFrame(
-        self, border_width, border_color, pad_x, pad_y, highlight_color=highlight_color
-    )
+    return TextFrame(self, border_width, border_color, pad_x, pad_y, highlight_color=highlight_color)
 
 
 class TextFrame(drawer.TextFrame):
-    def __init__(
-        self, layout, border_width, border_color, pad_x, pad_y, highlight_color=None
-    ):
-        super().__init__(
-            layout, border_width, border_color, pad_x, pad_y, highlight_color
-        )
+    def __init__(self, layout, border_width, border_color, pad_x, pad_y, highlight_color=None):
+        super().__init__(layout, border_width, border_color, pad_x, pad_y, highlight_color)
 
     @override
-    def draw(
-        self, x, y, rounded=True, fill=False, line=False, highlight=False, invert=False
-    ):
+    def draw(self, x, y, rounded=True, fill=False, line=False, highlight=False, invert=False):
         self.drawer.set_source_rgb(self.border_color)
         opts = [
             x,
@@ -29,6 +21,7 @@ class TextFrame(drawer.TextFrame):
             self.layout.height + self.pad_top + self.pad_bottom,
             self.border_width,
         ]
+
         if line:
             if highlight:
                 self.drawer.set_source_rgb(self.highlight_color)
@@ -49,6 +42,7 @@ class TextFrame(drawer.TextFrame):
                 self.drawer.rounded_rectangle(*opts)
             else:
                 self.drawer.rectangle(*opts)
+
         self.drawer.ctx.stroke()
         self.layout.draw(x + self.pad_left, y + self.pad_top)
 

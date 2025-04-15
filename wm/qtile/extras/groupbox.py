@@ -1,9 +1,10 @@
-from libqtile.widget import base, groupbox
+from libqtile.widget import base
+from qtile_extras import widget
 
 from extras.drawer import framed
 
 
-class GroupBox(groupbox.GroupBox):
+class GroupBox(widget.GroupBox):
     defaults = [
         (
             "invert",
@@ -32,13 +33,16 @@ class GroupBox(groupbox.GroupBox):
         ),
     ]
 
+
     def __init__(self, **config):
         super().__init__(**config)
         self.add_defaults(GroupBox.defaults)
 
+
     def _configure(self, qtile, bar):
         super()._configure(qtile, bar)
         self.layout.framed = framed.__get__(self.layout)
+
 
     def drawbox(
         self,
@@ -73,9 +77,8 @@ class GroupBox(groupbox.GroupBox):
             pad_y = self.padding_y
 
         if bordercolor is None:
-            # border colour is set to None when we don't want to draw a border at all
-            # Rather than dealing with alpha blending issues, we just set border width
-            # to 0.
+            # border colour is set to None when we don't want to draw a border at all rather than 
+            # dealing with alpha blending issues, we just set border width to 0.
             border_width = 0
             framecolor = self.background or self.bar.background
         else:
@@ -84,6 +87,7 @@ class GroupBox(groupbox.GroupBox):
 
         framed = self.layout.framed(border_width, framecolor, 0, pad_y, highlight_color)
         y = self.margin_y
+
         if self.center_aligned:
             for t in base.MarginMixin.defaults:
                 if t[0] == "margin":
@@ -132,9 +136,7 @@ class GroupBox(groupbox.GroupBox):
                 elif is_icon:
                     icon = self.icons["active"]
                     border = None
-                    text_color = (
-                        color(i) if self.colors else self.this_current_screen_border
-                    )
+                    text_color = (color(i) if self.colors else self.this_current_screen_border)
                 else:
                     if self.block_highlight_text_color:
                         text_color = self.block_highlight_text_color
@@ -152,7 +154,6 @@ class GroupBox(groupbox.GroupBox):
                             else:
                                 border = self.this_screen_border
                             to_highlight = True
-
                     else:
                         if self.qtile.current_screen == g.screen:
                             if self.rainbow and self.colors:
@@ -164,7 +165,6 @@ class GroupBox(groupbox.GroupBox):
                                 border = color(i) if g.windows else self.inactive
                             else:
                                 border = self.other_screen_border
-
             elif self.group_has_urgent(g) and self.urgent_alert_method in ("border", "block", "line"):
                 border = self.urgent_border
                 if self.urgent_alert_method == "block":
@@ -188,4 +188,5 @@ class GroupBox(groupbox.GroupBox):
                 inverted=self.invert,
             )
             offset += bw + self.spacing
+
         self.drawer.draw(offsetx=self.offset, offsety=self.offsety, width=self.width)
