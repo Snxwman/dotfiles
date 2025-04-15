@@ -5,7 +5,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
             local app_filetypes = { "dashboard", "leetcode.nvim" }
 
             local file = vim.fn.expand("%:p:h")
-            local filetype = vim.bo[opts.buf].filetype
+            local filetype = vim.bo.filetype
 
             for _, app in ipairs(app_filetypes) do
                 if filetype == app then

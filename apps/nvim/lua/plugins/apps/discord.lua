@@ -123,6 +123,53 @@ return {
             end
         end
 
+        -- TODO: Custom tooltip format - "[Solved] [Premium] [Daily] [Difficulty] Number. Problem name"
+        -- TODO: Take language into account for solved
+        local leetcode = {
+            workspace = "Grinding LeetCode",
+            picker = "Selecting a problem",
+            menu = function()
+                -- Checks if the menu were viewing is in the same tabpage as a window with a problem's buffer
+                -- if so, use the problem's detail message, otherwise use "In main menu".
+                -- Assumes that the main menu is in leetcode.nvim's 1st tabpage.
+                local tabpage = vim.api.nvim_get_current_tabpage()
+
+                if tabpage ~= 1 then
+                    local tabpage_win_ids = vim.api.nvim_tabpage_list_wins(tabpage)
+
+                    for _, winid in ipairs(tabpage_win_ids) do
+                        local bufnr = vim.api.nvim_win_get_buf(winid)
+                        local filename = vim.api.nvim_buf_get_name(bufnr)
+                        if vim.g.leetcode.questions[filename] ~= nil then
+                            return vim.g.discord.fmt.apps.leetcode.problem(filename)
+                        end
+                    end
+                end
+
+                return "In main menu"
+            end,
+            problem = function(current_file)
+                -- TODO: find out how to tell if a problem is the daily problem
+                local emojis = {
+                    easy = "🟢", medium = "🟡", hard = "🔴",
+                    -- easy = "🟩", medium = "🟨", hard = "🟥",
+                    daily = "📆", solved = "✅", premium = "💎"
+                }
+                local leetcode = vim.g.leetcode
+                local question = leetcode.questions[current_file]
+
+                if question ~= nil then
+                    local emoji_str = question.is_solved and emojis.solved or ""
+                    emoji_str = emoji_str .. (question.is_daily and emojis.daily or "")
+                    emoji_str = emoji_str .. emojis[question.difficulty]
+
+                    return emoji_str .. " " .. question.number .. ". " .. question.name
+                else
+                    return ""
+                end
+            end
+        }
+
         vim.g.discord = {
             blacklist = blacklist,
             whitelist = whitelist,
@@ -141,18 +188,7 @@ return {
                     mason = "Managing lsp installs with mason",
                 },
                 apps = {
-                    leetcode = {
-                        workspace = "Grinding LeetCode",
-                        menu = "In main menu",
-                        question = {
-                            file = "",
-                            number = 0,
-                            difficulty = "",
-                            name = "",
-                            solved = false,
-                            is_daily = false,
-                        }
-                    }
+                    leetcode = leetcode,
                 }
             }
         }
@@ -224,14 +260,16 @@ return {
                 local fmt = vim.g.discord.fmt
                 local current_file = vim.fn.expand("%:p")
 
-                if opts.workspace == "leetcode" and current_file ~= "" then
-                    local problem_file = vim.fn.expand("%:t")
-                    local num_idx = string.find(problem_file, "%.")
-                    local num = string.sub(problem_file, 1, num_idx-1)
-                    local question = string.sub(problem_file, num_idx+1, #problem_file)
-                    local ext_idx = string.find(question, "%.")
-                    question = string.sub(question, 1, ext_idx-1)
-                    return num .. ". " .. question:gsub("%-", " ")
+                if opts.workspace == "leetcode" then
+                    if current_file ~= "" then
+                        return fmt.apps.leetcode.problem(current_file)
+                    else
+                        -- local log = require("util.log").debug()
+                        -- log.debug(opts)
+                        -- Suppress "Editing a new file" message
+                        -- TODO: Handle when in the Leet console
+                        return ""
+                    end
                 end
 
                 for _, path in ipairs(fmt.overrides) do
@@ -249,13 +287,23 @@ return {
             end,
             viewing = function(opts)
                 local current_file = vim.fn.expand("%:p")
+
                 if opts.workspace == "leetcode" and current_file == "" then
-                    return "In main menu"
+                    return vim.g.discord.fmt.apps.leetcode.menu()
                 end
+
                 return "Viewing " .. opts.filename
             end,
-            file_browser = function(_)
+            file_browser = function(opts)
                 local fmt = vim.g.discord.fmt
+
+                if opts.workspace == "leetcode" then
+                    -- BUG: When telescope opens it is picked up as "nofile".
+                    -- After losing and regaining focus it is picked up correctly
+                    -- TODO: Need to distinguish between different pickers (eg. problem, lang)
+                    return fmt.apps.leetcode.picker
+                end
+
                 return fmt.base.file_browser
             end,
             plugin_manager = function(opts)

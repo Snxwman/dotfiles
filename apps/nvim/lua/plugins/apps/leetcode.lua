@@ -64,15 +64,15 @@ return {
             "nvim-telescope/telescope.nvim",
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
-            {
-                "3rd/image.nvim",
-                build = false,
-                opts = {
-                    processor = "magick_cli",
-                    max_width_window_percentage = 80,
-                    window_overlap_clear_enabled = false,
-                },
-            }
+            -- {
+            --     "3rd/image.nvim",
+            --     build = false,
+            --     opts = {
+            --         processor = "magick_cli",
+            --         max_width_window_percentage = 80,
+            --         window_overlap_clear_enabled = false,
+            --     },
+            -- }
         },
         opts = {
             lang = "python3",
@@ -84,15 +84,48 @@ return {
             },
             hooks = {
                 ["question_enter"] = {
-                    function()
+                    function(data)
+                        local filename = data.file.filename
+                        local solved = false
+                        if data.cache.status == "ac" then
+                            solved = true
+                        end
+
+                        local question = {
+                            [filename] = {
+                                difficulty = data.q.difficulty:lower(),
+                                number = data.q.frontend_id,
+                                name = data.q.title,
+                                liked = data.q.likes,
+                                dislikes = data.q.dislikes,
+                                stats = data.q.stats,
+                                is_solved = solved,
+                                is_daily = false,  -- TODO: Not part of data
+                                is_starred = data.cache.starred,
+                                is_premium = data.q.is_paid_only,
+                                file = data.file.filename,
+                                link = data.cache.link,
+                            }
+                        }
+                        -- local log = require("util.log").debug()
+                        -- log.debug(data.q)
+                        -- log.debug(data.cache)
+
+                        local leetcode = vim.g.leetcode
+                        leetcode.questions = vim.tbl_deep_extend("force", leetcode.questions, question)
+                        vim.g.leetcode = leetcode
+
                         rust_no_cargo_fix()
                     end
                 },
             },
         },
         config = function(_, opts)
-            require("leetcode").setup(opts)
+            vim.g.leetcode = {
+                questions = {}
+            }
 
+            require("leetcode").setup(opts)
             require('which-key').add({
                 {
                     icon = { icon = "󰬓 ", color = "yellow" },
