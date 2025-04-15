@@ -1,0 +1,14 @@
+base-devel
+bzip2-devel
+libffi-devel
+liblzma-devel
+openssl
+openssl-devel
+readline
+readline-devel
+sqlite-devel
+tk
+tk-devel
+xz
+zlib
+zlib-devel

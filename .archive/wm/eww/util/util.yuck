@@ -1,0 +1,13 @@
+(defwidget icon [icon ?lclick ?mclick ?rclick ?tooltip]
+    (button
+        :class 'icon'
+        :timeout '500ms'
+        :vexpand false
+        :onclick '${lclick}'
+        :onmiddleclick '${mclick}'
+        :onrightclick '${rclick}'
+        :tooltip '${tooltip}'
+        '${icon}'))
+
+(defwidget metric []
+    (box))

@@ -1,0 +1,32 @@
+(defpoll time :interval "1s" "date '+%H:%M'")
+(defpoll date :interval "1s" "date '+%a, %b %d'")
+(defpoll d :interval "1m" "date '+%d'")
+(defpoll m :interval "1m" "date '+%m'")
+(defpoll y :interval "1m" "date '+%Y'")
+(defvar cal-reveal false)
+
+(defwidget time []
+    (button 
+        :class "datetime clock"
+        :onclick "$HOME/.config/eww/scripts/popup calendar" 
+        "󰅐  ${time}"))
+
+(defwidget date []
+    (button
+        :class "datetime date"
+        :onclick "$HOME/.config/eww/scripts/popup calendar" 
+        "󰃮  ${date}"))
+
+(defwidget cal []
+    (box
+        (revealer 
+            :class "cal-box"
+            :transition "slidedown"
+            :duration "300ms"
+            :reveal cal-reveal
+            (calendar :class "cal"
+                :day d :month m :year y))))
+
+(defwindow calendar
+    :geometry (geometry :x "0px" :y "55px" :height "200px" :width "400px" :anchor "top center")
+    (cal))
