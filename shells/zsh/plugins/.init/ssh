@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+# vim: set filetype=bash:
+
+ssh_setup() {
+    source "$ZDOTDIR/plugins/zsh-ssh.zsh"
+}
+
+case "$1" in
+    "init"  ) return ;;
+    "setup" ) ssh_setup "$@" ;;
+    * ) echo "zsh plugins/.ssh - Unknown command "$1""
+esac
+
+unfunction ssh_setup

@@ -1,127 +1,153 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
+# vim: set filetype=bash:
 
-# Uncomment for profiling
-# zmodload zsh/zprof
+# User defined vars (must unset in user_init_last or they will persist)
+SCRIPTS="$HOME/.scripts"
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/.zsh/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+PLUGINS_DIR="$ZDOTDIR/plugins"
+PLUGINS=( p10k asdf wakatime ssh zoxide )
+ZSH_PLUGINS_DIR="/usr/share/zsh/plugins"
+ZSH_PLUGINS=( autosuggestions history-substring-search syntax-highlighting )
 
-# Key binds
-bindkey '^A' beginning-of-line    # ctrl a
-bindkey '^E' end-of-line          # ctrl e
-bindkey '^[[1;5C' forward-word    # ctrl ->
-bindkey '^[[1;5D' backward-word   # ctrl <-
-bindkey '^R' history-search-backward 
+USER_PATH_FIRST=()
+USER_FPATH_FIRST=()
+USER_PATH=( $SCRIPTS $SCRIPTS/{cron,hooks,wrappers} "$HOME/.local/bin" "/opt")
+USER_FPATH=( $SCRIPTS $SCRIPTS/{completions,hooks,wrappers} $ZDOTDIR/plugins )
 
-autoload -U colors && colors
+AUTOLOAD_DIR="$ZDOTDIR/autoload"
+AUTOLOAD_ALL_DIRS=()
+AUTOLOAD=( colors colorize-man )
 
-# Add custom paths
-local SCRIPTS="$HOME/.scripts"
-local LOCAL_SOFTWARE="$HOME/.local/software"
-path=(
-    "$LOCAL_SOFTWARE/bin"
-    "$HOME/.local/bin"
-    "$SCRIPTS"
-    "/opt"
-    $path
-)
+SSH_KEYS_DIR="$HOME/.ssh/keys/private"
+SSH_KEYS=( dev.snxwman.github )
 
-fpath=(
-    "$SCRIPTS"
-    "$SCRIPTS/completions"
-    "$SCRIPTS/hooks"
-    "$SCRIPTS/wrappers"
-    "$SCRIPTS/yt-dlp"
-    $fpath
-)
+# Zshrc behavior options
+ENABLE_PROFILING=false
+UNLOAD_AFTER_INIT=true
 
-# asdf config
-source ${ASDF_DIR}/asdf.sh
-fpath=(${ASDF_DIR}/completions $fpath)
+[[ $ENABLE_PROFILING == true ]] && zmodload zsh/zprof
 
-# Make sure path and fpath arrays are unique
-typeset -U path fpath
+user_init_first() {
+    setopt APPEND_HISTORY
+    setopt EXTENDED_HISTORY
+    setopt HIST_EXPIRE_DUPS_FIRST  # Remove duplicate commands first
+    setopt HIST_FIND_NO_DUPS       # Ignore duplicate commands when searching
+    setopt HIST_IGNORE_DUPS        # Ignore duplicate commands
+    setopt HIST_IGNORE_SPACE       # Ignore commands starting with a space
+    setopt HIST_REDUCE_BLANKS      # Remove blank lines from history
+    setopt INC_APPEND_HISTORY      # Add commands in real time
+}
 
-# Auto-completions
-autoload -Uz compinit promptinit
-compinit -d ~/.cache/zcompdump
-zstyle ':completion:*' menu select
+user_init_last() {
+    source "$XDG_CONFIG_HOME/.aliases/.aliases"
 
-zmodload zsh/complist
-compinit
-_comp_options+=(globdots)
+    # term_title -user -title
+    neofetch
+    cal -3
 
-autoload -Uz cd edit extract set_title
+    [[ -n $(go version) ]] && go telemetry off
 
-set_title -user -host
-chpwd_functions=()                  # Executes when the working directory changes.
-periodic_functions=()               # Executes every $PERIOD seconds, just before a prompt.
-precmd_functions=( set_title )      # Executes just before each prompt.
-preexec_functions=( set_title )     # Executes after a cmd is read, but before it is executed. 
+    unset SCRIPTS
+}
 
-# On sourcing .zshenv again:
-# Without resourcing .zshenv `HISTFILE` gets set to "$ZDOTDIR/.zsh_history" instead
-# of "$XDG_CACHE_HOME/.zsh/.zsh_history", as specified in ~/.config/zsh/.zshenv
-source "$XDG_CONFIG_HOME/.zsh/.zshenv"
-source "$XDG_CONFIG_HOME/.aliases/.aliases"
-#source "$XDG_CONFIG_HOME/.prompt"
+init_keybinds() {
+    bindkey '^A' beginning-of-line    # ctrl a
+    bindkey '^E' end-of-line          # ctrl e
+    bindkey '^[[1;5C' forward-word    # ctrl ->
+    bindkey '^[[1;5D' backward-word   # ctrl <-
+    bindkey '^R' history-search-backward 
+}
 
-# History options
-setopt APPEND_HISTORY
-setopt EXTENDED_HISTORY
-setopt HIST_EXPIRE_DUPS_FIRST  # Remove duplicate commands first
-setopt HIST_FIND_NO_DUPS       # Ignore duplicate commands when searching
-setopt HIST_IGNORE_DUPS        # Ignore duplicate commands
-setopt HIST_IGNORE_SPACE       # Ignore commands starting with a space
-setopt HIST_REDUCE_BLANKS      # Remove blank lines from history
-setopt INC_APPEND_HISTORY      # Add commands in real time
+init_hooks() {
+    # Chpwd: Executes when the working directory changes.
+    # Periodic: Executes every $PERIOD seconds, just before a prompt.
+    # Precmd: Executes just before each prompt.
+    # Preexec: Executes after a cmd is read, but before it is executed. 
+    chpwd_functions=( auto_venv )
+    periodic_functions=()
+    precmd_functions=( term_title )
+    preexec_functions=( term_title )
+}
 
-# Pretty terminal login info
-neofetch
-cal -3
+init_compinit() {
+    autoload -Uz compinit promptinit
+    compinit -d ~/.cache/zcompdump
+    zmodload zsh/complist
+    zstyle ':completion:*' menu select
+    _comp_options+=(globdots)
+}
 
-# Enable zsh plugins
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh  # Must be the last line
+init_ssh_agent() {
+    eval $(ssh-agent) &> /dev/null
+    for key in $SSH_KEYS; do
+        ssh-add "$SSH_KEYS_DIR/$key" &> /dev/null
+    done
+}
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/sam/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/sam/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/sam/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/sam/anaconda3/bin:$PATH"
+init_autoloads() {
+    local autoload_funcs=()
+
+    [[ -n "$AUTOLOAD_DIR" ]] && autoload_funcs=( "$AUTOLOAD_DIR"/*(ND) $autoload_funcs )
+    [[ ${#AUTOLOAD} -gt 0 ]] && autoload_funcs=( $AUTOLOAD $autoload_funcs )
+
+    if (( ${#AUTOLOAD_ALL_DIRS} > 0 )); then
+        for dir in $AUTOLOAD_ALL_DIRS; do
+            autoload_funcs=( "$AUTOLOAD_ALL_DIRS"/*(ND) $autoload_funcs )
+        done
     fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
-source ~/.local/software/git/powerlevel10k/powerlevel10k.zsh-theme
-# To customize prompt, run `p10k configure` or edit ~/.config/.zsh/.p10k.zsh.
-[[ ! -f ~/.config/.zsh/.p10k.zsh ]] || source ~/.config/.zsh/.p10k.zsh
+    [[ ${#autoload_funcs} -gt 0 ]] && autoload -Uz $autoload_funcs
+}
 
-# Colored man pages
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;31m'
+cleanup() {
+    unset PLUGINS_DIR PLUGINS ZSH_PLUGINS_DIR ZSH_PLUGINS plugin_path plugin_fpath
+    unset USER_PATH_FIRST USER_FPATH_FIRST USER_PATH USER_FPATH
+    unset AUTOLOAD_DIR AUTOLOAD_ALL_DIRS AUTOLOAD autoload_funcs
+    unset SSH_KEYS_DIR SSH_KEYS
+    unset UNLOAD_AFTER_INIT
+    unfunction user_init_first user_init_last
+    unfunction init_keybinds init_hooks init_compinit 
+    unfunction init_ssh_agent
+    unfunction zshrc
+    unfunction cleanup
+}
 
-eval $(ssh-agent) &> /dev/null
-ssh-add ~/.ssh/keys/private/dev.snxwman.github &> /dev/null
+zshrc() {
+    readonly sys_path=( $path )
+    readonly sys_fpath=( $fpath )
+    export plugin_path=()
+    export plugin_fpath=()
 
-source "$ZDOTDIR/plugins/zsh-ssh.zsh"
-source "$ZDOTDIR/plugins/wakatime-zsh-plugin/wakatime.plugin.zsh"
+    user_init_first
+    init_compinit
 
-# Uncomment for profiling
-# zprof
+    for plugin in $PLUGINS; do
+        source "$PLUGINS_DIR/.init/$plugin" init
+    done
 
+    init_keybinds
+
+    path=( $USER_PATH_FIRST $plugin_path $USER_PATH $sys_path )
+    fpath=( $USER_FPATH_FIRST $plugin_fpath $USER_FPATH $sys_fpath )
+
+    init_autoloads
+    init_hooks
+    init_ssh_agent
+
+    for plugin in $PLUGINS; do
+        source "$PLUGINS_DIR/.init/$plugin" setup
+    done
+
+    for plugin in $ZSH_PLUGINS; do
+        source "$ZSH_PLUGINS_DIR/zsh-$plugin/zsh-$plugin.zsh"
+    done
+
+    user_init_last
+}
+
+zshrc
+typeset -U PATH path
+
+[[ $UNLOAD_AFTER_INIT == true ]] && cleanup
+[[ $ENABLE_PROFILING == true ]] && zprof
+unset ENABLE_PROFILING

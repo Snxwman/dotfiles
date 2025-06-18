@@ -1,3 +1,5 @@
+.git
+
 .stfolder
 .zcompdump
 
@@ -16,9 +18,9 @@ apps/lazygit/state.yml
 apps/mpv/scripts/
 apps/rofi/
 
-shells/zsh/plugins
+fonts/Berkeley\ Mono
+fonts/Font\ Awesome
 
 users/sam/ssh/keys
 users/sam/ssh/known_hosts
 
-wm/jx11r_qtile/.github

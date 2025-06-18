@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+# vim: set filetype=bash:
+
+asdf_init() {
+    plugin_path=("$ASDF_DATA_DIR/shims" $plugin_path )
+    # plugin_fpath=( ${ASDF_DATA_DIR}/completions $plugin_fpath )
+}
+
+asdf_setup() {
+    if [[ ! -f "$XDG_CACHE_HOME/zsh/_asdf" ]]; then
+        typeset -g -A _comps
+    fi
+}
+
+case "$1" in
+    "init"  ) asdf_init "$@"  ;;
+    "setup" ) return ;;
+    * ) echo "zsh plugins/.asdf - Unknown command "$1""
+esac
+
+unfunction asdf_init

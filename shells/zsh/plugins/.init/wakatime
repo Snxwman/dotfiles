@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+# vim: set filetype=bash:
+
+wakatime_setup() {
+    source "$ZDOTDIR/plugins/wakatime-zsh-plugin/wakatime.plugin.zsh"
+}
+
+case "$1" in
+    "init"  ) return ;;
+    "setup" ) wakatime_setup "$@" ;;
+    * ) echo "zsh plugins/.wakatime - Unknown command "$1""
+esac
+
+unfunction wakatime_setup

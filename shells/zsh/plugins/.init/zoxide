@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+# vim: set filetype=bash:
+
+zoxide_setup() {
+    eval "$(zoxide init zsh)"
+}
+
+case "$1" in
+    "init"  ) return ;;
+    "setup" ) zoxide_setup "$@" ;;
+    * ) echo "zsh plugins/.zoxide - Unknown command "$1""
+esac
+
+unfunction zoxide_setup
