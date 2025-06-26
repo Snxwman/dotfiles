@@ -28,11 +28,11 @@ color:
 # Possible values: date, relative, '+<date_format>'
 # `date_format` will be a `strftime` formatted value.
 # e.g. `date: '+%d %b %y %X'` will give you a date like this: 17 Jun 21 20:14:55
-date: '+%d %b %y %X'
+date: "+ %b %d %Y %H:%M:%S %P"
 
 # Whether to dereference symbolic links.
 # Possible values: false, true
-dereference: false
+dereference: true
 
 # What items to display. Do not specify this for the default behavior.
 # Possible values: all, almost-all, directory-only
@@ -47,11 +47,16 @@ icons:
   theme: fancy
   # Separator between icon and the name
   # Default to 1 space
-  separator: " "
+  separator: "  "
 
 # A list of globs to ignore when listing.
-# ignore-globs:
-#   - .git
+ignore-globs:
+  - .steam
+  - .steampath
+  - .steampid
+  - .cursor
+  - .mozilla
+  - .dbus
 
 # Whether to add indicator characters to certain listed files.
 # Possible values: false, true
@@ -96,11 +101,19 @@ no-symlink: false
 total-size: false
 
 # Specifies how the symlink arrow display, chars in both ascii and utf8
-symlink-arrow: 
+symlink-arrow: "󰌷"
 
 hyperlink: never
 
 # Whether to display block headers.
 # Possible values: false, true
 header: false
+
+# How to truncate the username and group names for a file if they exceed a certain
+# number of characters.
+truncate-owner:
+  # Number of characters to keep. By default, no truncation is done (empty value).
+  after: 4
+  # String to be appended to a name if truncated.
+  marker: "…"
 

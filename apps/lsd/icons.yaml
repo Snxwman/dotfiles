@@ -1,37 +1,51 @@
 name:
-  .archive: 
-  .backup: 󰁯
+  .backup: 󱘴
+  .cache: 󱘶
+  .config: 󰢻
+  .cron: 󰦖
+  .dbus: 󰣖
+  .local: 󱘯
   .nix: 
   .scripts: 󱆃
+  .shells: 
   .ssh: 󰣀
   .steam: 󰓓
+  .steampath: 󰓓
+  .steampid: 󰓓
+  .trash: 󰩺
+  bash: 
   albums: 󰋪
   ambient: 󰋋
   audio: 
   audiobooks: 󰁧
-  cloud: 
-  github: 
-  home: 
-  iso: 󰗮
-  mnt: 󰋊
-  movies: 󰿏
-  music: 
-  phone: 󰄜
+  cloud: 󰘿
+  config: 󱁿
+  downloads: 󰉍
+  documents: 󰲂
+  src: 󰴉
   photos: 󰉏
+  music: 󱍙
+  media: 󰉏
+  github: 󰊤
+  home: 󰋜
+  iso: 󰗮
+  mnt: 󱊞
+  movies: 󱧺
+  music: 󱍙
+  phone: 󰄜
   podcasts: 󰦔
   screenshots: 
-  soundboard: 󰗅
-  src: 
   usb1: 
   usb2: 
-  videos: 
-  vm: 
+  videos: 󱧺
+  vm: 
   wallpaper: 󰸉
   youtube: 
+  keys: 󰢬
+  authorized_keys: 󱆄
+  known_hosts: 󰈡
 extension:
   epub: 
   md: 󰽛
   pdf: 
   qcow2: 
-filetype:
-  
