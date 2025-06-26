@@ -107,12 +107,24 @@ return {
         --     - Python (basedpyright + ruff) on hover
         require("mason-lspconfig").setup({
             ensure_installed = vim.tbl_keys(servers),
+            automatic_enable = false,
             handlers = {
                 function(server_name)
                     require("lspconfig")[server_name].setup({
                         capabilities = capabilities,
                         settings = servers[server_name],
                         filetypes = (servers[server_name] or {}).filetypes,
+                    })
+                end,
+                ["ltex"] = function()
+                    require("lspconfig").ltex.setup({
+                        capabilities = capabilities,
+                        settings = {
+                            ltex = {
+                                enabled = { "bibtex", "tex", "latex" },
+                            },
+                        },
+                        filetypes = { "bib", "tex" },
                     })
                 end,
                 ["lua_ls"] = function()

@@ -11,6 +11,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         opts = {
             ensure_installed = {
+                "nixfmt",
                 "nil_ls",
             },
         },

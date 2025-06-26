@@ -1,12 +1,12 @@
 return {
-    {
-        "nvim-treesitter/nvim-treesitter",
-        opts = {
-            ensure_installed = {
-                "java",
-            }
-        },
-    },
+    -- {
+    --     "nvim-treesitter/nvim-treesitter",
+    --     opts = {
+    --         ensure_installed = {
+    --             "java",
+    --         }
+    --     },
+    -- },
     -- {
     --     "williamboman/mason-lspconfig.nvim",
     --     opts = {

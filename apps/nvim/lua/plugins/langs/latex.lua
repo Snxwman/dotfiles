@@ -20,7 +20,8 @@ return {
         opts = {
             servers = {
                 ltex = {
-                    filetypes = { "tex" },
+                    filetypes = { "bib", "text" },
+                    enabled = { "bibtex", "tex", "latex" }
                 },
             }
         }

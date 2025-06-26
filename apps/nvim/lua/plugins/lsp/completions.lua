@@ -52,8 +52,8 @@ return {
                 }),
                 sorting = {
                     comparators = {
-                        cmp.config.compare.exact,
                         cmp.config.compare.recently_used,
+                        cmp.config.compare.exact,
                         cmp.config.compare.locality,
                         cmp.config.compare.sort_text
                     },
@@ -118,6 +118,10 @@ return {
 
                         fields.kind = " " .. icon .. " "
                         fields.menu = "\t" .. src_tag .. autoimport .. src_desc .. " " .. details
+
+                        fields.dup = ({
+                            buffer = 0,
+                        })[entry.source.name] or 0
 
                         return fields
                     end,
