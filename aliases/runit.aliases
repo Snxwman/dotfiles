@@ -12,6 +12,13 @@ case $(lsb_release --id --short) in
 esac
 
 alias sv="sudo sv"
+alias svd="sudo sv down"
+alias svr="sudo sv restart"
+alias svs="sudo sv status"
+alias svu="sudo sv up"
 
-alias lssva="ll $_svdir/"
-alias lssv="ll $_runsvdir/"
+alias llsva="ll $_svdir/"
+alias llsv="ll $_runsvdir/"
+
+alias lssva="ls $_svdir/"
+alias lssv="ls $_runsvdir/"

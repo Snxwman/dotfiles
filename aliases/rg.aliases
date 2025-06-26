@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+alias -g rgv="rg --smart-case --invert-match"
+
+alias -g rgi="rg --ignore-case"
+alias -g rgs="rg --case-sensitive"
+
+alias -g rg="rg --smart-case"

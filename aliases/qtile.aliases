@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 
 alias qcmd="qtile cmd-obj -o"
 alias qgroup="qtile cmd-obj -o group"
@@ -7,6 +7,8 @@ alias qrestart="qtile cmd-obj -o root -f restart"
 alias qreload="qtile cmd-obj -o root -f reload_config"
 
 alias qwindows="qtile cmd-obj -o root -f windows"
+
+alias qtogglebar="qtile cmd-obj -o root -f hide_show_bar"
 
 alias qlog="cat ~/.local/share/qtile/qtile.log"
 alias qclog="echo -n > ~/.local/share/qtile/qtile.log"

@@ -1,35 +1,49 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
+# This file uses the zsh specific `-g` flag
 
-# LSD (LSDeluxe) [https://github.com/Peltoche/lsd]
+# LSD (LSDeluxe)
+# This project is a rewrite of GNU ls with lots of added features like colors, icons, tree-view,
+# more formatting options etc. The project is heavily inspired by the super colorls project.
+# 
+# https://github.com/Peltoche/lsd
 
-# TODO:
-#     - Fix all aliases that use a filter. They currently only work on the CWD.
+# TODO: Make aliases that use a filter into functions since they currently only work for the CWD
 
-alias gls="/usr/bin/ls"
-alias ls="lsd"
+# Rebinds
+alias gls="/usr/bin/ls"     # Also available as \ls
+alias ls="/usr/bin/lsd"
 
-alias ll="ls --long --group-dirs first"        # Respecify `--group-dirs last` at prompt to override `first`.
-alias la="ll --almost-all"
-alias lah="ll --directory-only .*"             # List all hidden items
+# Respecify `--group-dirs last` at prompt to override `first`.
+alias -g ll="lsd --long --group-dirs first"
+alias -g la="lsd --long --group-dirs first --almost-all"
 
-alias llr="ll --timesort"
-alias lar="la --timesort"
-alias lls="ll --sizesort"
-alias las="la --sizesort"
-alias lle="ll --extensionsort"
-alias lae="la --extensionsort"
+# Files only
+alias laf="lsd --long --group-dirs first --directory-only (.*|*)(^/)"    # List all files
+alias lvf="lsd --long --group-dirs first --directory-only *(^/)"         # List visible files
+alias lhf="lsd --long --group-dirs first --directory-only .*(^/)"        # List hidden files
 
-alias lad="ll --directory-only (.*|*)(/)"      # Only list (all) directories
-alias lvd="ll --directory-only *(/)"           # Only list visible directories
-alias lhd="ll --directory-only .*(/)"          # Only list hidden directories
+# Directories only
+alias lad="lsd --long --group-dirs first --directory-only (.*|*)(/)"     # List all directories
+alias lvd="lsd --long --group-dirs first --directory-only *(/)"          # List visible directories
+alias lhd="lsd --long --group-dirs first --directory-only .*(/)"         # List hidden directories
 
-alias laf="ll --directory-only (.*|*)(^/)"     # Only list (all) files
-alias lvf="ll --directory-only *(^/)"          # Only list visible files
-alias lhf="ll --directory-only .*(^/)"         # Only list hidden files
+# Misc
+alias -g lah="lsd --long --group-dirs first --directory-only .*"         # List all hidden items
+alias lsl="ls --oneline"                                                # List one item per line
+alias lstrash="lsd --long --group-dirs first $XDG_DATA_HOME/Trash/files" # Show files in the user trashcan
 
-alias llt="ll --tree --blocks size,name"
-alias lat="llt --almost-all"
-alias lht="lat .*"                             # List all hidden files in tree format
+# Sorted listing
+alias lle="lsd --long --group-dirs first --extensionsort"
+alias llg="lsd --long --group-dirs first --gitsort"
+alias llr="lsd --long --group-dirs first --timesort"
+alias lls="lsd --long --group-dirs first --sizesort"
+alias lae="lsd --long --group-dirs first --almost-all --extensionsort"
+alias lag="lsd --long --group-dirs first --almost-all --gitsort"
+alias lar="lsd --long --group-dirs first --almost-all --timesort"
+alias las="lsd --long --group-dirs first --almost-all --sizesort"
 
-alias lsl="ls --oneline"                       # One item per line
-alias lstrash="ll $XDG_DATA_HOME/Trash/files"  # Show files in the user trashcan
+# Tree listing
+alias llt="lsd --long --group-dirs first --tree --blocks size,name"                  # List files in tree format
+alias lat="lsd --long --group-dirs first --tree --blocks size,name --almost-all"     # List all files in tree format
+alias lht="lsd --long --group-dirs first --tree --blocks size,name --almost-all .*"  # List hidden files in tree format
+alias lht="lsd --long --group-dirs first --almost-all --tree .*"        # List all hidden files in tree format

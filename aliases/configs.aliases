@@ -1,10 +1,10 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 
 export BOOTDEV_CONFIG="$XDG_CONFIG_HOME/bootdev.yaml"
 alias bootdev="bootdev --config $BOOTDEV_CONFIG"
 
-export NVIDIA_SETTINGS_RC="$XDG_CONFIG_HOME/nvidia-settings-rc"
-alias nvidia-settings="$NVIDIA_SETTINGS_RC"
+export NVIDIA_SETTINGS_RC="$XDG_CONFIG_HOME/.nvidia-settings-rc"
+alias nvidia-settings="nvidia-settings --config=$NVIDIA_SETTINGS_RC"
 
 export SBCL_USERINIT="$XDG_CONFIG_HOME/.sbclrc"
 alias sbcl="sbcl --userinit $SBCL_USERINIT"

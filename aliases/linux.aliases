@@ -1,20 +1,23 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
+# This file uses the zsh specific `-g` flag
 
 # Navigation
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
+..(){ cd .. }
+...(){ cd ../.. }
+....(){ cd ../../.. }
 
 # Shorthands
 alias c="clear"
-alias lns="ln --symbolic"
-alias rmrf="rm --force --recursive"
-alias s="source"
-alias t="type -a"
+alias -g lns="ln --symbolic"
+alias -g rmrf="rm --force --recursive"
 alias open="xdg-open"
+
+alias chmodr="sudo chmod +r"
+alias chmodR="sudo chmod -r"
+alias chmodw="sudo chmod +w"
+alias chmodW="sudo chmod -w"
 alias chmodx="sudo chmod +x"
-alias rmmodx="sudo chmod -x"
-alias lspath="echo $PATH | tr ':' '\n'"
+alias chmodX="sudo chmod -x"
 
 # Rebinds
 alias which="type -a"
@@ -27,13 +30,11 @@ alias ln="ln --verbose"
 alias mkdir="mkdir --parents --verbose"
 alias mount="sudo mount --verbose"
 alias mv="mv --verbose"
-alias rm="rm --verbose"
 
 # Workarounds
 alias wget="wget --hsts-file $XDG_CACHE_HOME/.wget-hsts"
 
-# Misc
-alias emptytrash="rm --force --recursive $XDG_DATA_HOME/Trash"  # Does not delete files on external devices
-alias lsenv="printenv | sort"
-
+# Listing
 alias lsblkf="sudo lsblk --output SIZE,NAME,FSTYPE,LABEL,MOUNTPOINTS,UUID"
+alias lsenv="printenv | sort"
+alias lspath="echo $PATH | tr ':' '\n'"

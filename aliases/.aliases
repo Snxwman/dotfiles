@@ -1,13 +1,17 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 
 ALIASES="$XDG_CONFIG_HOME/.aliases"
 
-# Will switch on the name of the shell that called this file (e.g. .zshrc), not the shebang line.
-# https://stackoverflow.com/a/34940539/14727607
+# Shell based aliases
 case $(basename $(readlink /proc/$$/exe)) in
-    zsh ) source "$ALIASES/zsh.aliases" ;;
+    # Will switch on the name of the shell that called this file (e.g. .zshrc), not the shebang line.
+    # https://stackoverflow.com/a/34940539/14727607
+    zsh     ) source "$ALIASES/zsh.aliases" ;;
+    bash    ) ;;
+    nushell ) ;;
 esac
 
+# Operating system based aliases
 case $(uname) in
     Linux ) 
         source "$ALIASES/linux.aliases"
@@ -28,14 +32,23 @@ case $(uname) in
         ;;
 esac
 
+# Window manager based aliases
+case "$XDG_SESSION_DESKTOP" in
+    qtile ) source "$ALIASES/qtile.aliases" ;;
+esac
+
+# Cross platform aliases
 source "$ALIASES/user.aliases"
-
-[[ -n $(virsh --version) ]] && source "$ALIASES/virsh.aliases"
-
-[[ -n $(bat --version) ]] && source "$ALIASES/bat.aliases"
-[[ -n $(lsd --version) ]] && source "$ALIASES/lsd.aliases"
-
-[[ -n $(qtile --version) ]] && source "$ALIASES/qtile.aliases"
-
+source "$ALIASES/configs.aliases"
 alias sa="source $ALIASES/.aliases"
 
+# Application aliases
+# TODO: Turn this into a dynamic function
+[[ $(type virsh) ]] && source "$ALIASES/virsh.aliases"
+
+[[ $(type bat) ]] && source "$ALIASES/bat.aliases"
+[[ $(type fd) ]] && source "$ALIASES/fd.aliases"
+[[ $(type lsd) ]] && source "$ALIASES/lsd.aliases"
+[[ $(type rg) ]] && source "$ALIASES/rg.aliases"
+[[ $(type trash) ]] && source "$ALIASES/trash-cli.aliases"
+[[ $(type vsv) ]] && source "$ALIASES/vsv.aliases"

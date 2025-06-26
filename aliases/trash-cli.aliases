@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+alias rm='echo "\033[0;31mPrefer using one of the trash-cli commands.\033[0m"; false'
+
+alias t="trash-put"
+
+alias tempty="trash-empty"
+alias trestore="trash-restore"
+alias trm="trash-rm"            # Removes files matching a pattern from the trash can
+
