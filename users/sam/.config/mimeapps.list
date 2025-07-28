@@ -7,27 +7,11 @@ application/vnd.oasis.opendocument.spreadsheet=libreoffice-calc.desktop;
 application/vnd.oasis.opendocument.text=libreoffice-writer.desktop;
 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=libreoffice-calc.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;
-# application/x-extension-eml=trojita.desktop;
 application/xhtml+xml=brave-browser.desktop;
-
-# audio/mpeg=org.kde.elisa.desktop;
 audio/x-mpegurl=mpv.desktop;
 audio/x-scpls=mpv.desktop;
-# audio/x-vorbis+ogg=org.kde.elisa.desktop;
-# audio/x-wav=org.kde.elisa.desktop;
-
-# image/bmp=lximage-qt.desktop;
-# image/gif=lximage-qt.desktop;
-# image/jpeg=lximage-qt.desktop;
-# image/png=lximage-qt.desktop;
-# image/tiff=lximage-qt.desktop;
-
 inode/directory=org.gnome.Nautilus.desktop;
-
-# message/rfc822=trojita.desktop;
- 
 text/html=brave-browser.desktop
-
 video/mp2t=mpv.desktop;
 video/mp4=mpv.desktop;
 video/mpeg=mpv.desktop;
@@ -39,10 +23,7 @@ video/x-flv=mpv.desktop;
 video/x-matroska=mpv.desktop;
 video/x-mpeg=mpv.desktop;
 video/x-ogm+ogg=mpv.desktop;
-
 text/plain=org.xfce.mousepad.desktop;
-
-# x-content/audio-player=org.kde.elisa.desktop;
 x-scheme-handler/http=brave-browser.desktop
 x-scheme-handler/https=brave-browser.desktop
 x-scheme-handler/about=brave-browser.desktop
@@ -50,5 +31,10 @@ x-scheme-handler/unknown=brave-browser.desktop
 x-scheme-handler/sgnl=signal.desktop
 x-scheme-handler/signalcaptcha=signal.desktop
 x-scheme-handler/postman=Postman.desktop
-# x-scheme-handler/mailto=trojita.desktop;
 x-scheme-handler/betterdiscord=discord.desktop
+font/collection=org.fontforge.FontForge.desktop
+font/ttf=org.fontforge.FontForge.desktop
+
+[Added Associations]
+font/collection=org.fontforge.FontForge.desktop;
+font/ttf=org.fontforge.FontForge.desktop;

@@ -63,7 +63,7 @@ init_hooks() {
     # Periodic: Executes every $PERIOD seconds, just before a prompt.
     # Precmd: Executes just before each prompt.
     # Preexec: Executes after a cmd is read, but before it is executed. 
-    chpwd_functions=( auto_venv )
+    chpwd_functions=( asdf_tools auto_venv )
     periodic_functions=()
     precmd_functions=( term_title )
     preexec_functions=( term_title )

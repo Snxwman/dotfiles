@@ -5,17 +5,35 @@
 # Local Virtual Machines
 
 # Local Servers
-Host jellyfin
-    HostName 10.100.1.13
-    User admin
+Host washington infra
+    HostName washington.snowlab.io
+    # HostName 10.10.0.10
+    #_Desc Local Infrastructure
+
+Host hancock ha
+    HostName hancock.snowlab.io
+    # HostName 10.20.0.200
+    Port 22222
+    User root
+    #_Desc Home Assistant
+
+Host madison dns1
+    HostName madison.snowlab.io
+    # HostName 10.10.0.3
+    #_Desc Pi-hole
 
 # Remote Servers
-Host sag sagittarius.kopp.network
-    HostName sagittarius.kopp.network
-    IdentityFile ~/.ssh/keys/private/network.kopp.sagittarius_sam
+Host sagittarius rp1
+    HostName sagittarius.snowlab.io
+    User root
+    #_Desc (Linode) Gateway
+
+# Host *.snowlab.io
+#     IdentityFile ~/.ssh/keys/private/%r@%h
 
 # Global
 Host *
     User sam
+    IdentityFile ~/.ssh/keys/private/io.snowlab_sam
     SetEnv TERM=xterm-256color
 

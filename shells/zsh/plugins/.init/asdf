@@ -13,7 +13,7 @@ asdf_setup() {
 }
 
 case "$1" in
-    "init"  ) asdf_init "$@"  ;;
+    "init"  ) asdf_init "$@" ;;
     "setup" ) return ;;
     * ) echo "zsh plugins/.asdf - Unknown command "$1""
 esac

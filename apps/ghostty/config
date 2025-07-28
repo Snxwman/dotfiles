@@ -2,8 +2,8 @@ config-file = font.config
 config-file = theme.config
 config-file = keybinds.config
 
-custom-shader = shaders/bettercrt.glsl
-custom-shader = shaders/bloom.glsl
+#custom-shader = shaders/bettercrt.glsl
+#custom-shader = shaders/bloom.glsl
 #custom-shader = shaders/glitchy.glsl
 #custom-shader = shaders/snow.glsl
 custom-shader-animation = true
@@ -16,7 +16,7 @@ abnormal-command-exit-runtime = 250
 # 1GB
 scrollback-limit = 1000000000
 
-link-url = true
+link-url = false
 
 title =
 class =

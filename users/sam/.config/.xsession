@@ -8,9 +8,10 @@
 
 # Backgroud programs
 /usr/bin/blueman-applet &
+/usr/bin/dunst &
 /usr/bin/flameshot &
 /usr/bin/sxhkd -c ~/.config/.sxhkdrc &
-/usr/bin/syncthing &
+# /usr/bin/syncthing &
 
 # Dont sleep
 /sbin/xset s 0 0
@@ -24,8 +25,9 @@ xrandr \
     --output 'HDMI-1' --mode '5120x1440' --pos 0x1080 --primary \
     --output 'HDMI-0' --mode '1920x1080' --pos 2400x0 --rotate inverted
 /sbin/nvidia-settings --load-config-only --config ~/.config/.nvidia-settings-rc
-/usr/bin/compfy --daemon &
-/usr/bin/feh --no-fehbg --bg-fill '/home/sam/media/photos/wallpaper/32:9/forest.jpg' &
+# /usr/bin/compfy --daemon &
+/usr/bin/picom --daemon
+/usr/bin/feh --no-fehbg --bg-fill '/home/sam/media/images/wallpaper/32:9/winter_cabin.jpg' &
 
 # Theming
 /sbin/xrdb << EOF
@@ -33,5 +35,4 @@ Xcursor.theme: Simp1e-Mix-Dark
 Xcursor.size: 16
 EOF  # Imitates ~/.Xresources
 
-/opt/eww daemon &
-exec /usr/bin/dbus-run-session /usr/bin/qtile start
+exec /usr/bin/dbus-run-session qtile start

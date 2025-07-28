@@ -10,7 +10,7 @@ XF86AudioNext
     playerctl --player=spotify,brave next 2>/dev/null
 
 XF86AudioPrev
-    playerctl --player=spotify,brave prev 2>/dev/null
+    playerctl --player=spotify,brave previous 2>/dev/null
 
 XF86AudioForward
     playerctl --player=spotify,brave position 2+ 2>/dev/null

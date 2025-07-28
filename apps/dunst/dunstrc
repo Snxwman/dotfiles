@@ -314,9 +314,13 @@
     #new_icon = /path/to/icon
 
 [skip-govee]
-    summary="GVH5075*"
-    skip_display=true
-    history_ignore=true
+    summary = "GVH5075*"
+    skip_display = true
+    history_ignore = true
+
+[brave]
+    appname = "Brave"
+    urgency = normal
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
