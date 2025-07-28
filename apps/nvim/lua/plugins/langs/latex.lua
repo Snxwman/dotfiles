@@ -1,30 +1,30 @@
 return {
-    {
-        "nvim-treesitter/nvim-treesitter",
-        opts = {
-            ensure_installed = {
-                "latex",
-            }
-        },
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        opts = {
-            ensure_installed = {
-                "ltex",
-            },
-        },
-    },
-    {
-        "neovim/nvim-lspconfig",
-        opts = {
-            servers = {
-                ltex = {
-                    filetypes = { "bib", "text" },
-                    enabled = { "bibtex", "tex", "latex" }
-                },
-            }
-        }
-    }
+    -- {
+    --     "nvim-treesitter/nvim-treesitter",
+    --     opts = {
+    --         ensure_installed = {
+    --             "latex",
+    --         }
+    --     },
+    -- },
+    -- {
+    --     "williamboman/mason-lspconfig.nvim",
+    --     opts = {
+    --         ensure_installed = {
+    --             "ltex",
+    --         },
+    --     },
+    -- },
+    -- {
+    --     "neovim/nvim-lspconfig",
+    --     opts = {
+    --         servers = {
+    --             ltex = {
+    --                 filetypes = { "bib", "text" },
+    --                 enabled = { "bibtex", "tex", "latex" }
+    --             },
+    --         }
+    --     }
+    -- }
 }
 

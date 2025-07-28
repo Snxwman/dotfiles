@@ -21,3 +21,14 @@ vim.api.nvim_create_autocmd("BufEnter", {
         end)
     end
 })
+
+vim.api.nvim_create_autocmd( "BufWritePre", {
+    group = vim.api.nvim_create_augroup('strip_whitespace', { clear = true }),
+    desc = "Strip all trailing whitespace in the buffer on write and restore cursor position.",
+    pattern = '<buffer>',
+    callback = function(_)
+        local cursor_pos = vim.fn.getpos(".")
+        vim.cmd([[keeppatterns %s/\s\+$//e]])
+        vim.fn.setpos(".", cursor_pos)
+    end,
+})

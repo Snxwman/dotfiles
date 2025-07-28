@@ -152,7 +152,6 @@ return {
                 -- TODO: find out how to tell if a problem is the daily problem
                 local emojis = {
                     easy = "🟢", medium = "🟡", hard = "🔴",
-                    -- easy = "🟩", medium = "🟨", hard = "🟥",
                     daily = "📆", solved = "✅", premium = "💎"
                 }
                 local leetcode = vim.g.leetcode

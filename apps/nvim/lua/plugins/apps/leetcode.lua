@@ -107,9 +107,6 @@ return {
                                 link = data.cache.link,
                             }
                         }
-                        -- local log = require("util.log").debug()
-                        -- log.debug(data.q)
-                        -- log.debug(data.cache)
 
                         local leetcode = vim.g.leetcode
                         leetcode.questions = vim.tbl_deep_extend("force", leetcode.questions, question)
