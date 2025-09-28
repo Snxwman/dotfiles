@@ -8,8 +8,11 @@ from utils.palette import palette, flexoki
 import core.bar.widgets as w
 
 
-KINESIS_KB_DBUS = '/org/bluez/hci0/dev_EE_4B_3D_BC_54_87'
-LOGI_MOUSE_DBUS = '/org/bluez/hci0/dev_D5_17_8C_3E_76_FD'
+KINESIS_KB_DBUS = '/dev_EE_4B_3D_BC_54_87'
+LOGI_MOUSE_DBUS = '/dev_D5_17_8C_3E_76_FD'
+
+# KINESIS_KB_DBUS = '/org/bluez/hci0/dev_EE_4B_3D_BC_54_87'
+# LOGI_MOUSE_DBUS = '/org/bluez/hci0/dev_D5_17_8C_3E_76_FD'
 
 
 bar = {
@@ -38,7 +41,7 @@ widgets = lambda: [
     ),
     w.sep(),
 
-    w.groups(),
+    w.groups(highlight_method='icon'),
     w.sep(),
 
     w.window_name(flexoki.text),
@@ -80,7 +83,6 @@ widgets = lambda: [
 
     *w.updates(
         icon_fg = flexoki.blue_l,
-        updates_fg = flexoki.blue_l,
         decorations = decor
     ),
     w.sep(),

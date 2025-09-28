@@ -1,9 +1,9 @@
 from dataclasses import KW_ONLY, dataclass
-from typing import TypedDict
+from typing import Any, TypedDict
 
 from libqtile.config import DropDown, Match, ScratchPad
 
-from utils.match import title
+from utils.match import title, wm_class
 
 
 class DropDownConfigDict(TypedDict):
@@ -116,23 +116,23 @@ class GhosttyLaunchConfig:
         # }
 
 
-base_dropdown_config = { 
+base_dropdown_config: dict[str, Any] = { 
     'on_focus_lost_hide': False,
     'warp_pointer': False,
     'opacity': 1
 }
 
 # BUG: Qtile only accepts a string for a dropdown's launch command, instead of the args for spawn().
-#      However, the string is still given to spawn() as its `cmd` which expects that to be an executable.
-#      Since we cannot provide `env` to spawn() through DropDown(), we must have ghostty reexec the shell 
-#          with the desired env after the shell is already loaded.
+# However, the string is still given to spawn() as its `cmd` which expects that to be an executable.
+# Since we cannot provide `env` to spawn() through DropDown(), we must have ghostty reexec the shell 
+# with the desired env after the shell is already loaded.
 ghostty_config = GhosttyLaunchConfig(
     bin='/usr/bin/ghostty',
     command="SCRATCHPAD= zsh"
 )
 terminal_config = DropDownConfig(
     **base_dropdown_config,  # pyright: ignore
-    **center_window(0.3, 0.7)
+    **center_window(0.35, 0.75)
 ).as_dict()
 
 mullvad_app = '/opt/Mullvad\\ VPN/mullvad-vpn'
@@ -145,8 +145,18 @@ mullvad_config = DropDownConfig(
     **center_window(0.0625, 0.3944)
 ).as_dict()
 
+files_app = '/usr/bin/nautilus'
+files_config = DropDownConfig(
+    on_focus_lost_hide=False,
+    opacity=1,
+    warp_pointer=True,
+    match=wm_class('org.gnome.Nautilus')[0],
+    **center_window(0.35, 0.8),  # pyright: ignore
+).as_dict()
+
 scratchpad = ScratchPad('Scratchpad', [
     DropDown('Terminal', ghostty_config.spawn(), **terminal_config),
     DropDown('VPN', mullvad_app, **mullvad_config),
+    # DropDown('Files', files_app, **files_config),
 ])
 

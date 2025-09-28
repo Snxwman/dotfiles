@@ -23,39 +23,22 @@ backspace = 'BackSpace'
 meh = [ctrl, alt, shift]
 hyper = [ctrl, alt, shift, super]
 
-# Applications
-terminal = 'ghostty'
-launcher = '.config/rofi/scripts/launcher_t1'
-browser = 'brave'
-file_manager = 'nautilus'
-logout = ''
-
 keys = [
     # System control
     Key([super, alt], 'w', lazy.window.kill()),
     Key([super, ctrl], 'r', lazy.restart()),
-    Key([super], space, lazy.spawn(launcher)),
-
-    # Application shortcuts
-    Key([super], enter, lazy.spawn(terminal)),
-    Key([super], 'd', lazy.spawn(browser)),
-    Key([super], 's', lazy.spawn(file_manager)),
 
     # Screen navigation
     Key([super], 'n', lazy.next_screen()),
     Key([super, shift], '1', lazy.group['Dashboard'].toscreen()),
     Key([super, shift], '2', lazy.group['Primary'].toscreen()),
     Key([super, shift], '3', lazy.group['Secondary'].toscreen()),
-    Key([super, shift], '4', lazy.group['Coding'].toscreen()),
-    Key([super, shift], '5', lazy.group['Virtual Machines'].toscreen()),
-    Key([super, shift], '6', lazy.group['Gaming'].toscreen()),
+    Key([super, shift], '4', lazy.group['Tertiary'].toscreen()),
 
     Key(hyper, '1', lazy.window.togroup('Dashboard')),
     Key(hyper, '2', lazy.window.togroup('Primary')),
     Key(hyper, '3', lazy.window.togroup('Secondary')),
-    Key(hyper, '4', lazy.window.togroup('Coding')),
-    Key(hyper, '5', lazy.window.togroup('Virtual Machines')),
-    Key(hyper, '6', lazy.window.togroup('Gaming')),
+    Key(hyper, '4', lazy.window.togroup('Tertiary')),
 
     # Screen Split Navigation
     Key([super], 'o', lazy.layout.next_split()),
@@ -67,7 +50,7 @@ keys = [
     Key(hyper, space, lazy.next_layout()),
     Key(hyper, 'm', lazy.layout.toggle_split()),
 
-    Key(hyper, 'h', lazy.layout.shuffle_left()),  # Hackish way to add columns
+    Key(hyper, 'h', lazy.layout.shuffle_left()),
     Key(hyper, 'l', lazy.layout.shuffle_right()),
 
     # Window - change focus
@@ -103,6 +86,7 @@ keys = [
 
     # Scratchpads
     Key([super, alt], enter, lazy.group['Scratchpad'].dropdown_toggle('Terminal')),
+    Key([super, ctrl], enter, lazy.group['Scratchpad'].dropdown_toggle('Files')),  # FIX:
     Key([super, alt], 'm', lazy.group['Scratchpad'].dropdown_toggle('VPN')),
 ]
 

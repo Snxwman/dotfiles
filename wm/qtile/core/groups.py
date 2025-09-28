@@ -11,7 +11,7 @@ groups: list[Group|ScratchPad] = [
         position=0,
         screen_affinity=1,
         matches=wm_class('discord', 'spotify'),
-        spawn='discord',
+        spawn=['discord'],
     ),
     Group(
         name='Primary',
@@ -23,32 +23,14 @@ groups: list[Group|ScratchPad] = [
     Group(
         name='Secondary',
         label='',
-        position=2,
         layout='columns',
+        position=2,
     ),
     Group(
-        name='Coding',
-        label='',
+        name='Tertiary',
+        label='',
         layout='columns',
         position=3,
-    ),
-    Group(
-        name='Virtual Machines',
-        label='',
-        layout='columns',
-        position=4,
-        matches=wm_class('virt-manager'),
-        exclusive=True,
-    ),
-    Group(
-        name='Gaming',
-        label='',
-        layout='max',
-        position=5,
-        init=False,
-        persist=False,
-        matches=wm_class('steam', glob('steam_app_')),
-        exclusive=True,
     ),
     scratchpad
 ]

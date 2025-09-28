@@ -1,4 +1,5 @@
 from libqtile import layout
+from libqtile.config import Match
 
 from utils import merge
 from utils.match import wm_class
@@ -38,15 +39,15 @@ floating_layout = layout.Floating(
     float_rules=[
         *layout.Floating.default_float_rules,
         *wm_class(
-            "confirmreset",
-            "Display",
-            "floating",
-            "ssh-askpass",
-            "Xephyr",
+            'confirmreset',
+            'Display',
+            'floating',
+            'ssh-askpass',
+            'Xephyr',
             'blueman-manager',
-            'nemo',
-            'org.gnome.Nautilus',
             'gnome-calculator',
+            'rpi-imager',
         ),
+        Match(role='pop-up')
     ],
 )
