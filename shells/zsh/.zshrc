@@ -11,7 +11,7 @@ ZSH_PLUGINS=( autosuggestions history-substring-search syntax-highlighting )
 
 USER_PATH_FIRST=()
 USER_FPATH_FIRST=()
-USER_PATH=( $SCRIPTS $SCRIPTS/{cron,hooks,wrappers} "$HOME/.local/bin" "/opt")
+USER_PATH=( $SCRIPTS $SCRIPTS/{cron,hooks,wrappers} "$HOME/.local/bin" )
 USER_FPATH=( $SCRIPTS $SCRIPTS/{completions,hooks,wrappers} $ZDOTDIR/plugins )
 
 AUTOLOAD_DIR="$ZDOTDIR/autoload"
@@ -55,14 +55,14 @@ init_keybinds() {
     bindkey '^E' end-of-line          # ctrl e
     bindkey '^[[1;5C' forward-word    # ctrl ->
     bindkey '^[[1;5D' backward-word   # ctrl <-
-    bindkey '^R' history-search-backward 
+    bindkey '^R' history-search-backward
 }
 
 init_hooks() {
     # Chpwd: Executes when the working directory changes.
     # Periodic: Executes every $PERIOD seconds, just before a prompt.
     # Precmd: Executes just before each prompt.
-    # Preexec: Executes after a cmd is read, but before it is executed. 
+    # Preexec: Executes after a cmd is read, but before it is executed.
     chpwd_functions=( asdf_tools auto_venv )
     periodic_functions=()
     precmd_functions=( term_title )
@@ -106,7 +106,7 @@ cleanup() {
     unset SSH_KEYS_DIR SSH_KEYS
     unset UNLOAD_AFTER_INIT
     unfunction user_init_first user_init_last
-    unfunction init_keybinds init_hooks init_compinit 
+    unfunction init_keybinds init_hooks init_compinit
     unfunction init_ssh_agent
     unfunction zshrc
     unfunction cleanup
