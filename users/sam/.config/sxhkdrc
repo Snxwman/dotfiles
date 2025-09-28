@@ -1,25 +1,35 @@
 # Reload sxhkd config
 shift + ctrl + alt + super + F23
-    pkill -USR1 --exact sxhkd
+    /usr/bin/pkill -USR1 --exact sxhkd; notify-send 'sxhkd' 'Reloaded config'
 
-# Global media player controls
+# Launch programs
+super + space
+    ~/.config/rofi/scripts/launcher_t1
+
+super + Return
+    /usr/bin/ghostty
+
+#shift + ctrl + alt + v
+#    ghostty --title vm_launcher --command ~/.scripts/vm_launch
+
+# Media player controls
 XF86AudioPlay
-    playerctl --player=spotify,brave play-pause 2>/dev/null
+    /usr/bin/playerctl --player=spotify,brave play-pause 2>/dev/null
 
 XF86AudioNext
-    playerctl --player=spotify,brave next 2>/dev/null
+    /usr/bin/playerctl --player=spotify,brave next 2>/dev/null
 
 XF86AudioPrev
-    playerctl --player=spotify,brave previous 2>/dev/null
+    /usr/bin/playerctl --player=spotify,brave previous 2>/dev/null
 
 XF86AudioForward
-    playerctl --player=spotify,brave position 2+ 2>/dev/null
+    /usr/bin/playerctl --player=spotify,brave position 2+ 2>/dev/null
 
 XF86AudioRewind
-    playerctl --player=spotify,brave position 2- 2>/dev/null
+    /usr/bin/playerctl --player=spotify,brave position 2- 2>/dev/null
 
 shift + XF86AudioPlay
-    playerctl --player=spotify,brave shuffle Toggle 2>/dev/null
+    /usr/bin/playerctl --player=spotify,brave shuffle Toggle 2>/dev/null
 
 # Screenshots (also saves to file due to saveAfterCopy=true in flameshot.ini)
 Print
@@ -36,6 +46,3 @@ shift + alt + Print
 
 shift + ctrl + alt + Print
     ~/.scripts/screenshot all-monitors 2>/dev/null
-
-#shift + ctrl + alt + v
-#    ghostty --title vm_launcher --command ~/.scripts/vm_launch
