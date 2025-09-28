@@ -1,12 +1,13 @@
 config-file = font.config
-config-file = theme.config
 config-file = keybinds.config
+config-file = linux.config
+config-file = theme.config
 
 #custom-shader = shaders/bettercrt.glsl
 #custom-shader = shaders/bloom.glsl
 #custom-shader = shaders/glitchy.glsl
 #custom-shader = shaders/snow.glsl
-custom-shader-animation = true
+custom-shader-animation = false
 
 command =
 initial-command =
@@ -53,11 +54,11 @@ quit-after-last-window-closed-delay =
 initial-window = true
 
 # NOTE: Not used, handled by WM scratchpad
-quick-terminal-position = top
-quick-terminal-screen = main
-quick-terminal-animation-duration = 0.2
-quick-terminal-autohide = true
-quick-terminal-space-behavior = move
+# quick-terminal-position = top
+# quick-terminal-screen = main
+# quick-terminal-animation-duration = 0.2
+# quick-terminal-autohide = true
+# quick-terminal-space-behavior = move
 
 shell-integration = detect
 shell-integration-features = cursor,no-sudo,title

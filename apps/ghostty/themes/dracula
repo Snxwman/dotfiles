@@ -1,0 +1,23 @@
+# vim: set filetype=conf:
+palette = 0=#2a2b37
+palette = 1=#ff4d4d
+palette = 2=#25f85a
+palette = 3=#e7f736
+palette = 4=#a166f5
+palette = 5=#ff61ba
+palette = 6=#2cd6fc
+palette = 7=#f8f8f2
+palette = 8=#4a5882
+palette = 9=#ff6e6e
+palette = 10=#69ff94
+palette = 11=#ffffa5
+palette = 12=#d6acff
+palette = 13=#ff92df
+palette = 14=#a4ffff
+palette = 15=#ffffff
+background = #282a36
+foreground = #f8f8f2
+cursor-color = #f8f8f2
+cursor-text = #282a36
+selection-foreground = #f8f8f2
+selection-background = #44475a
