@@ -52,3 +52,6 @@ alias sa="source $ALIASES/.aliases"
 [[ $(type rg) ]] && source "$ALIASES/rg.aliases"
 [[ $(type trash) ]] && source "$ALIASES/trash-cli.aliases"
 [[ $(type vsv) ]] && source "$ALIASES/vsv.aliases"
+
+[[ $(basename $(ps -p $(ps -p $$ -o ppid=) -o args=)) = "ghostty" ]] \
+    && alias boo="ghostty +boo"
